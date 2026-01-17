@@ -4,7 +4,7 @@
 <section class="py-20 lg:py-28 bg-neutral-50 dark:bg-neutral-800/50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {{-- Section Header --}}
-        <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
             <h2 class="text-3xl lg:text-4xl font-bold text-neutral-900 dark:text-white mb-4">
                 Two Ways to Work With Us
             </h2>
@@ -15,8 +15,8 @@
 
         <div class="grid lg:grid-cols-2 gap-8">
             {{-- Products Card --}}
-            <div class="bg-white dark:bg-neutral-800 rounded-3xl p-8 lg:p-10 shadow-soft border border-neutral-100 dark:border-neutral-700 hover:shadow-elevated transition-shadow">
-                <div class="w-14 h-14 bg-primary-100 dark:bg-primary-900/30 rounded-2xl flex items-center justify-center mb-6">
+            <div data-aos="fade-right" data-aos-delay="100" class="bg-white dark:bg-neutral-800 rounded-3xl p-8 lg:p-10 shadow-soft border border-neutral-100 dark:border-neutral-700 hover-lift">
+                <div class="w-14 h-14 bg-primary-100 dark:bg-primary-900/30 rounded-2xl flex items-center justify-center mb-6 animate-float">
                     <svg class="w-7 h-7 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
                     </svg>
@@ -73,7 +73,7 @@
                     </div>
                 @endif
 
-                <a href="{{ route('products.index') }}" class="inline-flex items-center gap-2 w-full justify-center px-6 py-3 bg-primary-500 text-white font-semibold rounded-xl hover:bg-primary-600 transition-colors">
+                <a href="{{ route('products.index') }}" class="btn-shine inline-flex items-center gap-2 w-full justify-center px-6 py-3 bg-primary-500 text-white font-semibold rounded-xl hover:bg-primary-600 transition-all hover:-translate-y-0.5">
                     View All Products
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
@@ -82,8 +82,8 @@
             </div>
 
             {{-- Services Card --}}
-            <div class="bg-white dark:bg-neutral-800 rounded-3xl p-8 lg:p-10 shadow-soft border border-neutral-100 dark:border-neutral-700 hover:shadow-elevated transition-shadow">
-                <div class="w-14 h-14 bg-accent-100 dark:bg-accent-900/30 rounded-2xl flex items-center justify-center mb-6">
+            <div data-aos="fade-left" data-aos-delay="200" class="bg-white dark:bg-neutral-800 rounded-3xl p-8 lg:p-10 shadow-soft border border-neutral-100 dark:border-neutral-700 hover-lift">
+                <div class="w-14 h-14 bg-accent-100 dark:bg-accent-900/30 rounded-2xl flex items-center justify-center mb-6 animate-float" style="animation-delay: 0.5s;">
                     <svg class="w-7 h-7 text-accent-600 dark:text-accent-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
                     </svg>
@@ -148,7 +148,7 @@
                     </div>
                 @endif
 
-                <a href="{{ route('contact.quote') }}" class="inline-flex items-center gap-2 w-full justify-center px-6 py-3 bg-accent-500 text-white font-semibold rounded-xl hover:bg-accent-600 transition-colors">
+                <a href="{{ route('contact.quote') }}" class="btn-shine inline-flex items-center gap-2 w-full justify-center px-6 py-3 bg-accent-500 text-white font-semibold rounded-xl hover:bg-accent-600 transition-all hover:-translate-y-0.5">
                     Get Free Quote
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>

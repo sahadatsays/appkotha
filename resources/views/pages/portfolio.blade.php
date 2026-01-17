@@ -3,10 +3,10 @@
     <section class="py-20 lg:py-28 bg-gradient-to-br from-neutral-50 via-white to-primary-50 dark:from-neutral-900 dark:via-neutral-900 dark:to-neutral-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="max-w-3xl mx-auto text-center">
-                <h1 class="text-4xl lg:text-5xl font-bold text-neutral-900 dark:text-white mb-6">
+                <h1 class="text-4xl lg:text-5xl font-bold text-neutral-900 dark:text-white mb-6" data-aos="fade-up">
                     Our Work
                 </h1>
-                <p class="text-xl text-neutral-600 dark:text-neutral-400">
+                <p class="text-xl text-neutral-600 dark:text-neutral-400" data-aos="fade-up" data-aos-delay="100">
                     Explore our portfolio of successful projects and see how we've helped businesses achieve their goals.
                 </p>
             </div>
@@ -19,10 +19,10 @@
             @if($caseStudies->count() > 0)
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     @foreach($caseStudies as $study)
-                        <a href="{{ route('portfolio.show', $study) }}" class="group bg-white dark:bg-neutral-800 rounded-2xl overflow-hidden shadow-soft hover:shadow-elevated transition-shadow border border-neutral-100 dark:border-neutral-700">
-                            <div class="aspect-video bg-neutral-200 dark:bg-neutral-700 flex items-center justify-center">
+                        <a href="{{ route('portfolio.show', $study) }}" class="group bg-white dark:bg-neutral-800 rounded-2xl overflow-hidden shadow-soft hover:shadow-elevated transition-shadow border border-neutral-100 dark:border-neutral-700 hover-lift img-zoom" data-aos="fade-up" data-aos-delay="{{ ($loop->index % 3 + 1) * 100 }}">
+                            <div class="aspect-video bg-neutral-200 dark:bg-neutral-700 flex items-center justify-center overflow-hidden">
                                 @if($study->featured_image)
-                                    <img src="{{ asset('storage/' . $study->featured_image) }}" alt="{{ $study->title }}" class="w-full h-full object-cover">
+                                    <img src="{{ asset('storage/' . $study->featured_image) }}" alt="{{ $study->title }}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                                 @else
                                     <span class="text-neutral-400 dark:text-neutral-500">Project Image</span>
                                 @endif
@@ -48,9 +48,9 @@
                     {{ $caseStudies->links() }}
                 </div>
             @else
-                <div class="text-center py-20">
+                <div class="text-center py-20" data-aos="fade-up">
                     <p class="text-neutral-500 dark:text-neutral-400 text-lg">Portfolio items coming soon. Contact us to learn about our past projects.</p>
-                    <a href="{{ route('contact.index') }}" class="inline-flex items-center gap-2 mt-6 px-6 py-3 bg-primary-500 text-white font-semibold rounded-xl hover:bg-primary-600 transition-colors">
+                    <a href="{{ route('contact.index') }}" class="inline-flex items-center gap-2 mt-6 px-6 py-3 bg-primary-500 text-white font-semibold rounded-xl hover:bg-primary-600 transition-colors btn-shine hover:-translate-y-0.5">
                         Contact Us
                     </a>
                 </div>

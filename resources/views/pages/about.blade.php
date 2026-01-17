@@ -3,10 +3,10 @@
     <section class="py-20 lg:py-28 bg-gradient-to-br from-neutral-50 via-white to-primary-50 dark:from-neutral-900 dark:via-neutral-900 dark:to-neutral-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="max-w-3xl mx-auto text-center">
-                <h1 class="text-4xl lg:text-5xl font-bold text-neutral-900 dark:text-white mb-6">
+                <h1 class="text-4xl lg:text-5xl font-bold text-neutral-900 dark:text-white mb-6" data-aos="fade-up">
                     We Build Software That Powers Businesses
                 </h1>
-                <p class="text-xl text-neutral-600 dark:text-neutral-400 leading-relaxed">
+                <p class="text-xl text-neutral-600 dark:text-neutral-400 leading-relaxed" data-aos="fade-up" data-aos-delay="100">
                     appKotha is a Bangladesh-based software company delivering international-quality digital products and custom development services to clients worldwide.
                 </p>
             </div>
@@ -17,7 +17,7 @@
     <section class="py-20 bg-white dark:bg-neutral-900">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <div>
+                <div data-aos="fade-right">
                     <h2 class="text-3xl font-bold text-neutral-900 dark:text-white mb-6">Our Story</h2>
                     <div class="prose prose-lg text-neutral-600 dark:text-neutral-400 dark:prose-invert">
                         <p>
@@ -31,7 +31,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="bg-neutral-100 dark:bg-neutral-800 rounded-3xl aspect-square flex items-center justify-center">
+                <div class="bg-neutral-100 dark:bg-neutral-800 rounded-3xl aspect-square flex items-center justify-center hover-lift" data-aos="fade-left" data-aos-delay="200">
                     <span class="text-neutral-400 dark:text-neutral-500">Team Image</span>
                 </div>
             </div>
@@ -41,38 +41,38 @@
     {{-- Values --}}
     <section class="py-20 bg-neutral-50 dark:bg-neutral-800/50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-neutral-900 dark:text-white mb-12 text-center">Our Values</h2>
+            <h2 class="text-3xl font-bold text-neutral-900 dark:text-white mb-12 text-center" data-aos="fade-up">Our Values</h2>
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="bg-white dark:bg-neutral-800 rounded-2xl p-8 shadow-soft">
+                <div class="bg-white dark:bg-neutral-800 rounded-2xl p-8 shadow-soft hover-lift" data-aos="fade-up" data-aos-delay="100">
                     <div class="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-xl flex items-center justify-center mb-6">
-                        <svg class="w-6 h-6 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-6 h-6 text-primary-600 dark:text-primary-400 animate-float" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                         </svg>
                     </div>
                     <h3 class="text-xl font-bold text-neutral-900 dark:text-white mb-3">Quality First</h3>
                     <p class="text-neutral-600 dark:text-neutral-400">We never compromise on quality. Every line of code is crafted with care and tested thoroughly.</p>
                 </div>
-                <div class="bg-white dark:bg-neutral-800 rounded-2xl p-8 shadow-soft">
+                <div class="bg-white dark:bg-neutral-800 rounded-2xl p-8 shadow-soft hover-lift" data-aos="fade-up" data-aos-delay="200">
                     <div class="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-xl flex items-center justify-center mb-6">
-                        <svg class="w-6 h-6 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-6 h-6 text-primary-600 dark:text-primary-400 animate-float" style="animation-delay: 0.2s" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
                         </svg>
                     </div>
                     <h3 class="text-xl font-bold text-neutral-900 dark:text-white mb-3">Clear Communication</h3>
                     <p class="text-neutral-600 dark:text-neutral-400">We believe in transparency. Regular updates, honest feedback, and no surprises.</p>
                 </div>
-                <div class="bg-white dark:bg-neutral-800 rounded-2xl p-8 shadow-soft">
+                <div class="bg-white dark:bg-neutral-800 rounded-2xl p-8 shadow-soft hover-lift" data-aos="fade-up" data-aos-delay="300">
                     <div class="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-xl flex items-center justify-center mb-6">
-                        <svg class="w-6 h-6 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-6 h-6 text-primary-600 dark:text-primary-400 animate-float" style="animation-delay: 0.4s" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
                         </svg>
                     </div>
                     <h3 class="text-xl font-bold text-neutral-900 dark:text-white mb-3">Partnership Mindset</h3>
                     <p class="text-neutral-600 dark:text-neutral-400">We're not just vendors—we're partners invested in your long-term success.</p>
                 </div>
-                <div class="bg-white dark:bg-neutral-800 rounded-2xl p-8 shadow-soft">
+                <div class="bg-white dark:bg-neutral-800 rounded-2xl p-8 shadow-soft hover-lift" data-aos="fade-up" data-aos-delay="400">
                     <div class="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-xl flex items-center justify-center mb-6">
-                        <svg class="w-6 h-6 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-6 h-6 text-primary-600 dark:text-primary-400 animate-float" style="animation-delay: 0.6s" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
                         </svg>
                     </div>
@@ -87,20 +87,20 @@
     <section class="py-20 bg-primary-500">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-                <div>
-                    <div class="text-4xl lg:text-5xl font-bold text-white mb-2">500+</div>
+                <div data-aos="zoom-in" data-aos-delay="100">
+                    <div class="text-4xl lg:text-5xl font-bold text-white mb-2" data-counter="500">0+</div>
                     <div class="text-primary-200">Happy Clients</div>
                 </div>
-                <div>
-                    <div class="text-4xl lg:text-5xl font-bold text-white mb-2">50+</div>
+                <div data-aos="zoom-in" data-aos-delay="200">
+                    <div class="text-4xl lg:text-5xl font-bold text-white mb-2" data-counter="50">0+</div>
                     <div class="text-primary-200">Countries</div>
                 </div>
-                <div>
-                    <div class="text-4xl lg:text-5xl font-bold text-white mb-2">99%</div>
+                <div data-aos="zoom-in" data-aos-delay="300">
+                    <div class="text-4xl lg:text-5xl font-bold text-white mb-2" data-counter="99">0%</div>
                     <div class="text-primary-200">Satisfaction Rate</div>
                 </div>
-                <div>
-                    <div class="text-4xl lg:text-5xl font-bold text-white mb-2">5+</div>
+                <div data-aos="zoom-in" data-aos-delay="400">
+                    <div class="text-4xl lg:text-5xl font-bold text-white mb-2" data-counter="5">0+</div>
                     <div class="text-primary-200">Years Experience</div>
                 </div>
             </div>

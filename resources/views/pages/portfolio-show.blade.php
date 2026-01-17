@@ -3,21 +3,21 @@
     <section class="py-20 lg:py-28 bg-gradient-to-br from-neutral-50 via-white to-primary-50 dark:from-neutral-900 dark:via-neutral-900 dark:to-neutral-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="max-w-3xl">
-                <a href="{{ route('portfolio') }}" class="inline-flex items-center gap-2 text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 mb-6">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <a href="{{ route('portfolio') }}" class="group inline-flex items-center gap-2 text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 mb-6 transition-colors" data-aos="fade-right">
+                    <svg class="w-5 h-5 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18"/>
                     </svg>
                     Back to Portfolio
                 </a>
                 @if($caseStudy->client_industry)
-                    <span class="inline-block px-3 py-1 bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 text-sm font-medium rounded-full mb-4">
+                    <span class="inline-block px-3 py-1 bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 text-sm font-medium rounded-full mb-4" data-aos="fade-up">
                         {{ $caseStudy->client_industry }}
                     </span>
                 @endif
-                <h1 class="text-4xl lg:text-5xl font-bold text-neutral-900 dark:text-white mb-6">
+                <h1 class="text-4xl lg:text-5xl font-bold text-neutral-900 dark:text-white mb-6" data-aos="fade-up" data-aos-delay="100">
                     {{ $caseStudy->title }}
                 </h1>
-                <p class="text-xl text-neutral-600 dark:text-neutral-400">
+                <p class="text-xl text-neutral-600 dark:text-neutral-400" data-aos="fade-up" data-aos-delay="200">
                     {{ $caseStudy->description }}
                 </p>
             </div>
@@ -27,9 +27,9 @@
     {{-- Featured Image --}}
     <section class="pb-20 bg-white dark:bg-neutral-900">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="aspect-video bg-neutral-200 dark:bg-neutral-800 rounded-2xl flex items-center justify-center overflow-hidden">
+            <div class="aspect-video bg-neutral-200 dark:bg-neutral-800 rounded-2xl flex items-center justify-center overflow-hidden hover-lift" data-aos="zoom-in">
                 @if($caseStudy->featured_image)
-                    <img src="{{ asset('storage/' . $caseStudy->featured_image) }}" alt="{{ $caseStudy->title }}" class="w-full h-full object-cover">
+                    <img src="{{ asset('storage/' . $caseStudy->featured_image) }}" alt="{{ $caseStudy->title }}" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
                 @else
                     <span class="text-neutral-400">Project Image</span>
                 @endif
@@ -43,7 +43,7 @@
             <div class="grid gap-16">
                 {{-- Challenge --}}
                 @if($caseStudy->challenge)
-                    <div>
+                    <div data-aos="fade-up">
                         <h2 class="text-2xl font-bold text-neutral-900 dark:text-white mb-6">The Challenge</h2>
                         <div class="prose prose-lg dark:prose-invert text-neutral-600 dark:text-neutral-400">
                             {!! nl2br(e($caseStudy->challenge)) !!}
@@ -53,7 +53,7 @@
 
                 {{-- Solution --}}
                 @if($caseStudy->solution)
-                    <div>
+                    <div data-aos="fade-up">
                         <h2 class="text-2xl font-bold text-neutral-900 dark:text-white mb-6">Our Solution</h2>
                         <div class="prose prose-lg dark:prose-invert text-neutral-600 dark:text-neutral-400">
                             {!! nl2br(e($caseStudy->solution)) !!}
@@ -63,11 +63,11 @@
 
                 {{-- Tech Stack --}}
                 @if($caseStudy->tech_stack && count($caseStudy->tech_stack) > 0)
-                    <div>
+                    <div data-aos="fade-up">
                         <h2 class="text-2xl font-bold text-neutral-900 dark:text-white mb-6">Technologies Used</h2>
                         <div class="flex flex-wrap gap-3">
-                            @foreach($caseStudy->tech_stack as $tech)
-                                <span class="px-4 py-2 bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 rounded-lg text-sm font-medium">
+                            @foreach($caseStudy->tech_stack as $index => $tech)
+                                <span class="px-4 py-2 bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 rounded-lg text-sm font-medium hover:bg-primary-100 dark:hover:bg-primary-900/30 hover:text-primary-700 dark:hover:text-primary-400 transition-colors hover:scale-105" style="animation-delay: {{ $index * 0.1 }}s">
                                     {{ $tech }}
                                 </span>
                             @endforeach
@@ -77,12 +77,12 @@
 
                 {{-- Results --}}
                 @if($caseStudy->metrics && count($caseStudy->metrics) > 0)
-                    <div>
+                    <div data-aos="fade-up">
                         <h2 class="text-2xl font-bold text-neutral-900 dark:text-white mb-6">Results</h2>
                         <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                            @foreach($caseStudy->metrics as $metric)
-                                <div class="bg-primary-50 dark:bg-primary-900/20 rounded-xl p-6 text-center">
-                                    <div class="text-3xl font-bold text-primary-600 dark:text-primary-400 mb-2">{{ $metric['value'] ?? '' }}</div>
+                            @foreach($caseStudy->metrics as $index => $metric)
+                                <div class="bg-primary-50 dark:bg-primary-900/20 rounded-xl p-6 text-center hover-lift" data-aos="zoom-in" data-aos-delay="{{ ($index + 1) * 100 }}">
+                                    <div class="text-3xl font-bold text-primary-600 dark:text-primary-400 mb-2" data-counter="{{ preg_replace('/[^0-9]/', '', $metric['value'] ?? '0') }}">{{ $metric['value'] ?? '' }}</div>
                                     <div class="text-sm text-neutral-600 dark:text-neutral-400">{{ $metric['label'] ?? '' }}</div>
                                 </div>
                             @endforeach
@@ -92,8 +92,8 @@
 
                 {{-- Testimonial --}}
                 @if($caseStudy->testimonial_quote)
-                    <div class="bg-neutral-900 dark:bg-neutral-800 rounded-2xl p-8">
-                        <svg class="w-10 h-10 text-neutral-700 dark:text-neutral-600 mb-4" fill="currentColor" viewBox="0 0 24 24">
+                    <div class="bg-neutral-900 dark:bg-neutral-800 rounded-2xl p-8" data-aos="fade-up">
+                        <svg class="w-10 h-10 text-neutral-700 dark:text-neutral-600 mb-4 animate-pulse" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
                         </svg>
                         <p class="text-xl text-white mb-6">"{{ $caseStudy->testimonial_quote }}"</p>

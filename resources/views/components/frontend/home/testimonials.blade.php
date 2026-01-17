@@ -4,7 +4,7 @@
 <section class="py-20 lg:py-28 bg-neutral-900">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {{-- Section Header --}}
-        <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
             <h2 class="text-3xl lg:text-4xl font-bold text-white mb-4">
                 What Our Clients Say
             </h2>
@@ -16,10 +16,10 @@
         {{-- Testimonials Grid --}}
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             @forelse($testimonials as $testimonial)
-                <div class="bg-neutral-800 rounded-2xl p-8 relative">
+                <div class="bg-neutral-800 rounded-2xl p-8 relative hover-lift" data-aos="fade-up" data-aos-delay="{{ ($loop->index % 3 + 1) * 100 }}">
                     {{-- Quote Icon --}}
                     <div class="absolute top-6 right-6 text-neutral-700">
-                        <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-10 h-10 animate-pulse" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
                         </svg>
                     </div>
@@ -57,9 +57,9 @@
             @empty
                 {{-- Placeholder Testimonials --}}
                 @for($i = 0; $i < 3; $i++)
-                    <div class="bg-neutral-800 rounded-2xl p-8 relative">
+                    <div class="bg-neutral-800 rounded-2xl p-8 relative hover-lift" data-aos="fade-up" data-aos-delay="{{ ($i + 1) * 100 }}">
                         <div class="absolute top-6 right-6 text-neutral-700">
-                            <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
+                            <svg class="w-10 h-10 animate-pulse" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
                             </svg>
                         </div>

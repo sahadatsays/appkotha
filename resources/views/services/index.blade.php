@@ -3,10 +3,10 @@
     <section class="py-20 lg:py-28 bg-gradient-to-br from-neutral-50 via-white to-primary-50 dark:from-neutral-900 dark:via-neutral-900 dark:to-neutral-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="max-w-3xl mx-auto text-center">
-                <h1 class="text-4xl lg:text-5xl font-bold text-neutral-900 dark:text-white mb-6">
+                <h1 class="text-4xl lg:text-5xl font-bold text-neutral-900 dark:text-white mb-6" data-aos="fade-up">
                     Custom Development Services
                 </h1>
-                <p class="text-xl text-neutral-600 dark:text-neutral-400">
+                <p class="text-xl text-neutral-600 dark:text-neutral-400" data-aos="fade-up" data-aos-delay="100">
                     From MVPs to enterprise solutions, our senior developers bring your vision to life with international-quality code.
                 </p>
             </div>
@@ -19,9 +19,9 @@
             @if($services->count() > 0)
                 <div class="grid md:grid-cols-2 gap-8">
                     @foreach($services as $service)
-                        <a href="{{ route('services.show', $service) }}" class="group bg-white dark:bg-neutral-800 rounded-2xl p-8 border border-neutral-200 dark:border-neutral-700 hover:border-primary-500 dark:hover:border-primary-400 hover:shadow-elevated transition-all">
+                        <a href="{{ route('services.show', $service) }}" class="group bg-white dark:bg-neutral-800 rounded-2xl p-8 border border-neutral-200 dark:border-neutral-700 hover:border-primary-500 dark:hover:border-primary-400 hover:shadow-elevated transition-all hover-lift" data-aos="fade-up" data-aos-delay="{{ ($loop->index % 2 + 1) * 100 }}">
                             <div class="w-14 h-14 bg-primary-100 dark:bg-primary-900/30 rounded-2xl flex items-center justify-center mb-6">
-                                <svg class="w-7 h-7 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg class="w-7 h-7 text-primary-600 dark:text-primary-400 animate-float" style="animation-delay: {{ $loop->index * 0.2 }}s" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
                                 </svg>
                             </div>
@@ -40,9 +40,9 @@
                     @endforeach
                 </div>
             @else
-                <div class="text-center py-20">
+                <div class="text-center py-20" data-aos="fade-up">
                     <div class="w-20 h-20 bg-primary-100 dark:bg-primary-900/30 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                        <svg class="w-10 h-10 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-10 h-10 text-primary-600 dark:text-primary-400 animate-float" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
                         </svg>
                     </div>
@@ -50,7 +50,7 @@
                     <p class="text-neutral-600 dark:text-neutral-400 mb-8 max-w-md mx-auto">
                         We offer web development, mobile app development, API development, and more. Contact us to discuss your project.
                     </p>
-                    <a href="{{ route('contact.quote') }}" class="inline-flex items-center gap-2 px-6 py-3 bg-primary-500 text-white font-semibold rounded-xl hover:bg-primary-600 transition-colors">
+                    <a href="{{ route('contact.quote') }}" class="inline-flex items-center gap-2 px-6 py-3 bg-primary-500 text-white font-semibold rounded-xl hover:bg-primary-600 transition-colors btn-shine hover:-translate-y-0.5">
                         Get a Quote
                     </a>
                 </div>

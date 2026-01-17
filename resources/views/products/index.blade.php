@@ -3,10 +3,10 @@
     <section class="py-20 lg:py-28 bg-gradient-to-br from-neutral-50 via-white to-primary-50 dark:from-neutral-900 dark:via-neutral-900 dark:to-neutral-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="max-w-3xl mx-auto text-center">
-                <h1 class="text-4xl lg:text-5xl font-bold text-neutral-900 dark:text-white mb-6">
+                <h1 class="text-4xl lg:text-5xl font-bold text-neutral-900 dark:text-white mb-6" data-aos="fade-up">
                     Digital Products
                 </h1>
-                <p class="text-xl text-neutral-600 dark:text-neutral-400">
+                <p class="text-xl text-neutral-600 dark:text-neutral-400" data-aos="fade-up" data-aos-delay="100">
                     Production-ready software solutions. Purchase once, deploy instantly, own forever. No subscriptions, no hidden fees.
                 </p>
             </div>
@@ -17,10 +17,10 @@
     @if($featuredProducts->count() > 0)
         <section class="py-12 bg-primary-50 dark:bg-primary-900/20">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-lg font-semibold text-primary-900 dark:text-primary-400 mb-6">Featured Products</h2>
+                <h2 class="text-lg font-semibold text-primary-900 dark:text-primary-400 mb-6" data-aos="fade-up">Featured Products</h2>
                 <div class="grid md:grid-cols-3 gap-6">
                     @foreach($featuredProducts as $product)
-                        <a href="{{ route('products.show', $product) }}" class="bg-white dark:bg-neutral-800 rounded-xl p-6 shadow-sm hover:shadow-lg transition-shadow">
+                        <a href="{{ route('products.show', $product) }}" class="bg-white dark:bg-neutral-800 rounded-xl p-6 shadow-sm hover:shadow-lg transition-shadow hover-lift" data-aos="fade-up" data-aos-delay="{{ ($loop->index + 1) * 100 }}">
                             <h3 class="font-bold text-neutral-900 dark:text-white mb-2">{{ $product->name }}</h3>
                             <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-4">{{ $product->short_description }}</p>
                             @if($product->price)
@@ -39,13 +39,13 @@
             @if($products->count() > 0)
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     @foreach($products as $product)
-                        <a href="{{ route('products.show', $product) }}" class="group bg-white dark:bg-neutral-800 rounded-2xl overflow-hidden border border-neutral-200 dark:border-neutral-700 hover:border-primary-500 dark:hover:border-primary-400 hover:shadow-elevated transition-all">
-                            <div class="aspect-video bg-neutral-100 dark:bg-neutral-700 flex items-center justify-center">
+                        <a href="{{ route('products.show', $product) }}" class="group bg-white dark:bg-neutral-800 rounded-2xl overflow-hidden border border-neutral-200 dark:border-neutral-700 hover:border-primary-500 dark:hover:border-primary-400 hover:shadow-elevated transition-all hover-lift img-zoom" data-aos="fade-up" data-aos-delay="{{ ($loop->index % 3 + 1) * 100 }}">
+                            <div class="aspect-video bg-neutral-100 dark:bg-neutral-700 flex items-center justify-center overflow-hidden">
                                 @if($product->image)
-                                    <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="w-full h-full object-cover">
+                                    <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                                 @else
                                     <div class="w-16 h-16 bg-primary-100 dark:bg-primary-900/30 rounded-2xl flex items-center justify-center">
-                                        <svg class="w-8 h-8 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <svg class="w-8 h-8 text-primary-600 dark:text-primary-400 animate-float" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
                                         </svg>
                                     </div>
@@ -64,7 +64,7 @@
                                     @else
                                         <span class="text-neutral-500 dark:text-neutral-400">Contact for pricing</span>
                                     @endif
-                                    <span class="text-primary-600 dark:text-primary-400 font-medium">Learn More →</span>
+                                    <span class="text-primary-600 dark:text-primary-400 font-medium group-hover:translate-x-1 transition-transform">Learn More →</span>
                                 </div>
                             </div>
                         </a>
@@ -75,9 +75,9 @@
                     {{ $products->links() }}
                 </div>
             @else
-                <div class="text-center py-20">
+                <div class="text-center py-20" data-aos="fade-up">
                     <div class="w-20 h-20 bg-primary-100 dark:bg-primary-900/30 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                        <svg class="w-10 h-10 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-10 h-10 text-primary-600 dark:text-primary-400 animate-float" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
                         </svg>
                     </div>
@@ -85,7 +85,7 @@
                     <p class="text-neutral-600 dark:text-neutral-400 mb-8 max-w-md mx-auto">
                         We're working on exciting new digital products. Subscribe to our newsletter to be notified when they launch.
                     </p>
-                    <a href="{{ route('contact.index') }}" class="inline-flex items-center gap-2 px-6 py-3 bg-primary-500 text-white font-semibold rounded-xl hover:bg-primary-600 transition-colors">
+                    <a href="{{ route('contact.index') }}" class="inline-flex items-center gap-2 px-6 py-3 bg-primary-500 text-white font-semibold rounded-xl hover:bg-primary-600 transition-colors btn-shine hover:-translate-y-0.5">
                         Get Notified
                     </a>
                 </div>

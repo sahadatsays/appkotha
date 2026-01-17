@@ -4,7 +4,7 @@
 <section class="py-20 lg:py-28 bg-neutral-50 dark:bg-neutral-800/50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {{-- Section Header --}}
-        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12" data-aos="fade-up">
             <div>
                 <h2 class="text-3xl lg:text-4xl font-bold text-neutral-900 dark:text-white mb-4">
                     Featured Case Studies
@@ -13,9 +13,9 @@
                     Real projects, real results. See how we've helped businesses like yours achieve their goals.
                 </p>
             </div>
-            <a href="{{ route('portfolio') }}" class="inline-flex items-center gap-2 text-primary-600 dark:text-primary-400 font-medium hover:text-primary-700 dark:hover:text-primary-300 shrink-0">
+            <a href="{{ route('portfolio') }}" class="group inline-flex items-center gap-2 text-primary-600 dark:text-primary-400 font-medium hover:text-primary-700 dark:hover:text-primary-300 shrink-0">
                 View All Projects
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
                 </svg>
             </a>
@@ -23,10 +23,10 @@
 
         {{-- Case Studies Grid --}}
         <div class="grid md:grid-cols-2 gap-8">
-            @forelse($caseStudies as $study)
-                <a href="{{ route('portfolio.show', $study) }}" class="group bg-white dark:bg-neutral-800 rounded-2xl overflow-hidden shadow-soft hover:shadow-elevated transition-shadow">
+            @forelse($caseStudies as $index => $study)
+                <a href="{{ route('portfolio.show', $study) }}" data-aos="fade-up" data-aos-delay="{{ ($index + 1) * 100 }}" class="group bg-white dark:bg-neutral-800 rounded-2xl overflow-hidden shadow-soft hover-lift img-zoom">
                     {{-- Image Placeholder --}}
-                    <div class="aspect-video bg-neutral-200 dark:bg-neutral-700 flex items-center justify-center">
+                    <div class="aspect-video bg-neutral-200 dark:bg-neutral-700 flex items-center justify-center overflow-hidden">
                         @if($study->featured_image)
                             <img src="{{ asset('storage/' . $study->featured_image) }}" alt="{{ $study->title }}" class="w-full h-full object-cover">
                         @else

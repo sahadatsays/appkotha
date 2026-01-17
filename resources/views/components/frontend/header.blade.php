@@ -2,37 +2,37 @@
     <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16 lg:h-20">
             <!-- Logo -->
-            <a href="{{ route('home') }}" class="flex items-center gap-2 shrink-0">
-                <div class="w-10 h-10 bg-primary-500 rounded-xl flex items-center justify-center">
+            <a href="{{ route('home') }}" class="flex items-center gap-2 shrink-0 group">
+                <div class="w-10 h-10 bg-primary-500 rounded-xl flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
                     <span class="text-white font-bold text-lg">a</span>
                 </div>
-                <span class="text-xl font-bold text-neutral-900 dark:text-white">app<span class="text-primary-500">Kotha</span></span>
+                <span class="text-xl font-bold text-neutral-900 dark:text-white transition-colors">app<span class="text-primary-500">Kotha</span></span>
             </a>
 
             <!-- Desktop Navigation -->
             <div class="hidden lg:flex items-center gap-8">
-                <a href="{{ route('home') }}" class="text-sm font-medium {{ request()->routeIs('home') ? 'text-primary-500' : 'text-neutral-600 dark:text-neutral-300 hover:text-primary-500' }} transition-colors">
+                <a href="{{ route('home') }}" class="text-sm font-medium {{ request()->routeIs('home') ? 'text-primary-500' : 'text-neutral-600 dark:text-neutral-300 hover:text-primary-500' }} transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary-500 hover:after:w-full after:transition-all after:duration-300">
                     Home
                 </a>
 
                 <!-- Products Dropdown -->
                 <div class="relative group">
-                    <a href="{{ route('products.index') }}" class="text-sm font-medium {{ request()->routeIs('products.*') ? 'text-primary-500' : 'text-neutral-600 dark:text-neutral-300 hover:text-primary-500' }} transition-colors flex items-center gap-1">
+                    <a href="{{ route('products.index') }}" class="text-sm font-medium {{ request()->routeIs('products.*') ? 'text-primary-500' : 'text-neutral-600 dark:text-neutral-300 hover:text-primary-500' }} transition-all duration-300 flex items-center gap-1">
                         Products
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-4 h-4 transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                         </svg>
                     </a>
-                    <div class="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                    <div class="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
                         <div class="bg-white dark:bg-neutral-800 rounded-xl shadow-elevated border border-neutral-100 dark:border-neutral-700 py-2 min-w-48">
-                            <a href="{{ route('products.index') }}" class="block px-4 py-2 text-sm text-neutral-600 dark:text-neutral-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 hover:text-primary-600">
+                            <a href="{{ route('products.index') }}" class="block px-4 py-2 text-sm text-neutral-600 dark:text-neutral-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 hover:text-primary-600 transition-colors hover:translate-x-1 transform duration-200">
                                 All Products
                             </a>
                             @php
                                 $headerProducts = \App\Models\Product::published()->featured()->take(3)->get();
                             @endphp
                             @foreach($headerProducts as $product)
-                                <a href="{{ route('products.show', $product) }}" class="block px-4 py-2 text-sm text-neutral-600 dark:text-neutral-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 hover:text-primary-600">
+                                <a href="{{ route('products.show', $product) }}" class="block px-4 py-2 text-sm text-neutral-600 dark:text-neutral-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 hover:text-primary-600 transition-colors hover:translate-x-1 transform duration-200">
                                     {{ $product->name }}
                                 </a>
                             @endforeach
@@ -42,22 +42,22 @@
 
                 <!-- Services Dropdown -->
                 <div class="relative group">
-                    <a href="{{ route('services.index') }}" class="text-sm font-medium {{ request()->routeIs('services.*') ? 'text-primary-500' : 'text-neutral-600 dark:text-neutral-300 hover:text-primary-500' }} transition-colors flex items-center gap-1">
+                    <a href="{{ route('services.index') }}" class="text-sm font-medium {{ request()->routeIs('services.*') ? 'text-primary-500' : 'text-neutral-600 dark:text-neutral-300 hover:text-primary-500' }} transition-all duration-300 flex items-center gap-1">
                         Services
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-4 h-4 transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                         </svg>
                     </a>
-                    <div class="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                    <div class="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
                         <div class="bg-white dark:bg-neutral-800 rounded-xl shadow-elevated border border-neutral-100 dark:border-neutral-700 py-2 min-w-48">
-                            <a href="{{ route('services.index') }}" class="block px-4 py-2 text-sm text-neutral-600 dark:text-neutral-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 hover:text-primary-600">
+                            <a href="{{ route('services.index') }}" class="block px-4 py-2 text-sm text-neutral-600 dark:text-neutral-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 hover:text-primary-600 transition-colors hover:translate-x-1 transform duration-200">
                                 All Services
                             </a>
                             @php
                                 $headerServices = \App\Models\Service::published()->featured()->take(4)->get();
                             @endphp
                             @foreach($headerServices as $service)
-                                <a href="{{ route('services.show', $service) }}" class="block px-4 py-2 text-sm text-neutral-600 dark:text-neutral-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 hover:text-primary-600">
+                                <a href="{{ route('services.show', $service) }}" class="block px-4 py-2 text-sm text-neutral-600 dark:text-neutral-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 hover:text-primary-600 transition-colors hover:translate-x-1 transform duration-200">
                                     {{ $service->name }}
                                 </a>
                             @endforeach
@@ -65,15 +65,15 @@
                     </div>
                 </div>
 
-                <a href="{{ route('portfolio') }}" class="text-sm font-medium {{ request()->routeIs('portfolio*') ? 'text-primary-500' : 'text-neutral-600 dark:text-neutral-300 hover:text-primary-500' }} transition-colors">
+                <a href="{{ route('portfolio') }}" class="text-sm font-medium {{ request()->routeIs('portfolio*') ? 'text-primary-500' : 'text-neutral-600 dark:text-neutral-300 hover:text-primary-500' }} transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary-500 hover:after:w-full after:transition-all after:duration-300">
                     Portfolio
                 </a>
 
-                <a href="{{ route('about') }}" class="text-sm font-medium {{ request()->routeIs('about') ? 'text-primary-500' : 'text-neutral-600 dark:text-neutral-300 hover:text-primary-500' }} transition-colors">
+                <a href="{{ route('about') }}" class="text-sm font-medium {{ request()->routeIs('about') ? 'text-primary-500' : 'text-neutral-600 dark:text-neutral-300 hover:text-primary-500' }} transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary-500 hover:after:w-full after:transition-all after:duration-300">
                     About
                 </a>
 
-                <a href="{{ route('blog.index') }}" class="text-sm font-medium {{ request()->routeIs('blog.*') ? 'text-primary-500' : 'text-neutral-600 dark:text-neutral-300 hover:text-primary-500' }} transition-colors">
+                <a href="{{ route('blog.index') }}" class="text-sm font-medium {{ request()->routeIs('blog.*') ? 'text-primary-500' : 'text-neutral-600 dark:text-neutral-300 hover:text-primary-500' }} transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary-500 hover:after:w-full after:transition-all after:duration-300">
                     Blog
                 </a>
             </div>
@@ -119,15 +119,15 @@
                 </div>
 
                 @auth
-                    <a href="{{ route('dashboard') }}" class="text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:text-primary-500 transition-colors">
+                    <a href="{{ route('dashboard') }}" class="text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:text-primary-500 transition-all duration-300">
                         Dashboard
                     </a>
                 @else
-                    <a href="{{ route('login') }}" class="text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:text-primary-500 transition-colors">
+                    <a href="{{ route('login') }}" class="text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:text-primary-500 transition-all duration-300">
                         Sign In
                     </a>
                 @endauth
-                <a href="{{ route('contact.index') }}" class="inline-flex items-center gap-2 px-5 py-2.5 bg-primary-500 text-white text-sm font-semibold rounded-xl hover:bg-primary-600 transition-colors shadow-sm">
+                <a href="{{ route('contact.index') }}" class="inline-flex items-center gap-2 px-5 py-2.5 bg-primary-500 text-white text-sm font-semibold rounded-xl hover:bg-primary-600 transition-all duration-300 shadow-sm hover:shadow-md hover:scale-105 btn-shine">
                     Get Started
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>

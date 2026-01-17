@@ -8,7 +8,7 @@
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
         <div class="max-w-4xl mx-auto text-center">
             {{-- Trust Badge --}}
-            <div class="inline-flex items-center gap-2 px-4 py-2 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-full shadow-sm mb-8">
+            <div data-aos="fade-down" data-aos-delay="100" class="inline-flex items-center gap-2 px-4 py-2 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-full shadow-sm mb-8">
                 <span class="flex h-2 w-2">
                     <span class="animate-ping absolute inline-flex h-2 w-2 rounded-full bg-green-400 opacity-75"></span>
                     <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
@@ -17,27 +17,27 @@
             </div>
 
             {{-- Main Headline --}}
-            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-neutral-900 dark:text-white leading-tight mb-6">
+            <h1 data-aos="fade-up" data-aos-delay="200" class="text-4xl sm:text-5xl lg:text-6xl font-bold text-neutral-900 dark:text-white leading-tight mb-6">
                 Premium Software Solutions<br>
-                <span class="text-primary-500">Built in Bangladesh</span>
+                <span class="text-primary-500 animate-gradient bg-gradient-to-r from-primary-500 via-accent-500 to-primary-500 bg-clip-text text-transparent">Built in Bangladesh</span>
             </h1>
 
             {{-- Subheadline --}}
-            <p class="text-lg sm:text-xl text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+            <p data-aos="fade-up" data-aos-delay="300" class="text-lg sm:text-xl text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto mb-10 leading-relaxed">
                 Ready-to-use digital products and custom development services. International quality at competitive rates, delivered by experts who care.
             </p>
 
             {{-- CTA Buttons --}}
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
-                <a href="{{ route('products.index') }}" class="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-4 bg-primary-500 text-white font-semibold rounded-xl hover:bg-primary-600 transition-all shadow-lg shadow-primary-500/25 hover:shadow-xl hover:shadow-primary-500/30">
+            <div data-aos="fade-up" data-aos-delay="400" class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+                <a href="{{ route('products.index') }}" class="btn-shine inline-flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-4 bg-primary-500 text-white font-semibold rounded-xl hover:bg-primary-600 transition-all shadow-lg shadow-primary-500/25 hover:shadow-xl hover:shadow-primary-500/30 hover:-translate-y-1">
                     Browse Products
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
                     </svg>
                 </a>
-                <a href="{{ route('contact.quote') }}" class="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-4 bg-white dark:bg-neutral-800 text-neutral-700 dark:text-neutral-200 font-semibold rounded-xl border-2 border-neutral-200 dark:border-neutral-700 hover:border-primary-500 dark:hover:border-primary-500 hover:text-primary-600 dark:hover:text-primary-400 transition-all">
+                <a href="{{ route('contact.quote') }}" class="group inline-flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-4 bg-white dark:bg-neutral-800 text-neutral-700 dark:text-neutral-200 font-semibold rounded-xl border-2 border-neutral-200 dark:border-neutral-700 hover:border-primary-500 dark:hover:border-primary-500 hover:text-primary-600 dark:hover:text-primary-400 transition-all hover:-translate-y-1">
                     Get Custom Quote
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-5 h-5 transition-transform group-hover:rotate-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
                     </svg>
                 </a>
@@ -45,19 +45,19 @@
 
             {{-- Stats Row --}}
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto">
-                <div class="text-center">
-                    <div class="text-3xl lg:text-4xl font-bold text-neutral-900 dark:text-white">500+</div>
+                <div data-aos="zoom-in" data-aos-delay="500" class="text-center">
+                    <div class="text-3xl lg:text-4xl font-bold text-neutral-900 dark:text-white" data-counter="500" data-suffix="+">0</div>
                     <div class="text-sm text-neutral-500 dark:text-neutral-400 mt-1">Happy Clients</div>
                 </div>
-                <div class="text-center">
-                    <div class="text-3xl lg:text-4xl font-bold text-neutral-900 dark:text-white">50+</div>
+                <div data-aos="zoom-in" data-aos-delay="600" class="text-center">
+                    <div class="text-3xl lg:text-4xl font-bold text-neutral-900 dark:text-white" data-counter="50" data-suffix="+">0</div>
                     <div class="text-sm text-neutral-500 dark:text-neutral-400 mt-1">Countries Served</div>
                 </div>
-                <div class="text-center">
-                    <div class="text-3xl lg:text-4xl font-bold text-neutral-900 dark:text-white">99%</div>
+                <div data-aos="zoom-in" data-aos-delay="700" class="text-center">
+                    <div class="text-3xl lg:text-4xl font-bold text-neutral-900 dark:text-white" data-counter="99" data-suffix="%">0</div>
                     <div class="text-sm text-neutral-500 dark:text-neutral-400 mt-1">Client Satisfaction</div>
                 </div>
-                <div class="text-center">
+                <div data-aos="zoom-in" data-aos-delay="800" class="text-center">
                     <div class="text-3xl lg:text-4xl font-bold text-neutral-900 dark:text-white">24/7</div>
                     <div class="text-sm text-neutral-500 dark:text-neutral-400 mt-1">Support Available</div>
                 </div>
