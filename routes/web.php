@@ -18,6 +18,8 @@ use App\Http\Controllers\Admin\MessageController as AdminMessageController;
 use App\Http\Controllers\Admin\BlogController as AdminBlogController;
 use App\Http\Controllers\Admin\CaseStudyController as AdminCaseStudyController;
 use App\Http\Controllers\Admin\TestimonialController as AdminTestimonialController;
+use App\Http\Controllers\Admin\FaqController as AdminFaqController;
+use App\Http\Controllers\Admin\SettingController as AdminSettingController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -176,6 +178,15 @@ Route::middleware(['auth', 'verified', 'admin'])->prefix('admin')->name('admin.'
     // Testimonials Management
     Route::resource('testimonials', AdminTestimonialController::class);
     Route::post('testimonials/{testimonial}/toggle-publish', [AdminTestimonialController::class, 'togglePublish'])->name('testimonials.toggle-publish');
+
+    // FAQs Management
+    Route::resource('faqs', AdminFaqController::class);
+    Route::post('faqs/{faq}/toggle-publish', [AdminFaqController::class, 'togglePublish'])->name('faqs.toggle-publish');
+
+    // Settings Management
+    Route::get('settings/grouped', [AdminSettingController::class, 'grouped'])->name('settings.grouped');
+    Route::post('settings/update-grouped', [AdminSettingController::class, 'updateGrouped'])->name('settings.update-grouped');
+    Route::resource('settings', AdminSettingController::class);
 });
 
 // Change from this (if it has restrictive middleware):
