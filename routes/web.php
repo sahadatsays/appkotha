@@ -76,6 +76,10 @@ Route::get('/privacy', function () {
     return view('pages.privacy');
 })->name('pages.privacy');
 
+// SEO Routes
+Route::get('/sitemap.xml', [\App\Http\Controllers\SitemapController::class, 'index'])->name('sitemap');
+Route::get('/robots.txt', [\App\Http\Controllers\RobotsController::class, 'index'])->name('robots');
+
 /*
 |--------------------------------------------------------------------------
 | E-Commerce Routes

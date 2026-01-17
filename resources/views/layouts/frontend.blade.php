@@ -19,24 +19,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ $title ?? config('app.name', 'appKotha') }} | Software Solutions from Bangladesh</title>
-    <meta name="description" content="{{ $metaDescription ?? 'appKotha delivers premium digital products and custom software development services. Trusted by 500+ clients worldwide.' }}">
-    <meta name="keywords" content="{{ $metaKeywords ?? 'software development, digital products, web development, mobile apps, Bangladesh' }}">
+    <!-- SEO Meta Tags -->
+    @if(isset($seoMeta))
+        <x-seo-meta
+            :title="$seoMeta['title'] ?? null"
+            :description="$seoMeta['description'] ?? null"
+            :keywords="$seoMeta['keywords'] ?? null"
+            :image="$seoMeta['image'] ?? null"
+            :url="$seoMeta['url'] ?? null"
+            :type="$seoMeta['type'] ?? 'website'"
+            :publishedTime="$seoMeta['published_time'] ?? null"
+            :modifiedTime="$seoMeta['modified_time'] ?? null"
+            :author="$seoMeta['author'] ?? null"
+            :price="$seoMeta['price'] ?? null"
+        />
+    @else
+        <x-seo-meta />
+    @endif
+
+    <!-- Structured Data -->
+    @if(isset($structuredDataType))
+        <x-seo-structured-data :type="$structuredDataType" :data="$structuredData ?? null" />
+    @else
+        <x-seo-structured-data />
+    @endif
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+    <link rel="apple-touch-icon" href="{{ asset('favicon.ico') }}">
 
-    <!-- Fonts - Inter -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=inter:300,400,500,600,700,800&display=swap" rel="stylesheet" />
+    <!-- DNS Prefetch & Preconnect for Performance -->
+    <link rel="dns-prefetch" href="https://fonts.bunny.net">
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://fonts.bunny.net" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 
-    <!-- AOS Animation Library -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Fonts - Inter (with display=swap for performance) -->
+    <link href="https://fonts.bunny.net/css?family=inter:300,400,500,600,700,800&display=swap" rel="stylesheet">
 
-    <!-- jQuery (slim build for interactions) -->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- AOS Animation Library (defer loading) -->
+    <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
 
-    <!-- Alpine.js -->
+    <!-- jQuery (defer loading) -->
+    <script defer src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <!-- Alpine.js (defer for performance) -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
     <!-- Prevent flash of unstyled content -->
@@ -202,8 +230,26 @@
 
     @stack('scripts')
 
-    <!-- AOS Animation Library -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- AOS Animation Library (load after page) -->
+    <script>
+        // Load AOS after page load for better performance
+        window.addEventListener('load', function() {
+            const script = document.createElement('script');
+            script.src = 'https://unpkg.com/aos@2.3.1/dist/aos.js';
+            script.onload = function() {
+                if (typeof AOS !== 'undefined') {
+                    AOS.init({
+                        duration: 800,
+                        easing: 'ease-out-cubic',
+                        once: true,
+                        offset: 50,
+                        disable: window.innerWidth < 768 ? 'mobile' : false
+                    });
+                }
+            };
+            document.body.appendChild(script);
+        });
+    </script>
     <script>
         // Initialize AOS
         AOS.init({
