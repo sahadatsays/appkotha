@@ -46,20 +46,20 @@
                         </div>
                     @endif
 
-                    <form action="{{ route('contact.quote.store') }}" method="POST" class="space-y-6">
+                    <form action="{{ route('contact.quote.store') }}" method="POST" class="space-y-6" data-validate data-loading>
                         @csrf
 
                         <div class="grid md:grid-cols-2 gap-6">
                             <div>
                                 <label for="name" class="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2">Name *</label>
-                                <input type="text" name="name" id="name" value="{{ old('name') }}" required class="w-full px-4 py-3 rounded-xl border border-neutral-200 dark:border-neutral-600 bg-white dark:bg-neutral-700 text-neutral-900 dark:text-white focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all duration-300 hover:border-primary-300 dark:hover:border-primary-600 @error('name') border-red-500 @enderror">
+                                <input type="text" name="name" id="name" value="{{ old('name') }}" data-rules="required" class="w-full px-4 py-3 rounded-xl border border-neutral-200 dark:border-neutral-600 bg-white dark:bg-neutral-700 text-neutral-900 dark:text-white focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all duration-300 hover:border-primary-300 dark:hover:border-primary-600 @error('name') border-red-500 @enderror">
                                 @error('name')
                                     <p class="mt-1 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
                                 @enderror
                             </div>
                             <div>
                                 <label for="email" class="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2">Email *</label>
-                                <input type="email" name="email" id="email" value="{{ old('email') }}" required class="w-full px-4 py-3 rounded-xl border border-neutral-200 dark:border-neutral-600 bg-white dark:bg-neutral-700 text-neutral-900 dark:text-white focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all duration-300 hover:border-primary-300 dark:hover:border-primary-600 @error('email') border-red-500 @enderror">
+                                <input type="email" name="email" id="email" value="{{ old('email') }}" data-rules="required|email" class="w-full px-4 py-3 rounded-xl border border-neutral-200 dark:border-neutral-600 bg-white dark:bg-neutral-700 text-neutral-900 dark:text-white focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all duration-300 hover:border-primary-300 dark:hover:border-primary-600 @error('email') border-red-500 @enderror">
                                 @error('email')
                                     <p class="mt-1 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
                                 @enderror
@@ -69,7 +69,7 @@
                         <div class="grid md:grid-cols-2 gap-6">
                             <div>
                                 <label for="phone" class="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2">Phone</label>
-                                <input type="tel" name="phone" id="phone" value="{{ old('phone') }}" class="w-full px-4 py-3 rounded-xl border border-neutral-200 dark:border-neutral-600 bg-white dark:bg-neutral-700 text-neutral-900 dark:text-white focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all duration-300 hover:border-primary-300 dark:hover:border-primary-600">
+                                <input type="tel" name="phone" id="phone" value="{{ old('phone') }}" data-rules="phone" class="w-full px-4 py-3 rounded-xl border border-neutral-200 dark:border-neutral-600 bg-white dark:bg-neutral-700 text-neutral-900 dark:text-white focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all duration-300 hover:border-primary-300 dark:hover:border-primary-600">
                             </div>
                             <div>
                                 <label for="company" class="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2">Company</label>
@@ -93,7 +93,7 @@
 
                         <div>
                             <label for="message" class="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2">Project Description *</label>
-                            <textarea name="message" id="message" rows="6" required placeholder="Tell us about your project. What problem are you trying to solve? What features do you need? What's your timeline and budget?" class="w-full px-4 py-3 rounded-xl border border-neutral-200 dark:border-neutral-600 bg-white dark:bg-neutral-700 text-neutral-900 dark:text-white placeholder-neutral-400 dark:placeholder-neutral-500 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-colors resize-none @error('message') border-red-500 @enderror">{{ old('message') }}</textarea>
+                            <textarea name="message" id="message" rows="6" data-rules="required|minLength:20" placeholder="Tell us about your project. What problem are you trying to solve? What features do you need? What's your timeline and budget?" class="w-full px-4 py-3 rounded-xl border border-neutral-200 dark:border-neutral-600 bg-white dark:bg-neutral-700 text-neutral-900 dark:text-white placeholder-neutral-400 dark:placeholder-neutral-500 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-colors resize-none @error('message') border-red-500 @enderror">{{ old('message') }}</textarea>
                             @error('message')
                                 <p class="mt-1 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
                             @enderror
@@ -101,7 +101,7 @@
 
                         <input type="hidden" name="message_type" value="quote">
 
-                        <button type="submit" class="w-full px-8 py-4 bg-primary-500 text-white font-semibold rounded-xl hover:bg-primary-600 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg btn-shine">
+                        <button type="submit" data-loading-text="Submitting..." class="w-full px-8 py-4 bg-primary-500 text-white font-semibold rounded-xl hover:bg-primary-600 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg btn-shine">
                             Submit Quote Request
                         </button>
                     </form>

@@ -110,16 +110,55 @@
             </div>
 
             <div class="text-center" data-aos="fade-up" data-aos-delay="400">
-                <a href="{{ route('contact.quote') }}" class="inline-flex items-center gap-2 px-8 py-4 bg-primary-500 text-white font-semibold rounded-xl hover:bg-primary-600 transition-colors btn-shine hover:-translate-y-1">
+                <a href="{{ route('contact.quote') }}" class="inline-flex items-center gap-2 px-8 py-4 bg-primary-500 text-white font-semibold rounded-xl hover:bg-primary-600 transition-all duration-300 btn-shine hover:-translate-y-1 hover:shadow-lg">
                     Get Custom Quote
                     <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
                     </svg>
                 </a>
+                <button data-modal-open="pricing-help" class="ml-4 text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-medium transition-colors">
+                    Need help choosing?
+                </button>
             </div>
         </div>
     </section>
 
     {{-- FAQ --}}
     @include('components.frontend.home.faq')
+
+    {{-- Pricing Help Modal --}}
+    @push('modals')
+    <x-ui.modal id="pricing-help" title="Need Help Choosing?" size="lg">
+        <div class="space-y-4">
+            <p class="text-neutral-600 dark:text-neutral-400">
+                Not sure which option is right for you? Here's a quick guide:
+            </p>
+
+            <div class="grid gap-4">
+                <div class="p-4 bg-neutral-50 dark:bg-neutral-700/50 rounded-xl">
+                    <h4 class="font-semibold text-neutral-900 dark:text-white mb-2">📦 Digital Products</h4>
+                    <p class="text-sm text-neutral-600 dark:text-neutral-400">Best for startups and small businesses who need a quick, ready-to-use solution. One-time purchase, instant access.</p>
+                </div>
+
+                <div class="p-4 bg-neutral-50 dark:bg-neutral-700/50 rounded-xl">
+                    <h4 class="font-semibold text-neutral-900 dark:text-white mb-2">⚙️ Custom Development</h4>
+                    <p class="text-sm text-neutral-600 dark:text-neutral-400">Perfect for businesses with unique requirements. We build exactly what you need from scratch.</p>
+                </div>
+            </div>
+
+            <p class="text-sm text-neutral-500 dark:text-neutral-400">
+                Still unsure? <a href="{{ route('contact.index') }}" class="text-primary-600 dark:text-primary-400 hover:underline">Contact our team</a> for a free consultation.
+            </p>
+        </div>
+
+        <x-slot:footer>
+            <button data-modal-close class="px-4 py-2 text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-700 rounded-lg transition-colors">
+                Close
+            </button>
+            <a href="{{ route('contact.quote') }}" class="px-6 py-2 bg-primary-500 text-white font-medium rounded-lg hover:bg-primary-600 transition-colors">
+                Get Free Consultation
+            </a>
+        </x-slot:footer>
+    </x-ui.modal>
+    @endpush
 </x-layouts.frontend>
