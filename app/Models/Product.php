@@ -96,4 +96,36 @@ class Product extends Model
             default => '',
         };
     }
+
+    /**
+     * Get the downloadable files for this product.
+     */
+    public function files()
+    {
+        return $this->hasMany(ProductFile::class)->orderBy('is_main', 'desc')->orderBy('created_at', 'desc');
+    }
+
+    /**
+     * Get the main downloadable file for this product.
+     */
+    public function mainFile()
+    {
+        return $this->hasOne(ProductFile::class)->where('is_main', true)->latestOfMany();
+    }
+
+    /**
+     * Get the effective price (sale price if available, otherwise regular price).
+     */
+    public function getEffectivePriceAttribute(): float
+    {
+        return (float) ($this->sale_price ?? $this->price ?? 0);
+    }
+
+    /**
+     * Check if product is on sale.
+     */
+    public function getIsOnSaleAttribute(): bool
+    {
+        return $this->sale_price !== null && $this->sale_price < $this->price;
+    }
 }

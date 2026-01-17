@@ -118,6 +118,19 @@
                     </div>
                 </div>
 
+                <!-- Cart Icon -->
+                <a href="{{ route('cart.index') }}" class="relative p-2 rounded-lg text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors" aria-label="Shopping Cart">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+                    </svg>
+                    @php
+                        $cartCount = app(\App\Services\CartService::class)->getCount();
+                    @endphp
+                    <span id="cart-count" class="absolute -top-1 -right-1 w-5 h-5 bg-primary-500 text-white text-xs font-bold rounded-full flex items-center justify-center {{ $cartCount > 0 ? '' : 'hidden' }}">
+                        {{ $cartCount }}
+                    </span>
+                </a>
+
                 @auth
                     <a href="{{ route('dashboard') }}" class="text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:text-primary-500 transition-all duration-300">
                         Dashboard
@@ -192,6 +205,17 @@
             </a>
             <a href="{{ route('contact.index') }}" class="block px-4 py-3 rounded-xl {{ request()->routeIs('contact.*') ? 'bg-primary-50 dark:bg-primary-900/20 text-primary-600' : 'text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-800' }}">
                 Contact
+            </a>
+            <a href="{{ route('cart.index') }}" class="flex items-center justify-between px-4 py-3 rounded-xl {{ request()->routeIs('cart.*') ? 'bg-primary-50 dark:bg-primary-900/20 text-primary-600' : 'text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-800' }}">
+                <span class="flex items-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+                    </svg>
+                    Cart
+                </span>
+                @if($cartCount > 0)
+                    <span class="bg-primary-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">{{ $cartCount }}</span>
+                @endif
             </a>
         </nav>
         <div class="p-4 border-t border-neutral-100 dark:border-neutral-800 space-y-3">

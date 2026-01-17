@@ -19,23 +19,54 @@
 
                     <div class="flex items-baseline gap-4 mb-8">
                         @if($product->price)
-                            <span class="text-4xl font-bold text-neutral-900 dark:text-white">${{ number_format($product->price, 0) }}</span>
-                            <span class="text-neutral-500 dark:text-neutral-400">one-time payment</span>
+                            @if($product->sale_price)
+                                <span class="text-4xl font-bold text-neutral-900 dark:text-white">${{ number_format($product->sale_price, 0) }}</span>
+                                <span class="text-xl text-neutral-400 line-through">${{ number_format($product->price, 0) }}</span>
+                            @else
+                                <span class="text-4xl font-bold text-neutral-900 dark:text-white">${{ number_format($product->price, 0) }}</span>
+                            @endif
+                            <span class="text-neutral-500 dark:text-neutral-400">{{ $product->license_label ?: 'one-time payment' }}</span>
                         @else
                             <span class="text-2xl font-bold text-neutral-900 dark:text-white">Contact for Pricing</span>
                         @endif
                     </div>
 
                     <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="{{ route('contact.index') }}" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary-500 text-white font-semibold rounded-xl hover:bg-primary-600 transition-colors btn-shine hover:-translate-y-1">
-                            Purchase Now
-                            <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                            </svg>
-                        </a>
-                        <a href="{{ route('contact.index') }}" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 font-semibold rounded-xl border-2 border-neutral-200 dark:border-neutral-700 hover:border-primary-500 dark:hover:border-primary-500 transition-all hover:-translate-y-1">
-                            Request Demo
-                        </a>
+                        @if($product->price)
+                            <button
+                                type="button"
+                                onclick="addToCart({{ $product->id }})"
+                                id="add-to-cart-btn"
+                                class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary-500 text-white font-semibold rounded-xl hover:bg-primary-600 transition-all btn-shine hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed"
+                            >
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+                                </svg>
+                                <span id="add-to-cart-text">Add to Cart</span>
+                            </button>
+                            <a href="{{ route('cart.index') }}" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 font-semibold rounded-xl border-2 border-neutral-200 dark:border-neutral-700 hover:border-primary-500 dark:hover:border-primary-500 transition-all hover:-translate-y-1">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+                                </svg>
+                                View Cart
+                            </a>
+                        @else
+                            <a href="{{ route('contact.index') }}" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary-500 text-white font-semibold rounded-xl hover:bg-primary-600 transition-colors btn-shine hover:-translate-y-1">
+                                Contact for Pricing
+                                <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                                </svg>
+                            </a>
+                        @endif
+                        @if($product->demo_url)
+                            <a href="{{ $product->demo_url }}" target="_blank" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 font-semibold rounded-xl border-2 border-neutral-200 dark:border-neutral-700 hover:border-primary-500 dark:hover:border-primary-500 transition-all hover:-translate-y-1">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                                </svg>
+                                Live Demo
+                            </a>
+                        @endif
                     </div>
                 </div>
 
@@ -127,4 +158,66 @@
 
     {{-- CTA --}}
     @include('components.frontend.home.cta')
+
+    @push('scripts')
+    <script>
+        function addToCart(productId) {
+            const btn = $('#add-to-cart-btn');
+            const btnText = $('#add-to-cart-text');
+            const originalText = btnText.text();
+
+            btn.prop('disabled', true);
+            btnText.text('Adding...');
+
+            $.post('{{ route('cart.add') }}', {
+                _token: '{{ csrf_token() }}',
+                product_id: productId,
+                quantity: 1
+            })
+            .done(function(response) {
+                if (response.success) {
+                    btnText.text('Added!');
+
+                    // Update cart count in header
+                    const cartCount = $('#cart-count');
+                    if (cartCount.length) {
+                        cartCount.text(response.cart_count).removeClass('hidden');
+                    }
+
+                    // Show toast notification
+                    showToast('Product added to cart!', 'success');
+
+                    setTimeout(function() {
+                        btn.prop('disabled', false);
+                        btnText.text(originalText);
+                    }, 2000);
+                } else {
+                    btnText.text('Already in Cart');
+                    showToast(response.message || 'Product already in cart', 'info');
+
+                    setTimeout(function() {
+                        btn.prop('disabled', false);
+                        btnText.text(originalText);
+                    }, 2000);
+                }
+            })
+            .fail(function(xhr) {
+                btn.prop('disabled', false);
+                btnText.text(originalText);
+                showToast('Failed to add product to cart', 'error');
+            });
+        }
+
+        function showToast(message, type = 'success') {
+            const colors = {
+                success: 'bg-green-500',
+                error: 'bg-red-500',
+                info: 'bg-blue-500'
+            };
+            const toast = $(`<div class="fixed bottom-4 right-4 ${colors[type]} text-white px-4 py-3 rounded-lg shadow-lg z-50 flex items-center gap-2">${message}</div>`);
+            $('body').append(toast);
+            setTimeout(() => toast.fadeOut(300, () => toast.remove()), 3000);
+        }
+    </script>
+    @endpush
 </x-layouts.frontend>

@@ -7,6 +7,9 @@ use App\Http\Controllers\Frontend\ServiceController;
 use App\Http\Controllers\Frontend\BlogController;
 use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\Frontend\PageController;
+use App\Http\Controllers\Frontend\CartController;
+use App\Http\Controllers\Frontend\CheckoutController;
+use App\Http\Controllers\Frontend\DownloadController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -54,6 +57,50 @@ Route::prefix('contact')->name('contact.')->group(function () {
     Route::post('/demo', [ContactController::class, 'storeDemoRequest'])->name('demo.store');
 });
 
+// Terms and Privacy
+Route::get('/terms', function () {
+    return view('pages.terms');
+})->name('pages.terms');
+
+Route::get('/privacy', function () {
+    return view('pages.privacy');
+})->name('pages.privacy');
+
+/*
+|--------------------------------------------------------------------------
+| E-Commerce Routes
+|--------------------------------------------------------------------------
+*/
+
+// Cart
+Route::prefix('cart')->name('cart.')->group(function () {
+    Route::get('/', [CartController::class, 'index'])->name('index');
+    Route::post('/add', [CartController::class, 'add'])->name('add');
+    Route::post('/remove', [CartController::class, 'remove'])->name('remove');
+    Route::post('/update', [CartController::class, 'update'])->name('update');
+    Route::post('/clear', [CartController::class, 'clear'])->name('clear');
+    Route::get('/count', [CartController::class, 'count'])->name('count');
+    Route::get('/mini', [CartController::class, 'mini'])->name('mini');
+});
+
+// Checkout
+Route::prefix('checkout')->name('checkout.')->group(function () {
+    Route::get('/', [CheckoutController::class, 'index'])->name('index');
+    Route::post('/', [CheckoutController::class, 'process'])->name('process');
+    Route::get('/confirmation/{order}', [CheckoutController::class, 'confirmation'])->name('confirmation');
+    Route::match(['get', 'post'], '/lookup', [CheckoutController::class, 'lookup'])->name('lookup');
+});
+
+// License Verification API (public)
+Route::prefix('api/license')->name('api.license.')->group(function () {
+    Route::post('/verify', [DownloadController::class, 'verifyLicense'])->name('verify');
+    Route::post('/activate', [DownloadController::class, 'activateLicense'])->name('activate');
+});
+
+// Guest Downloads (via order)
+Route::get('/order/{order}/download/{license}', [DownloadController::class, 'guestDownload'])
+    ->name('order.download');
+
 /*
 |--------------------------------------------------------------------------
 | Authenticated Routes
@@ -68,6 +115,18 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    // User Downloads
+    Route::prefix('downloads')->name('downloads.')->group(function () {
+        Route::get('/', [DownloadController::class, 'index'])->name('index');
+        Route::get('/{license}', [DownloadController::class, 'download'])->name('download');
+        Route::get('/{license}/file/{file}', [DownloadController::class, 'downloadFile'])->name('file');
+    });
 });
+
+// Change from this (if it has restrictive middleware):
+Route::get('/checkout/confirmation/{id}', [CheckoutController::class, 'confirmation'])
+    ->name('checkout.confirmation')
+    ->middleware(['signed']);
 
 require __DIR__.'/auth.php';
