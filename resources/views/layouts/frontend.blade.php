@@ -42,6 +42,9 @@
         }
     </script>
 
+    <!-- Alpine.js cloak style -->
+    <style>[x-cloak] { display: none !important; }</style>
+
     <!-- Styles -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 

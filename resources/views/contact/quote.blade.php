@@ -1,36 +1,36 @@
 <x-layouts.frontend title="Get a Quote">
     {{-- Hero Section --}}
-    <section class="py-20 lg:py-28 bg-gradient-to-br from-neutral-50 via-white to-primary-50">
+    <section class="py-20 lg:py-28 bg-gradient-to-br from-neutral-50 via-white to-primary-50 dark:from-neutral-900 dark:via-neutral-900 dark:to-neutral-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid lg:grid-cols-2 gap-12 items-start">
                 {{-- Info --}}
                 <div>
-                    <h1 class="text-4xl lg:text-5xl font-bold text-neutral-900 mb-6">
+                    <h1 class="text-4xl lg:text-5xl font-bold text-neutral-900 dark:text-white mb-6">
                         Request a Quote
                     </h1>
-                    <p class="text-xl text-neutral-600 mb-8">
+                    <p class="text-xl text-neutral-600 dark:text-neutral-400 mb-8">
                         Tell us about your project and we'll get back to you with a detailed proposal and timeline within 48 hours.
                     </p>
 
-                    <div class="bg-white rounded-2xl p-6 shadow-soft mb-8">
-                        <h3 class="font-bold text-neutral-900 mb-4">What happens next?</h3>
+                    <div class="bg-white dark:bg-neutral-800 rounded-2xl p-6 shadow-soft dark:shadow-none dark:border dark:border-neutral-700 mb-8">
+                        <h3 class="font-bold text-neutral-900 dark:text-white mb-4">What happens next?</h3>
                         <ol class="space-y-4">
                             <li class="flex items-start gap-3">
                                 <span class="w-6 h-6 bg-primary-500 text-white rounded-full flex items-center justify-center text-sm font-semibold shrink-0">1</span>
-                                <p class="text-neutral-600">We review your requirements within 24 hours</p>
+                                <p class="text-neutral-600 dark:text-neutral-400">We review your requirements within 24 hours</p>
                             </li>
                             <li class="flex items-start gap-3">
                                 <span class="w-6 h-6 bg-primary-500 text-white rounded-full flex items-center justify-center text-sm font-semibold shrink-0">2</span>
-                                <p class="text-neutral-600">Schedule a free consultation call</p>
+                                <p class="text-neutral-600 dark:text-neutral-400">Schedule a free consultation call</p>
                             </li>
                             <li class="flex items-start gap-3">
                                 <span class="w-6 h-6 bg-primary-500 text-white rounded-full flex items-center justify-center text-sm font-semibold shrink-0">3</span>
-                                <p class="text-neutral-600">Receive a detailed proposal with pricing</p>
+                                <p class="text-neutral-600 dark:text-neutral-400">Receive a detailed proposal with pricing</p>
                             </li>
                         </ol>
                     </div>
 
-                    <div class="flex items-center gap-4 text-sm text-neutral-500">
+                    <div class="flex items-center gap-4 text-sm text-neutral-500 dark:text-neutral-400">
                         <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
                         </svg>
@@ -39,9 +39,9 @@
                 </div>
 
                 {{-- Quote Form --}}
-                <div class="bg-white rounded-2xl p-8 shadow-elevated">
+                <div class="bg-white dark:bg-neutral-800 rounded-2xl p-8 shadow-elevated dark:shadow-none dark:border dark:border-neutral-700">
                     @if(session('success'))
-                        <div class="mb-6 p-4 bg-green-50 border border-green-200 text-green-700 rounded-xl">
+                        <div class="mb-6 p-4 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 text-green-700 dark:text-green-400 rounded-xl">
                             {{ session('success') }}
                         </div>
                     @endif
@@ -51,35 +51,35 @@
 
                         <div class="grid md:grid-cols-2 gap-6">
                             <div>
-                                <label for="name" class="block text-sm font-medium text-neutral-700 mb-2">Name *</label>
-                                <input type="text" name="name" id="name" value="{{ old('name') }}" required class="w-full px-4 py-3 rounded-xl border border-neutral-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-colors @error('name') border-red-500 @enderror">
+                                <label for="name" class="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2">Name *</label>
+                                <input type="text" name="name" id="name" value="{{ old('name') }}" required class="w-full px-4 py-3 rounded-xl border border-neutral-200 dark:border-neutral-600 bg-white dark:bg-neutral-700 text-neutral-900 dark:text-white focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-colors @error('name') border-red-500 @enderror">
                                 @error('name')
-                                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                    <p class="mt-1 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
                                 @enderror
                             </div>
                             <div>
-                                <label for="email" class="block text-sm font-medium text-neutral-700 mb-2">Email *</label>
-                                <input type="email" name="email" id="email" value="{{ old('email') }}" required class="w-full px-4 py-3 rounded-xl border border-neutral-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-colors @error('email') border-red-500 @enderror">
+                                <label for="email" class="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2">Email *</label>
+                                <input type="email" name="email" id="email" value="{{ old('email') }}" required class="w-full px-4 py-3 rounded-xl border border-neutral-200 dark:border-neutral-600 bg-white dark:bg-neutral-700 text-neutral-900 dark:text-white focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-colors @error('email') border-red-500 @enderror">
                                 @error('email')
-                                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                    <p class="mt-1 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
                                 @enderror
                             </div>
                         </div>
 
                         <div class="grid md:grid-cols-2 gap-6">
                             <div>
-                                <label for="phone" class="block text-sm font-medium text-neutral-700 mb-2">Phone</label>
-                                <input type="tel" name="phone" id="phone" value="{{ old('phone') }}" class="w-full px-4 py-3 rounded-xl border border-neutral-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-colors">
+                                <label for="phone" class="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2">Phone</label>
+                                <input type="tel" name="phone" id="phone" value="{{ old('phone') }}" class="w-full px-4 py-3 rounded-xl border border-neutral-200 dark:border-neutral-600 bg-white dark:bg-neutral-700 text-neutral-900 dark:text-white focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-colors">
                             </div>
                             <div>
-                                <label for="company" class="block text-sm font-medium text-neutral-700 mb-2">Company</label>
-                                <input type="text" name="company" id="company" value="{{ old('company') }}" class="w-full px-4 py-3 rounded-xl border border-neutral-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-colors">
+                                <label for="company" class="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2">Company</label>
+                                <input type="text" name="company" id="company" value="{{ old('company') }}" class="w-full px-4 py-3 rounded-xl border border-neutral-200 dark:border-neutral-600 bg-white dark:bg-neutral-700 text-neutral-900 dark:text-white focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-colors">
                             </div>
                         </div>
 
                         <div>
-                            <label for="subject" class="block text-sm font-medium text-neutral-700 mb-2">Project Type</label>
-                            <select name="subject" id="subject" class="w-full px-4 py-3 rounded-xl border border-neutral-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-colors">
+                            <label for="subject" class="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2">Project Type</label>
+                            <select name="subject" id="subject" class="w-full px-4 py-3 rounded-xl border border-neutral-200 dark:border-neutral-600 bg-white dark:bg-neutral-700 text-neutral-900 dark:text-white focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-colors">
                                 <option value="">Select a project type</option>
                                 <option value="Web Application" {{ old('subject') == 'Web Application' ? 'selected' : '' }}>Web Application</option>
                                 <option value="Mobile App" {{ old('subject') == 'Mobile App' ? 'selected' : '' }}>Mobile App (iOS/Android)</option>
@@ -92,10 +92,10 @@
                         </div>
 
                         <div>
-                            <label for="message" class="block text-sm font-medium text-neutral-700 mb-2">Project Description *</label>
-                            <textarea name="message" id="message" rows="6" required placeholder="Tell us about your project. What problem are you trying to solve? What features do you need? What's your timeline and budget?" class="w-full px-4 py-3 rounded-xl border border-neutral-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-colors resize-none @error('message') border-red-500 @enderror">{{ old('message') }}</textarea>
+                            <label for="message" class="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2">Project Description *</label>
+                            <textarea name="message" id="message" rows="6" required placeholder="Tell us about your project. What problem are you trying to solve? What features do you need? What's your timeline and budget?" class="w-full px-4 py-3 rounded-xl border border-neutral-200 dark:border-neutral-600 bg-white dark:bg-neutral-700 text-neutral-900 dark:text-white placeholder-neutral-400 dark:placeholder-neutral-500 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-colors resize-none @error('message') border-red-500 @enderror">{{ old('message') }}</textarea>
                             @error('message')
-                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                <p class="mt-1 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
                             @enderror
                         </div>
 
