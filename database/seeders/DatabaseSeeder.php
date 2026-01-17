@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
         User::factory()->create([
             'name' => 'Admin User',
             'email' => 'admin@appkotha.com',
+            'is_admin' => true,
         ]);
 
         // Run all seeders

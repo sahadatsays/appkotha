@@ -35,20 +35,20 @@
 
                     {{-- Quote --}}
                     <p class="text-neutral-300 leading-relaxed mb-6">
-                        "{{ $testimonial->quote }}"
+                        "{{ $testimonial->content }}"
                     </p>
 
                     {{-- Author --}}
                     <div class="flex items-center gap-4">
                         <div class="w-12 h-12 bg-neutral-700 rounded-full flex items-center justify-center text-white font-semibold">
-                            {{ strtoupper(substr($testimonial->client_name, 0, 1)) }}
+                            {{ strtoupper(substr($testimonial->name, 0, 1)) }}
                         </div>
                         <div>
-                            <p class="font-semibold text-white">{{ $testimonial->client_name }}</p>
+                            <p class="font-semibold text-white">{{ $testimonial->name }}</p>
                             <p class="text-sm text-neutral-400">
-                                {{ $testimonial->client_title }}
-                                @if($testimonial->client_company)
-                                    at {{ $testimonial->client_company }}
+                                {{ $testimonial->position }}
+                                @if($testimonial->company)
+                                    at {{ $testimonial->company }}
                                 @endif
                             </p>
                         </div>

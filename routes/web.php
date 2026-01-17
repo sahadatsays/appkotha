@@ -10,6 +10,14 @@ use App\Http\Controllers\Frontend\PageController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\DownloadController;
+use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
+use App\Http\Controllers\Admin\ProductController as AdminProductController;
+use App\Http\Controllers\Admin\ServiceController as AdminServiceController;
+use App\Http\Controllers\Admin\OrderController as AdminOrderController;
+use App\Http\Controllers\Admin\MessageController as AdminMessageController;
+use App\Http\Controllers\Admin\BlogController as AdminBlogController;
+use App\Http\Controllers\Admin\CaseStudyController as AdminCaseStudyController;
+use App\Http\Controllers\Admin\TestimonialController as AdminTestimonialController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -107,10 +115,6 @@ Route::get('/order/{order}/download/{license}', [DownloadController::class, 'gue
 |--------------------------------------------------------------------------
 */
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -122,6 +126,56 @@ Route::middleware('auth')->group(function () {
         Route::get('/{license}', [DownloadController::class, 'download'])->name('download');
         Route::get('/{license}/file/{file}', [DownloadController::class, 'downloadFile'])->name('file');
     });
+});
+
+/*
+|--------------------------------------------------------------------------
+| Admin Routes
+|--------------------------------------------------------------------------
+*/
+
+Route::middleware(['auth', 'verified', 'admin'])->prefix('admin')->name('admin.')->group(function () {
+    // Dashboard
+    Route::get('/', [AdminDashboardController::class, 'index'])->name('dashboard');
+
+    // Products Management
+    Route::resource('products', AdminProductController::class);
+    Route::post('products/{product}/toggle-publish', [AdminProductController::class, 'togglePublish'])->name('products.toggle-publish');
+
+    // Services Management
+    Route::resource('services', AdminServiceController::class);
+    Route::post('services/{service}/toggle-publish', [AdminServiceController::class, 'togglePublish'])->name('services.toggle-publish');
+
+    // Orders Management
+    Route::get('orders', [AdminOrderController::class, 'index'])->name('orders.index');
+    Route::get('orders/{order}', [AdminOrderController::class, 'show'])->name('orders.show');
+    Route::patch('orders/{order}/status', [AdminOrderController::class, 'updateStatus'])->name('orders.update-status');
+    Route::patch('orders/{order}/payment-status', [AdminOrderController::class, 'updatePaymentStatus'])->name('orders.update-payment-status');
+    Route::post('orders/{order}/note', [AdminOrderController::class, 'addNote'])->name('orders.add-note');
+
+    // Messages Management
+    Route::get('messages', [AdminMessageController::class, 'index'])->name('messages.index');
+    Route::get('messages/{message}', [AdminMessageController::class, 'show'])->name('messages.show');
+    Route::post('messages/{message}/reply', [AdminMessageController::class, 'reply'])->name('messages.reply');
+    Route::post('messages/{message}/mark-read', [AdminMessageController::class, 'markAsRead'])->name('messages.mark-read');
+    Route::post('messages/{message}/mark-replied', [AdminMessageController::class, 'markAsReplied'])->name('messages.mark-replied');
+    Route::delete('messages/{message}', [AdminMessageController::class, 'destroy'])->name('messages.destroy');
+    Route::post('messages/bulk-mark-read', [AdminMessageController::class, 'bulkMarkRead'])->name('messages.bulk-mark-read');
+
+    // Blog Management
+    Route::resource('blog', AdminBlogController::class)->parameters(['blog' => 'post']);
+    Route::post('blog/{post}/toggle-publish', [AdminBlogController::class, 'togglePublish'])->name('blog.toggle-publish');
+    Route::get('blog-categories', [AdminBlogController::class, 'categories'])->name('blog.categories');
+    Route::post('blog-categories', [AdminBlogController::class, 'storeCategory'])->name('blog.categories.store');
+    Route::patch('blog-categories/{category}', [AdminBlogController::class, 'updateCategory'])->name('blog.categories.update');
+    Route::delete('blog-categories/{category}', [AdminBlogController::class, 'destroyCategory'])->name('blog.categories.destroy');
+
+    // Case Studies Management
+    Route::resource('case-studies', AdminCaseStudyController::class);
+
+    // Testimonials Management
+    Route::resource('testimonials', AdminTestimonialController::class);
+    Route::post('testimonials/{testimonial}/toggle-publish', [AdminTestimonialController::class, 'togglePublish'])->name('testimonials.toggle-publish');
 });
 
 // Change from this (if it has restrictive middleware):

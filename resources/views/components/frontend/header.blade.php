@@ -132,7 +132,7 @@
                 </a>
 
                 @auth
-                    <a href="{{ route('dashboard') }}" class="text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:text-primary-500 transition-all duration-300">
+                    <a href="{{ route('admin.dashboard') }}" class="text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:text-primary-500 transition-all duration-300">
                         Dashboard
                     </a>
                 @else
@@ -220,7 +220,7 @@
         </nav>
         <div class="p-4 border-t border-neutral-100 dark:border-neutral-800 space-y-3">
             @auth
-                <a href="{{ route('dashboard') }}" class="block w-full text-center px-4 py-3 bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 font-medium rounded-xl hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors">
+                <a href="{{ route('admin.dashboard') }}" class="block w-full text-center px-4 py-3 bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 font-medium rounded-xl hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors">
                     Dashboard
                 </a>
             @else
