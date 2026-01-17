@@ -248,21 +248,67 @@ class DownloadController extends Controller
     }
 
     /**
-     * Stream file download
+     * Stream file download with security checks
      */
     private function streamDownload(ProductFile $file): StreamedResponse
     {
         $path = $file->file_path;
 
+        // Security: Prevent directory traversal attacks
+        $path = str_replace(['../', '..\\', '..'], '', $path);
+        $path = ltrim($path, '/');
+        $path = ltrim($path, '\\');
+
+        // Security: Validate path is within storage directory
+        $fullPath = Storage::disk('local')->path($path);
+        $storagePath = Storage::disk('local')->path('');
+
+        // Normalize paths for comparison
+        $fullPath = realpath($fullPath);
+        $storagePath = realpath($storagePath);
+
+        if (!$fullPath || !$storagePath || !str_starts_with($fullPath, $storagePath)) {
+            \Log::warning('Invalid file path attempted', [
+                'path' => $file->file_path,
+                'user_id' => auth()->id(),
+                'ip' => request()->ip(),
+            ]);
+            abort(403, 'Invalid file path.');
+        }
+
         if (!Storage::disk('local')->exists($path)) {
             abort(404, 'File not found.');
         }
 
+        // Security: Sanitize filename to prevent path injection
+        $filename = basename($file->file_name);
+        $filename = preg_replace('/[^a-zA-Z0-9._-]/', '_', $filename);
+
+        // Security: Rate limiting (10 downloads per hour per user)
+        if (auth()->check()) {
+            $key = 'downloads:' . auth()->id();
+            if (\Illuminate\Support\Facades\RateLimiter::tooManyAttempts($key, 10)) {
+                abort(429, 'Too many download attempts. Please try again later.');
+            }
+            \Illuminate\Support\Facades\RateLimiter::hit($key, 3600);
+        }
+
+        // Log download for security audit
+        \Log::info('File download', [
+            'user_id' => auth()->id(),
+            'file_id' => $file->id,
+            'filename' => $filename,
+            'ip' => request()->ip(),
+            'user_agent' => request()->userAgent(),
+        ]);
+
         return Storage::disk('local')->download(
             $path,
-            $file->file_name,
+            $filename,
             [
                 'Content-Type' => $file->file_type ?? 'application/octet-stream',
+                'Content-Disposition' => 'attachment; filename="' . $filename . '"',
+                'X-Content-Type-Options' => 'nosniff',
             ]
         );
     }
