@@ -24,6 +24,8 @@ class DatabaseSeeder extends Seeder
 
         // Run all seeders
         $this->call([
+            SettingsSeeder::class,
+            FaqSeeder::class,
             ProductSeeder::class,
             ServiceSeeder::class,
             BlogSeeder::class,
