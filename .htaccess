@@ -1,0 +1,7 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Redirect everything to Laravel public folder
+    RewriteCond %{REQUEST_URI} !^/official-website/public/
+    RewriteRule ^(.*)$ /official-website/public/$1 [L]
+</IfModule>
