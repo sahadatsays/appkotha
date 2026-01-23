@@ -16,7 +16,7 @@
 @php
     $seo = app(\App\Services\SeoService::class);
     $defaultMeta = $seo->getDefaultMeta();
-    
+
     $metaTitle = $title ?? $defaultMeta['title'];
     $metaDescription = $description ?? $defaultMeta['description'];
     $metaKeywords = $keywords ?? $defaultMeta['keywords'];

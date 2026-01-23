@@ -30,7 +30,7 @@ class SecurityHeaders
         }
 
         // Content Security Policy (adjust as needed)
-        $csp = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://code.jquery.com https://fonts.bunny.net; style-src 'self' 'unsafe-inline' https://fonts.bunny.net https://unpkg.com; font-src 'self' https://fonts.bunny.net data:; img-src 'self' data: https:; connect-src 'self';";
+        $csp = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://code.jquery.com https://fonts.bunny.net https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.bunny.net https://unpkg.com; font-src 'self' https://fonts.bunny.net data:; img-src 'self' data: https:; connect-src 'self';";
         $response->headers->set('Content-Security-Policy', $csp);
 
         return $response;

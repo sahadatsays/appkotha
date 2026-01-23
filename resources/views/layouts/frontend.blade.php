@@ -61,9 +61,11 @@
     <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
 
-    <!-- jQuery (defer loading) -->
-    <script defer src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- jQuery (load synchronously for compatibility) -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
+    <!-- Alpine.js Collapse plugin (load before Alpine.js) -->
+    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
     <!-- Alpine.js (defer for performance) -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
@@ -251,15 +253,6 @@
         });
     </script>
     <script>
-        // Initialize AOS
-        AOS.init({
-            duration: 800,
-            easing: 'ease-out-cubic',
-            once: true,
-            offset: 50,
-            disable: window.innerWidth < 768 ? 'mobile' : false
-        });
-
         // Mobile menu toggle
         document.addEventListener('DOMContentLoaded', function() {
             const mobileMenuBtn = document.getElementById('mobile-menu-btn');
