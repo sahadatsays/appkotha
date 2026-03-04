@@ -76,12 +76,12 @@
             {{-- Default stats if no settings --}}
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto">
                 <div data-aos="zoom-in" data-aos-delay="500" class="text-center">
-                    <div class="text-3xl lg:text-4xl font-bold text-neutral-900 dark:text-white" data-counter="500" data-suffix="+">0</div>
+                    <div class="text-3xl lg:text-4xl font-bold text-neutral-900 dark:text-white" data-counter="100" data-suffix="+">0</div>
                     <div class="text-sm text-neutral-500 dark:text-neutral-400 mt-1">Happy Clients</div>
                 </div>
                 <div data-aos="zoom-in" data-aos-delay="600" class="text-center">
-                    <div class="text-3xl lg:text-4xl font-bold text-neutral-900 dark:text-white" data-counter="50" data-suffix="+">0</div>
-                    <div class="text-sm text-neutral-500 dark:text-neutral-400 mt-1">Countries Served</div>
+                    <div class="text-3xl lg:text-4xl font-bold text-neutral-900 dark:text-white" data-counter="5" data-suffix="+">0</div>
+                    <div class="text-sm text-neutral-500 dark:text-neutral-400 mt-1">Software Products</div>
                 </div>
                 <div data-aos="zoom-in" data-aos-delay="700" class="text-center">
                     <div class="text-3xl lg:text-4xl font-bold text-neutral-900 dark:text-white" data-counter="99" data-suffix="%">0</div>

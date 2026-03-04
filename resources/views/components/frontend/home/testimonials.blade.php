@@ -73,7 +73,7 @@
                         </div>
 
                         <p class="text-neutral-300 leading-relaxed mb-6">
-                            "appKotha delivered exactly what we needed. Their team understood our requirements perfectly and delivered ahead of schedule. Highly recommended!"
+                            "AppKotha delivered exactly what we needed. Their team understood our requirements perfectly and delivered ahead of schedule. Highly recommended!"
                         </p>
 
                         <div class="flex items-center gap-4">

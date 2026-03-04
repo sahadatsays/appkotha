@@ -7,7 +7,7 @@
                     We Build Software That Powers Businesses
                 </h1>
                 <p class="text-xl text-neutral-600 dark:text-neutral-400 leading-relaxed" data-aos="fade-up" data-aos-delay="100">
-                    appKotha is a Bangladesh-based software company delivering international-quality digital products and custom development services to clients worldwide.
+                    AppKotha is a Bangladesh-based software company delivering premium business software and custom development services to clients across South Asia and beyond.
                 </p>
             </div>
         </div>
@@ -21,13 +21,13 @@
                     <h2 class="text-3xl font-bold text-neutral-900 dark:text-white mb-6">Our Story</h2>
                     <div class="prose prose-lg text-neutral-600 dark:text-neutral-400 dark:prose-invert">
                         <p>
-                            Founded in Dhaka, Bangladesh, appKotha was born from a simple observation: businesses worldwide need quality software solutions, but the market is filled with either expensive agencies or unreliable freelancers.
+                            Founded in Dhaka, Bangladesh, AppKotha was born from a simple vision: to empower businesses with affordable, high-quality software solutions. We saw that many businesses struggle with expensive software that doesn't fit their needs.
                         </p>
                         <p>
-                            We bridged this gap by building a team of senior developers who deliver Western-quality work at competitive rates. Our name, "appKotha" (meaning "app stories" in Bengali), reflects our mission: to help businesses tell their stories through powerful software.
+                            We bridged this gap by building a team of passionate developers who understand local business needs. Our name, "AppKotha" (meaning "app stories" in Bengali), reflects our mission: to help businesses write their success stories through powerful software.
                         </p>
                         <p>
-                            Today, we serve over 500 clients across 50+ countries, from startups to enterprises, providing both ready-to-use products and custom development services.
+                            Today, we serve businesses across Bangladesh and beyond, from startups to established enterprises, providing both ready-to-use software products and custom development services tailored to your needs.
                         </p>
                     </div>
                 </div>
@@ -88,20 +88,20 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
                 <div data-aos="zoom-in" data-aos-delay="100">
-                    <div class="text-4xl lg:text-5xl font-bold text-white mb-2" data-counter="500">0+</div>
+                    <div class="text-4xl lg:text-5xl font-bold text-white mb-2" data-counter="100">0+</div>
                     <div class="text-primary-200">Happy Clients</div>
                 </div>
                 <div data-aos="zoom-in" data-aos-delay="200">
-                    <div class="text-4xl lg:text-5xl font-bold text-white mb-2" data-counter="50">0+</div>
-                    <div class="text-primary-200">Countries</div>
+                    <div class="text-4xl lg:text-5xl font-bold text-white mb-2" data-counter="5">0+</div>
+                    <div class="text-primary-200">Products</div>
                 </div>
                 <div data-aos="zoom-in" data-aos-delay="300">
                     <div class="text-4xl lg:text-5xl font-bold text-white mb-2" data-counter="99">0%</div>
                     <div class="text-primary-200">Satisfaction Rate</div>
                 </div>
                 <div data-aos="zoom-in" data-aos-delay="400">
-                    <div class="text-4xl lg:text-5xl font-bold text-white mb-2" data-counter="5">0+</div>
-                    <div class="text-primary-200">Years Experience</div>
+                    <div class="text-4xl lg:text-5xl font-bold text-white mb-2">24/7</div>
+                    <div class="text-primary-200">Support</div>
                 </div>
             </div>
         </div>

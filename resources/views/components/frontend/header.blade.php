@@ -6,7 +6,7 @@
                 <div class="w-10 h-10 bg-primary-500 rounded-xl flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
                     <span class="text-white font-bold text-lg">a</span>
                 </div>
-                <span class="text-xl font-bold text-neutral-900 dark:text-white transition-colors">app<span class="text-primary-500">Kotha</span></span>
+                <span class="text-xl font-bold text-neutral-900 dark:text-white transition-colors">App<span class="text-primary-500">Kotha</span></span>
             </a>
 
             <!-- Desktop Navigation -->

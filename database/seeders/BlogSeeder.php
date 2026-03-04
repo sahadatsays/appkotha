@@ -71,7 +71,7 @@ class BlogSeeder extends Seeder
                 'title' => 'Top 5 Laravel Packages Every Developer Should Know',
                 'slug' => 'top-5-laravel-packages-every-developer-should-know',
                 'excerpt' => 'Boost your Laravel development productivity with these essential packages that we use in our own projects.',
-                'content' => '<p>Laravel\'s ecosystem is one of its greatest strengths. Here are five packages we use in almost every project at appKotha.</p>
+                'content' => '<p>Laravel\'s ecosystem is one of its greatest strengths. Here are five packages we use in almost every project at AppKotha.</p>
 
 <h2>1. Laravel Debugbar</h2>
 <p>Essential for development, Debugbar shows queries, routes, views, and performance metrics right in your browser.</p>

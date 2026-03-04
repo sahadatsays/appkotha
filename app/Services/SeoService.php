@@ -18,7 +18,7 @@ class SeoService
      */
     public function getDefaultMeta(): array
     {
-        $siteName = setting('company.name', config('app.name', 'appKotha'));
+        $siteName = setting('company.name', config('app.name', 'AppKotha'));
         $siteDescription = setting('company.description', 'Premium digital products and custom software development services from Bangladesh. Trusted by 500+ clients worldwide.');
         $siteUrl = config('app.url');
 
@@ -38,7 +38,7 @@ class SeoService
      */
     public function getProductMeta(Product $product): array
     {
-        $siteName = setting('company.name', config('app.name', 'appKotha'));
+        $siteName = setting('company.name', config('app.name', 'AppKotha'));
         $title = $product->meta_title ?: $product->name . ' - ' . $siteName;
         $description = $product->meta_description ?: $product->short_description ?: Str::limit(strip_tags($product->description ?? ''), 160);
         $image = $product->image ? Storage::url($product->image) : $this->getImageUrl(setting('company.logo'));
@@ -61,7 +61,7 @@ class SeoService
      */
     public function getBlogPostMeta(BlogPost $post): array
     {
-        $siteName = setting('company.name', config('app.name', 'appKotha'));
+        $siteName = setting('company.name', config('app.name', 'AppKotha'));
         $title = $post->meta_title ?: $post->title . ' - ' . $siteName;
         $description = $post->meta_description ?: Str::limit(strip_tags($post->excerpt ?? $post->content ?? ''), 160);
         $image = $post->featured_image ? Storage::url($post->featured_image) : $this->getImageUrl(setting('company.logo'));
@@ -85,7 +85,7 @@ class SeoService
      */
     public function getServiceMeta(Service $service): array
     {
-        $siteName = setting('company.name', config('app.name', 'appKotha'));
+        $siteName = setting('company.name', config('app.name', 'AppKotha'));
         $title = $service->meta_title ?: $service->name . ' - ' . $siteName;
         $description = $service->meta_description ?: $service->short_description ?: Str::limit(strip_tags($service->description ?? ''), 160);
         $image = $service->image ? Storage::url($service->image) : $this->getImageUrl(setting('company.logo'));
@@ -107,7 +107,7 @@ class SeoService
     public function getOrganizationSchema(): array
     {
         $siteUrl = config('app.url');
-        $companyName = setting('company.name', config('app.name', 'appKotha'));
+        $companyName = setting('company.name', config('app.name', 'AppKotha'));
         $logo = $this->getImageUrl(setting('company.logo'));
 
         return [
@@ -181,7 +181,7 @@ class SeoService
     {
         $siteUrl = config('app.url');
         $image = $post->featured_image ? Storage::url($post->featured_image) : $this->getImageUrl(setting('company.logo'));
-        $companyName = setting('company.name', config('app.name', 'appKotha'));
+        $companyName = setting('company.name', config('app.name', 'AppKotha'));
 
         return [
             '@context' => 'https://schema.org',
@@ -264,7 +264,7 @@ class SeoService
     public function getWebSiteSchema(): array
     {
         $siteUrl = config('app.url');
-        $companyName = setting('company.name', config('app.name', 'appKotha'));
+        $companyName = setting('company.name', config('app.name', 'AppKotha'));
 
         return [
             '@context' => 'https://schema.org',

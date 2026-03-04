@@ -58,7 +58,7 @@
                     Our Solution
                 </div>
                 <h3 class="text-2xl lg:text-3xl font-bold text-neutral-900 dark:text-white mb-6">
-                    appKotha: Quality Software, Fair Prices, Real Partnership
+                    AppKotha: Quality Software, Fair Prices, Real Partnership
                 </h3>
                 <div class="space-y-4">
                     <div class="flex items-start gap-4 hover:translate-x-2 transition-transform duration-300">

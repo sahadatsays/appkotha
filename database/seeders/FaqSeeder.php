@@ -14,7 +14,7 @@ class FaqSeeder extends Seeder
     {
         $faqs = [
             [
-                'question' => 'What makes appKotha different from other development agencies?',
+                'question' => 'What makes AppKotha different from other development agencies?',
                 'answer' => 'We combine the quality of Western agencies with competitive Bangladesh rates. Our senior-only team (5+ years experience minimum), clear communication, and proven processes ensure you get premium results without premium prices.',
                 'category' => 'general',
                 'is_published' => true,

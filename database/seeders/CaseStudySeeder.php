@@ -26,7 +26,7 @@ class CaseStudySeeder extends Seeder
                     ['label' => 'Mobile Traffic Increase', 'value' => '85%']
                 ],
                 'tech_stack' => ['Laravel', 'Vue.js', 'Tailwind CSS', 'MySQL', 'Redis'],
-                'testimonial_quote' => 'appKotha transformed our business. The new platform is fast, beautiful, and our customers love it.',
+                'testimonial_quote' => 'AppKotha transformed our business. The new platform is fast, beautiful, and our customers love it.',
                 'testimonial_author' => 'Rashid Hossain',
                 'testimonial_position' => 'CEO, Fashion House BD',
                 'is_published' => true,
