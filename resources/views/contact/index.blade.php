@@ -88,6 +88,7 @@
                             <label for="subject"
                                 class="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2">Subject</label>
                             <input type="text" name="subject" id="subject" value="{{ old('subject') }}"
+                                placeholder="What would you like to talk about?"
                                 class="w-full px-4 py-3 rounded-xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-colors">
                         </div>
 
@@ -98,6 +99,7 @@
                                     *</label>
                                 <input type="text" name="name" id="name" value="{{ old('name') }}"
                                     data-rules="required"
+                                    placeholder="Enter your full name"
                                     class="w-full px-4 py-3 rounded-xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-colors @error('name') border-red-500 @enderror">
                                 @error('name')
                                     <p class="mt-1 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
@@ -109,6 +111,7 @@
                                     *</label>
                                 <input type="email" name="email" id="email" value="{{ old('email') }}"
                                     data-rules="required|email"
+                                    placeholder="you@example.com"
                                     class="w-full px-4 py-3 rounded-xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-colors @error('email') border-red-500 @enderror">
                                 @error('email')
                                     <p class="mt-1 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
@@ -121,12 +124,14 @@
                                 class="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2">Phone</label>
                             <input type="tel" name="phone" id="phone" value="{{ old('phone') }}"
                                 data-rules="phone"
+                                placeholder="+8801XXXXXXX"
                                 class="w-full px-4 py-3 rounded-xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-colors">
                         </div>
                         <div>
                             <label for="company"
                                 class="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2">Company</label>
                             <input type="text" name="company" id="company" value="{{ old('company') }}"
+                                placeholder="Your company or organization (optional)"
                                 class="w-full px-4 py-3 rounded-xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-colors">
                         </div>
 
@@ -135,6 +140,7 @@
                                 class="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2">Message
                                 *</label>
                             <textarea name="message" id="message" rows="5" data-rules="required|minLength:10"
+                                placeholder="Share a brief overview of your project or question"
                                 class="w-full px-4 py-3 rounded-xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-colors resize-none @error('message') border-red-500 @enderror">{{ old('message') }}</textarea>
                             @error('message')
                                 <p class="mt-1 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
