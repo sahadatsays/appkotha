@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\StoreServiceRequest;
+use App\Http\Requests\Admin\UpdateServiceRequest;
 use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -34,30 +36,9 @@ class ServiceController extends Controller
         return view('admin.services.create');
     }
 
-    public function store(Request $request)
+    public function store(StoreServiceRequest $request)
     {
-        $validated = $request->validate([
-            'name_en' => 'required|string|max:255',
-            'name_bn' => 'nullable|string|max:255',
-            'slug' => 'nullable|string|max:255|unique:services,slug',
-            'tagline_en' => 'nullable|string|max:255',
-            'tagline_bn' => 'nullable|string|max:255',
-            'short_description_en' => 'nullable|string|max:500',
-            'short_description_bn' => 'nullable|string|max:500',
-            'description_en' => 'nullable|string',
-            'description_bn' => 'nullable|string',
-            'process_steps' => 'nullable|array',
-            'starting_price' => 'nullable|numeric|min:0',
-            'icon' => 'nullable|string|max:255',
-            'image' => 'nullable|image|max:2048',
-            'is_published' => 'boolean',
-            'is_featured' => 'boolean',
-            'meta_title_en' => 'nullable|string|max:255',
-            'meta_title_bn' => 'nullable|string|max:255',
-            'meta_description_en' => 'nullable|string|max:255',
-            'meta_description_bn' => 'nullable|string|max:255',
-            'sort_order' => 'nullable|integer',
-        ]);
+        $validated = $request->validated();
 
         if (empty($validated['slug'])) {
             $validated['slug'] = Str::slug($validated['name_en']);
@@ -67,13 +48,15 @@ class ServiceController extends Controller
             $validated['image'] = $request->file('image')->store('services', 'public');
         }
 
-        $validated['process_steps'] = $this->parseProcessSteps($request->input('process_steps_text'));
+        $validated['process_steps'] = $this->parseProcessSteps($request->string('process_steps_text')->toString());
         $validated['name'] = $validated['name_en'];
         $validated['tagline'] = $validated['tagline_en'] ?? null;
         $validated['short_description'] = $validated['short_description_en'] ?? null;
         $validated['description'] = $validated['description_en'] ?? null;
         $validated['meta_title'] = $validated['meta_title_en'] ?? null;
         $validated['meta_description'] = $validated['meta_description_en'] ?? null;
+        $validated['is_published'] = $request->boolean('is_published');
+        $validated['is_featured'] = $request->boolean('is_featured');
 
         Service::create($validated);
 
@@ -86,30 +69,9 @@ class ServiceController extends Controller
         return view('admin.services.edit', compact('service'));
     }
 
-    public function update(Request $request, Service $service)
+    public function update(UpdateServiceRequest $request, Service $service)
     {
-        $validated = $request->validate([
-            'name_en' => 'required|string|max:255',
-            'name_bn' => 'nullable|string|max:255',
-            'slug' => 'nullable|string|max:255|unique:services,slug,'.$service->id,
-            'tagline_en' => 'nullable|string|max:255',
-            'tagline_bn' => 'nullable|string|max:255',
-            'short_description_en' => 'nullable|string|max:500',
-            'short_description_bn' => 'nullable|string|max:500',
-            'description_en' => 'nullable|string',
-            'description_bn' => 'nullable|string',
-            'process_steps' => 'nullable|array',
-            'starting_price' => 'nullable|numeric|min:0',
-            'icon' => 'nullable|string|max:255',
-            'image' => 'nullable|image|max:2048',
-            'is_published' => 'boolean',
-            'is_featured' => 'boolean',
-            'meta_title_en' => 'nullable|string|max:255',
-            'meta_title_bn' => 'nullable|string|max:255',
-            'meta_description_en' => 'nullable|string|max:255',
-            'meta_description_bn' => 'nullable|string|max:255',
-            'sort_order' => 'nullable|integer',
-        ]);
+        $validated = $request->validated();
 
         if (empty($validated['slug'])) {
             $validated['slug'] = Str::slug($validated['name_en']);
@@ -119,7 +81,7 @@ class ServiceController extends Controller
             $validated['image'] = $request->file('image')->store('services', 'public');
         }
 
-        $validated['process_steps'] = $this->parseProcessSteps($request->input('process_steps_text'));
+        $validated['process_steps'] = $this->parseProcessSteps($request->string('process_steps_text')->toString());
         $validated['is_published'] = $request->boolean('is_published');
         $validated['is_featured'] = $request->boolean('is_featured');
         $validated['name'] = $validated['name_en'];

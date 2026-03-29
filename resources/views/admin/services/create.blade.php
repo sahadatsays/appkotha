@@ -23,63 +23,70 @@
             <div class="lg:col-span-2 space-y-6">
                 <div class="bg-white shadow-sm rounded-lg p-6">
                     <h2 class="text-lg font-medium text-gray-900 mb-4">Basic Information</h2>
+                    <p class="text-sm text-gray-500 mb-6">English content is required. Bangla content is optional and used when Bangla locale is selected.</p>
 
-                    <div class="space-y-4">
-                        <div>
-                            <label for="name_en" class="block text-sm font-medium text-gray-700">Name (English) *</label>
-                            <input type="text" name="name_en" id="name_en" value="{{ old('name_en') }}" required
-                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
-                            @error('name_en') <p class="mt-1 text-sm text-red-600">{{ $message }}</p> @enderror
+                    <div class="grid grid-cols-1 xl:grid-cols-2 gap-6">
+                        <div class="rounded-lg border border-indigo-200 bg-indigo-50/40 p-4 space-y-4">
+                            <h3 class="text-sm font-semibold text-indigo-700">English (Required)</h3>
+                            <div>
+                                <label for="name_en" class="block text-sm font-medium text-gray-700">Name *</label>
+                                <input type="text" name="name_en" id="name_en" value="{{ old('name_en') }}" required
+                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                                @error('name_en') <p class="mt-1 text-sm text-red-600">{{ $message }}</p> @enderror
+                            </div>
+
+                            <div>
+                                <label for="tagline_en" class="block text-sm font-medium text-gray-700">Tagline</label>
+                                <input type="text" name="tagline_en" id="tagline_en" value="{{ old('tagline_en') }}"
+                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                            </div>
+
+                            <div>
+                                <label for="short_description_en" class="block text-sm font-medium text-gray-700">Short Description</label>
+                                <textarea name="short_description_en" id="short_description_en" rows="2"
+                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">{{ old('short_description_en') }}</textarea>
+                            </div>
+
+                            <div>
+                                <label for="description_en" class="block text-sm font-medium text-gray-700">Description</label>
+                                <textarea name="description_en" id="description_en" rows="6"
+                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">{{ old('description_en') }}</textarea>
+                            </div>
                         </div>
 
-                        <div>
-                            <label for="name_bn" class="block text-sm font-medium text-gray-700">Name (Bangla)</label>
-                            <input type="text" name="name_bn" id="name_bn" value="{{ old('name_bn') }}"
-                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
-                            @error('name_bn') <p class="mt-1 text-sm text-red-600">{{ $message }}</p> @enderror
-                        </div>
+                        <div class="rounded-lg border border-emerald-200 bg-emerald-50/40 p-4 space-y-4">
+                            <h3 class="text-sm font-semibold text-emerald-700">Bangla (Optional)</h3>
+                            <div>
+                                <label for="name_bn" class="block text-sm font-medium text-gray-700">Name</label>
+                                <input type="text" name="name_bn" id="name_bn" value="{{ old('name_bn') }}"
+                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                                @error('name_bn') <p class="mt-1 text-sm text-red-600">{{ $message }}</p> @enderror
+                            </div>
 
-                        <div>
-                            <label for="slug" class="block text-sm font-medium text-gray-700">Slug</label>
-                            <input type="text" name="slug" id="slug" value="{{ old('slug') }}" placeholder="auto-generated"
-                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
-                        </div>
+                            <div>
+                                <label for="tagline_bn" class="block text-sm font-medium text-gray-700">Tagline</label>
+                                <input type="text" name="tagline_bn" id="tagline_bn" value="{{ old('tagline_bn') }}"
+                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                            </div>
 
-                        <div>
-                            <label for="tagline_en" class="block text-sm font-medium text-gray-700">Tagline (English)</label>
-                            <input type="text" name="tagline_en" id="tagline_en" value="{{ old('tagline_en') }}"
-                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
-                        </div>
+                            <div>
+                                <label for="short_description_bn" class="block text-sm font-medium text-gray-700">Short Description</label>
+                                <textarea name="short_description_bn" id="short_description_bn" rows="2"
+                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">{{ old('short_description_bn') }}</textarea>
+                            </div>
 
-                        <div>
-                            <label for="tagline_bn" class="block text-sm font-medium text-gray-700">Tagline (Bangla)</label>
-                            <input type="text" name="tagline_bn" id="tagline_bn" value="{{ old('tagline_bn') }}"
-                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                            <div>
+                                <label for="description_bn" class="block text-sm font-medium text-gray-700">Description</label>
+                                <textarea name="description_bn" id="description_bn" rows="6"
+                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">{{ old('description_bn') }}</textarea>
+                            </div>
                         </div>
+                    </div>
 
-                        <div>
-                            <label for="short_description_en" class="block text-sm font-medium text-gray-700">Short Description (English)</label>
-                            <textarea name="short_description_en" id="short_description_en" rows="2"
-                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">{{ old('short_description_en') }}</textarea>
-                        </div>
-
-                        <div>
-                            <label for="short_description_bn" class="block text-sm font-medium text-gray-700">Short Description (Bangla)</label>
-                            <textarea name="short_description_bn" id="short_description_bn" rows="2"
-                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">{{ old('short_description_bn') }}</textarea>
-                        </div>
-
-                        <div>
-                            <label for="description_en" class="block text-sm font-medium text-gray-700">Description (English)</label>
-                            <textarea name="description_en" id="description_en" rows="6"
-                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">{{ old('description_en') }}</textarea>
-                        </div>
-
-                        <div>
-                            <label for="description_bn" class="block text-sm font-medium text-gray-700">Description (Bangla)</label>
-                            <textarea name="description_bn" id="description_bn" rows="6"
-                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">{{ old('description_bn') }}</textarea>
-                        </div>
+                    <div class="mt-4">
+                        <label for="slug" class="block text-sm font-medium text-gray-700">Slug</label>
+                        <input type="text" name="slug" id="slug" value="{{ old('slug') }}" placeholder="auto-generated from English name"
+                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
                     </div>
                 </div>
 
@@ -94,26 +101,33 @@
 
                 <div class="bg-white shadow-sm rounded-lg p-6">
                     <h2 class="text-lg font-medium text-gray-900 mb-4">SEO</h2>
-                    <div class="space-y-4">
-                        <div>
-                            <label for="meta_title_en" class="block text-sm font-medium text-gray-700">Meta Title (English)</label>
-                            <input type="text" name="meta_title_en" id="meta_title_en" value="{{ old('meta_title_en') }}"
-                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                    <div class="grid grid-cols-1 xl:grid-cols-2 gap-6">
+                        <div class="space-y-4">
+                            <h3 class="text-sm font-semibold text-indigo-700">English SEO</h3>
+                            <div>
+                                <label for="meta_title_en" class="block text-sm font-medium text-gray-700">Meta Title</label>
+                                <input type="text" name="meta_title_en" id="meta_title_en" value="{{ old('meta_title_en') }}"
+                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                            </div>
+                            <div>
+                                <label for="meta_description_en" class="block text-sm font-medium text-gray-700">Meta Description</label>
+                                <textarea name="meta_description_en" id="meta_description_en" rows="2"
+                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">{{ old('meta_description_en') }}</textarea>
+                            </div>
                         </div>
-                        <div>
-                            <label for="meta_title_bn" class="block text-sm font-medium text-gray-700">Meta Title (Bangla)</label>
-                            <input type="text" name="meta_title_bn" id="meta_title_bn" value="{{ old('meta_title_bn') }}"
-                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
-                        </div>
-                        <div>
-                            <label for="meta_description_en" class="block text-sm font-medium text-gray-700">Meta Description (English)</label>
-                            <textarea name="meta_description_en" id="meta_description_en" rows="2"
-                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">{{ old('meta_description_en') }}</textarea>
-                        </div>
-                        <div>
-                            <label for="meta_description_bn" class="block text-sm font-medium text-gray-700">Meta Description (Bangla)</label>
-                            <textarea name="meta_description_bn" id="meta_description_bn" rows="2"
-                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">{{ old('meta_description_bn') }}</textarea>
+
+                        <div class="space-y-4">
+                            <h3 class="text-sm font-semibold text-emerald-700">Bangla SEO (Optional)</h3>
+                            <div>
+                                <label for="meta_title_bn" class="block text-sm font-medium text-gray-700">Meta Title</label>
+                                <input type="text" name="meta_title_bn" id="meta_title_bn" value="{{ old('meta_title_bn') }}"
+                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                            </div>
+                            <div>
+                                <label for="meta_description_bn" class="block text-sm font-medium text-gray-700">Meta Description</label>
+                                <textarea name="meta_description_bn" id="meta_description_bn" rows="2"
+                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">{{ old('meta_description_bn') }}</textarea>
+                            </div>
                         </div>
                     </div>
                 </div>
