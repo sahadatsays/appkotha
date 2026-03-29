@@ -12,6 +12,12 @@ class FaqSeeder extends Seeder
      */
     public function run(): void
     {
+        if (app()->environment('production')) {
+            $this->command->info('Skipping FaqSeeder in production (demo data).');
+
+            return;
+        }
+
         $faqs = [
             [
                 'question' => 'What makes appKotha different from other development agencies?',

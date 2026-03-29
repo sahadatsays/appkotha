@@ -9,6 +9,12 @@ class ProductSeeder extends Seeder
 {
     public function run(): void
     {
+        if (app()->environment('production')) {
+            $this->command->info('Skipping ProductSeeder in production (demo data).');
+
+            return;
+        }
+
         $products = [
             [
                 'name' => 'Invoice Pro',
@@ -24,13 +30,13 @@ class ProductSeeder extends Seeder
                     'Client management system',
                     'Export to PDF & Excel',
                     'Mobile-friendly dashboard',
-                    'Email notifications'
+                    'Email notifications',
                 ],
                 'use_cases' => [
                     'Freelancers billing clients',
                     'Small business invoicing',
                     'Agency project billing',
-                    'Consultant fee management'
+                    'Consultant fee management',
                 ],
                 'price' => 2999.00,
                 'sale_price' => 1999.00,
@@ -55,13 +61,13 @@ class ProductSeeder extends Seeder
                     'Performance reviews',
                     'Document storage',
                     'Employee self-service portal',
-                    'Custom reports'
+                    'Custom reports',
                 ],
                 'use_cases' => [
                     'SME human resource management',
                     'Factory workforce management',
                     'Office attendance tracking',
-                    'Payroll automation'
+                    'Payroll automation',
                 ],
                 'price' => 4999.00,
                 'sale_price' => null,
@@ -86,13 +92,13 @@ class ProductSeeder extends Seeder
                     'Purchase order management',
                     'Supplier management',
                     'Stock transfer between locations',
-                    'Comprehensive reports'
+                    'Comprehensive reports',
                 ],
                 'use_cases' => [
                     'Retail shop inventory',
                     'Wholesale distribution',
                     'E-commerce stock management',
-                    'Manufacturing raw materials'
+                    'Manufacturing raw materials',
                 ],
                 'price' => 3999.00,
                 'sale_price' => 2999.00,
@@ -117,13 +123,13 @@ class ProductSeeder extends Seeder
                     'Daily sales reports',
                     'Offline mode support',
                     'Inventory integration',
-                    'Multi-terminal support'
+                    'Multi-terminal support',
                 ],
                 'use_cases' => [
                     'Retail shops',
                     'Restaurants & cafes',
                     'Service centers',
-                    'Supermarkets'
+                    'Supermarkets',
                 ],
                 'price' => 5999.00,
                 'sale_price' => null,
@@ -148,13 +154,13 @@ class ProductSeeder extends Seeder
                     'Tax calculation & reports',
                     'Multi-branch accounting',
                     'Audit trail',
-                    'Budget management'
+                    'Budget management',
                 ],
                 'use_cases' => [
                     'Business accounting',
                     'Tax preparation',
                     'Financial reporting',
-                    'Audit compliance'
+                    'Audit compliance',
                 ],
                 'price' => 7999.00,
                 'sale_price' => 5999.00,

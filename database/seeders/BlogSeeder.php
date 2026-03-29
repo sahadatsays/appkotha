@@ -11,6 +11,12 @@ class BlogSeeder extends Seeder
 {
     public function run(): void
     {
+        if (app()->environment('production')) {
+            $this->command->info('Skipping BlogSeeder in production (demo data).');
+
+            return;
+        }
+
         // Create categories
         $categories = [
             ['name' => 'Development', 'slug' => 'development', 'description' => 'Web and software development insights'],
@@ -26,7 +32,7 @@ class BlogSeeder extends Seeder
 
         // Get first user as author
         $author = User::first();
-        if (!$author) {
+        if (! $author) {
             $author = User::create([
                 'name' => 'Admin',
                 'email' => 'admin@appkotha.com',

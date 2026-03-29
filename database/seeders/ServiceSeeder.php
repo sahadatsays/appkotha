@@ -9,6 +9,12 @@ class ServiceSeeder extends Seeder
 {
     public function run(): void
     {
+        if (app()->environment('production')) {
+            $this->command->info('Skipping ServiceSeeder in production (demo data).');
+
+            return;
+        }
+
         $services = [
             [
                 'name' => 'Custom Web Application',
@@ -22,7 +28,7 @@ class ServiceSeeder extends Seeder
                     ['step' => 3, 'title' => 'Design', 'description' => 'UI/UX design with your brand guidelines'],
                     ['step' => 4, 'title' => 'Development', 'description' => 'Agile development with regular updates'],
                     ['step' => 5, 'title' => 'Testing', 'description' => 'Comprehensive testing and quality assurance'],
-                    ['step' => 6, 'title' => 'Launch', 'description' => 'Deployment and training for your team']
+                    ['step' => 6, 'title' => 'Launch', 'description' => 'Deployment and training for your team'],
                 ],
                 'starting_price' => 50000.00,
                 'icon' => 'code',
@@ -41,7 +47,7 @@ class ServiceSeeder extends Seeder
                     ['step' => 3, 'title' => 'Design', 'description' => 'Create a conversion-optimized design'],
                     ['step' => 4, 'title' => 'Development', 'description' => 'Build your store with all features'],
                     ['step' => 5, 'title' => 'Integration', 'description' => 'Payment gateways and shipping setup'],
-                    ['step' => 6, 'title' => 'Launch', 'description' => 'Go live with marketing support']
+                    ['step' => 6, 'title' => 'Launch', 'description' => 'Go live with marketing support'],
                 ],
                 'starting_price' => 75000.00,
                 'icon' => 'shopping-cart',
@@ -60,7 +66,7 @@ class ServiceSeeder extends Seeder
                     ['step' => 3, 'title' => 'UI Design', 'description' => 'Beautiful, intuitive interface design'],
                     ['step' => 4, 'title' => 'Development', 'description' => 'Build the app with clean code'],
                     ['step' => 5, 'title' => 'Testing', 'description' => 'Thorough testing on multiple devices'],
-                    ['step' => 6, 'title' => 'Store Launch', 'description' => 'Publish to App Store and Play Store']
+                    ['step' => 6, 'title' => 'Store Launch', 'description' => 'Publish to App Store and Play Store'],
                 ],
                 'starting_price' => 100000.00,
                 'icon' => 'smartphone',
@@ -79,7 +85,7 @@ class ServiceSeeder extends Seeder
                     ['step' => 3, 'title' => 'Development', 'description' => 'Build secure, well-documented APIs'],
                     ['step' => 4, 'title' => 'Testing', 'description' => 'Automated testing for reliability'],
                     ['step' => 5, 'title' => 'Documentation', 'description' => 'Comprehensive API documentation'],
-                    ['step' => 6, 'title' => 'Deployment', 'description' => 'Deploy with monitoring and support']
+                    ['step' => 6, 'title' => 'Deployment', 'description' => 'Deploy with monitoring and support'],
                 ],
                 'starting_price' => 30000.00,
                 'icon' => 'link',
@@ -98,7 +104,7 @@ class ServiceSeeder extends Seeder
                     ['step' => 3, 'title' => 'Wireframes', 'description' => 'Low-fidelity layouts and flows'],
                     ['step' => 4, 'title' => 'Visual Design', 'description' => 'High-fidelity UI design'],
                     ['step' => 5, 'title' => 'Prototyping', 'description' => 'Interactive prototypes for testing'],
-                    ['step' => 6, 'title' => 'Handoff', 'description' => 'Design system for developers']
+                    ['step' => 6, 'title' => 'Handoff', 'description' => 'Design system for developers'],
                 ],
                 'starting_price' => 25000.00,
                 'icon' => 'layout',
@@ -117,7 +123,7 @@ class ServiceSeeder extends Seeder
                     ['step' => 3, 'title' => 'Updates', 'description' => 'Regular security and feature updates'],
                     ['step' => 4, 'title' => 'Monitoring', 'description' => '24/7 uptime monitoring'],
                     ['step' => 5, 'title' => 'Support', 'description' => 'Quick response to issues'],
-                    ['step' => 6, 'title' => 'Reports', 'description' => 'Monthly performance reports']
+                    ['step' => 6, 'title' => 'Reports', 'description' => 'Monthly performance reports'],
                 ],
                 'starting_price' => 10000.00,
                 'icon' => 'wrench',

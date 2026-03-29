@@ -9,6 +9,12 @@ class TestimonialSeeder extends Seeder
 {
     public function run(): void
     {
+        if (app()->environment('production')) {
+            $this->command->info('Skipping TestimonialSeeder in production (demo data).');
+
+            return;
+        }
+
         $testimonials = [
             [
                 'name' => 'Rashid Hossain',

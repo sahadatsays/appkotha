@@ -9,6 +9,12 @@ class CaseStudySeeder extends Seeder
 {
     public function run(): void
     {
+        if (app()->environment('production')) {
+            $this->command->info('Skipping CaseStudySeeder in production (demo data).');
+
+            return;
+        }
+
         $caseStudies = [
             [
                 'title' => 'Fashion House BD E-commerce Platform',
@@ -23,7 +29,7 @@ class CaseStudySeeder extends Seeder
                     ['label' => 'Conversion Increase', 'value' => '40%'],
                     ['label' => 'Cart Abandonment Reduction', 'value' => '60%'],
                     ['label' => 'Page Speed Improvement', 'value' => '3x'],
-                    ['label' => 'Mobile Traffic Increase', 'value' => '85%']
+                    ['label' => 'Mobile Traffic Increase', 'value' => '85%'],
                 ],
                 'tech_stack' => ['Laravel', 'Vue.js', 'Tailwind CSS', 'MySQL', 'Redis'],
                 'testimonial_quote' => 'appKotha transformed our business. The new platform is fast, beautiful, and our customers love it.',
@@ -45,7 +51,7 @@ class CaseStudySeeder extends Seeder
                     ['label' => 'Time Saved on Billing', 'value' => '80%'],
                     ['label' => 'On-time Payments', 'value' => '+45%'],
                     ['label' => 'Invoice Errors', 'value' => '0%'],
-                    ['label' => 'Monthly Revenue Tracked', 'value' => '৳5M+']
+                    ['label' => 'Monthly Revenue Tracked', 'value' => '৳5M+'],
                 ],
                 'tech_stack' => ['Invoice Pro', 'API Integration', 'bKash', 'Email Automation'],
                 'testimonial_quote' => 'Invoice Pro has saved us hours every week. The automatic reminders alone have improved our cash flow significantly.',
@@ -67,7 +73,7 @@ class CaseStudySeeder extends Seeder
                     ['label' => 'Payroll Processing Time', 'value' => '-80%'],
                     ['label' => 'Attendance Accuracy', 'value' => '99.9%'],
                     ['label' => 'Employees Managed', 'value' => '200+'],
-                    ['label' => 'Locations Connected', 'value' => '5']
+                    ['label' => 'Locations Connected', 'value' => '5'],
                 ],
                 'tech_stack' => ['HR Manager', 'Biometric Integration', 'Mobile App', 'Cloud Hosting'],
                 'testimonial_quote' => 'The system has transformed our HR operations. What used to take a week now takes a day.',
@@ -89,7 +95,7 @@ class CaseStudySeeder extends Seeder
                     ['label' => 'Order Increase', 'value' => '150%'],
                     ['label' => 'Subscription Revenue', 'value' => '+120%'],
                     ['label' => 'Order Errors', 'value' => '-95%'],
-                    ['label' => 'App Downloads', 'value' => '10,000+']
+                    ['label' => 'App Downloads', 'value' => '10,000+'],
                 ],
                 'tech_stack' => ['React Native', 'Laravel API', 'Firebase', 'SSL Commerz'],
                 'testimonial_quote' => 'Our customers love the app. It\'s so easy to order fresh organic produce now.',
