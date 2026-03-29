@@ -48,7 +48,7 @@
 
             <!-- Products Column -->
             <div data-aos="fade-up" data-aos-delay="200">
-                <h3 class="text-sm font-semibold uppercase tracking-wider text-neutral-400 mb-6">Products</h3>
+                <h3 class="text-sm font-semibold uppercase tracking-wider text-neutral-400 mb-6">{{ __('frontend.footer.products') }}</h3>
                 <ul class="space-y-4">
                     @php
                         $footerProducts = \App\Models\Product::published()->take(5)->get();
@@ -60,14 +60,14 @@
                             </a>
                         </li>
                     @empty
-                        <li><a href="{{ route('products.index') }}" class="text-neutral-300 hover:text-white transition-colors hover:translate-x-1 inline-block">All Products</a></li>
+                        <li><a href="{{ route('products.index') }}" class="text-neutral-300 hover:text-white transition-colors hover:translate-x-1 inline-block">{{ __('frontend.nav.all_products') }}</a></li>
                     @endforelse
                 </ul>
             </div>
 
             <!-- Services Column -->
             <div data-aos="fade-up" data-aos-delay="300">
-                <h3 class="text-sm font-semibold uppercase tracking-wider text-neutral-400 mb-6">Services</h3>
+                <h3 class="text-sm font-semibold uppercase tracking-wider text-neutral-400 mb-6">{{ __('frontend.footer.services') }}</h3>
                 <ul class="space-y-4">
                     @php
                         $footerServices = \App\Models\Service::published()->take(5)->get();
@@ -79,20 +79,20 @@
                             </a>
                         </li>
                     @empty
-                        <li><a href="{{ route('services.index') }}" class="text-neutral-300 hover:text-white transition-colors hover:translate-x-1 inline-block">All Services</a></li>
+                        <li><a href="{{ route('services.index') }}" class="text-neutral-300 hover:text-white transition-colors hover:translate-x-1 inline-block">{{ __('frontend.nav.all_services') }}</a></li>
                     @endforelse
                 </ul>
             </div>
 
             <!-- Company Column -->
             <div data-aos="fade-up" data-aos-delay="400">
-                <h3 class="text-sm font-semibold uppercase tracking-wider text-neutral-400 mb-6">Company</h3>
+                <h3 class="text-sm font-semibold uppercase tracking-wider text-neutral-400 mb-6">{{ __('frontend.footer.company') }}</h3>
                 <ul class="space-y-4">
-                    <li><a href="{{ route('about') }}" class="text-neutral-300 hover:text-white transition-colors hover:translate-x-1 inline-block">About Us</a></li>
-                    <li><a href="{{ route('portfolio') }}" class="text-neutral-300 hover:text-white transition-colors hover:translate-x-1 inline-block">Portfolio</a></li>
-                    <li><a href="{{ route('blog.index') }}" class="text-neutral-300 hover:text-white transition-colors hover:translate-x-1 inline-block">Blog</a></li>
-                    <li><a href="{{ route('contact.index') }}" class="text-neutral-300 hover:text-white transition-colors hover:translate-x-1 inline-block">Contact</a></li>
-                    <li><a href="{{ route('pricing') }}" class="text-neutral-300 hover:text-white transition-colors hover:translate-x-1 inline-block">Pricing</a></li>
+                    <li><a href="{{ route('about') }}" class="text-neutral-300 hover:text-white transition-colors hover:translate-x-1 inline-block">{{ __('frontend.footer.about_us') }}</a></li>
+                    <li><a href="{{ route('portfolio') }}" class="text-neutral-300 hover:text-white transition-colors hover:translate-x-1 inline-block">{{ __('frontend.nav.portfolio') }}</a></li>
+                    <li><a href="{{ route('blog.index') }}" class="text-neutral-300 hover:text-white transition-colors hover:translate-x-1 inline-block">{{ __('frontend.nav.blog') }}</a></li>
+                    <li><a href="{{ route('contact.index') }}" class="text-neutral-300 hover:text-white transition-colors hover:translate-x-1 inline-block">{{ __('frontend.footer.contact') }}</a></li>
+                    <li><a href="{{ route('pricing') }}" class="text-neutral-300 hover:text-white transition-colors hover:translate-x-1 inline-block">{{ __('frontend.footer.pricing') }}</a></li>
                 </ul>
 
                 <!-- Contact Info -->
@@ -119,17 +119,17 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
             <div class="flex flex-col md:flex-row items-center justify-between gap-4" data-aos="fade-up">
                 <p class="text-sm text-neutral-400">
-                    © {{ date('Y') }} appKotha. All rights reserved.
+                    © {{ date('Y') }} appKotha. {{ __('frontend.footer.all_rights_reserved') }}
                 </p>
                 <div class="flex items-center gap-6">
                     @if($siteSettings['company']['privacy_policy_url'] ?? null)
-                    <a href="{{ $siteSettings['company']['privacy_policy_url'] }}" class="text-sm text-neutral-400 hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="{{ $siteSettings['company']['privacy_policy_url'] }}" class="text-sm text-neutral-400 hover:text-white transition-colors">{{ __('frontend.footer.privacy_policy') }}</a>
                     @endif
                     @if($siteSettings['company']['terms_url'] ?? null)
-                    <a href="{{ $siteSettings['company']['terms_url'] }}" class="text-sm text-neutral-400 hover:text-white transition-colors">Terms of Service</a>
+                    <a href="{{ $siteSettings['company']['terms_url'] }}" class="text-sm text-neutral-400 hover:text-white transition-colors">{{ __('frontend.footer.terms') }}</a>
                     @endif
                     @if($siteSettings['company']['refund_policy_url'] ?? null)
-                    <a href="{{ $siteSettings['company']['refund_policy_url'] }}" class="text-sm text-neutral-400 hover:text-white transition-colors">Refund Policy</a>
+                    <a href="{{ $siteSettings['company']['refund_policy_url'] }}" class="text-sm text-neutral-400 hover:text-white transition-colors">{{ __('frontend.footer.refund') }}</a>
                     @endif
                 </div>
             </div>

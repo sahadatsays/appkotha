@@ -6,10 +6,10 @@
         {{-- Section Header --}}
         <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
             <h2 class="text-3xl lg:text-4xl font-bold text-neutral-900 dark:text-white mb-4">
-                Two Ways to Work With Us
+                {{ __('frontend.home.two_ways_title') }}
             </h2>
             <p class="text-lg text-neutral-600 dark:text-neutral-400">
-                Choose ready-to-deploy products for instant solutions, or partner with us for custom development tailored to your needs.
+                {{ __('frontend.home.two_ways_subtitle') }}
             </p>
         </div>
 
@@ -21,7 +21,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
                     </svg>
                 </div>
-                <h3 class="text-2xl font-bold text-neutral-900 dark:text-white mb-3">Digital Products</h3>
+                <h3 class="text-2xl font-bold text-neutral-900 dark:text-white mb-3">{{ __('frontend.home.digital_products') }}</h3>
                 <p class="text-neutral-600 dark:text-neutral-400 mb-8">
                     Production-ready software solutions. Purchase once, deploy instantly, own forever. No recurring fees, lifetime updates included.
                 </p>
@@ -74,7 +74,7 @@
                 @endif
 
                 <a href="{{ route('products.index') }}" class="btn-shine inline-flex items-center gap-2 w-full justify-center px-6 py-3 bg-primary-500 text-white font-semibold rounded-xl hover:bg-primary-600 transition-all hover:-translate-y-0.5">
-                    View All Products
+                    {{ __('frontend.home.view_all_products') }}
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
                     </svg>
@@ -88,7 +88,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
                     </svg>
                 </div>
-                <h3 class="text-2xl font-bold text-neutral-900 dark:text-white mb-3">Custom Development</h3>
+                <h3 class="text-2xl font-bold text-neutral-900 dark:text-white mb-3">{{ __('frontend.home.custom_development') }}</h3>
                 <p class="text-neutral-600 dark:text-neutral-400 mb-8">
                     Bespoke solutions built for your unique requirements. From MVPs to enterprise systems, we bring your vision to life.
                 </p>
@@ -149,7 +149,7 @@
                 @endif
 
                 <a href="{{ route('contact.quote') }}" class="btn-shine inline-flex items-center gap-2 w-full justify-center px-6 py-3 bg-accent-500 text-white font-semibold rounded-xl hover:bg-accent-600 transition-all hover:-translate-y-0.5">
-                    Get Free Quote
+                    {{ __('frontend.home.get_free_quote') }}
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
                     </svg>

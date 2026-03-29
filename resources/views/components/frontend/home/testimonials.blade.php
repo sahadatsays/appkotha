@@ -6,10 +6,10 @@
         {{-- Section Header --}}
         <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
             <h2 class="text-3xl lg:text-4xl font-bold text-white mb-4">
-                What Our Clients Say
+                {{ __('frontend.home.testimonials_title') }}
             </h2>
             <p class="text-lg text-neutral-400">
-                Don't just take our word for it. Hear from businesses we've helped succeed.
+                {{ __('frontend.home.testimonials_subtitle') }}
             </p>
         </div>
 
@@ -48,7 +48,7 @@
                             <p class="text-sm text-neutral-400">
                                 {{ $testimonial->position }}
                                 @if($testimonial->company)
-                                    at {{ $testimonial->company }}
+                                    {{ __('frontend.home.at') }} {{ $testimonial->company }}
                                 @endif
                             </p>
                         </div>
