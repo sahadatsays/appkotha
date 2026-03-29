@@ -14,7 +14,10 @@ class ServiceController extends Controller
         $query = Service::query();
 
         if ($request->filled('search')) {
-            $query->where('name', 'like', '%' . $request->search . '%');
+            $query->where(function ($builder) use ($request) {
+                $builder->where('name_en', 'like', '%'.$request->search.'%')
+                    ->orWhere('name_bn', 'like', '%'.$request->search.'%');
+            });
         }
 
         if ($request->filled('status')) {
@@ -34,24 +37,30 @@ class ServiceController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'name' => 'required|string|max:255',
+            'name_en' => 'required|string|max:255',
+            'name_bn' => 'nullable|string|max:255',
             'slug' => 'nullable|string|max:255|unique:services,slug',
-            'tagline' => 'nullable|string|max:255',
-            'short_description' => 'nullable|string|max:500',
-            'description' => 'nullable|string',
+            'tagline_en' => 'nullable|string|max:255',
+            'tagline_bn' => 'nullable|string|max:255',
+            'short_description_en' => 'nullable|string|max:500',
+            'short_description_bn' => 'nullable|string|max:500',
+            'description_en' => 'nullable|string',
+            'description_bn' => 'nullable|string',
             'process_steps' => 'nullable|array',
             'starting_price' => 'nullable|numeric|min:0',
             'icon' => 'nullable|string|max:255',
             'image' => 'nullable|image|max:2048',
             'is_published' => 'boolean',
             'is_featured' => 'boolean',
-            'meta_title' => 'nullable|string|max:255',
-            'meta_description' => 'nullable|string|max:255',
+            'meta_title_en' => 'nullable|string|max:255',
+            'meta_title_bn' => 'nullable|string|max:255',
+            'meta_description_en' => 'nullable|string|max:255',
+            'meta_description_bn' => 'nullable|string|max:255',
             'sort_order' => 'nullable|integer',
         ]);
 
         if (empty($validated['slug'])) {
-            $validated['slug'] = Str::slug($validated['name']);
+            $validated['slug'] = Str::slug($validated['name_en']);
         }
 
         if ($request->hasFile('image')) {
@@ -59,6 +68,12 @@ class ServiceController extends Controller
         }
 
         $validated['process_steps'] = $this->parseProcessSteps($request->input('process_steps_text'));
+        $validated['name'] = $validated['name_en'];
+        $validated['tagline'] = $validated['tagline_en'] ?? null;
+        $validated['short_description'] = $validated['short_description_en'] ?? null;
+        $validated['description'] = $validated['description_en'] ?? null;
+        $validated['meta_title'] = $validated['meta_title_en'] ?? null;
+        $validated['meta_description'] = $validated['meta_description_en'] ?? null;
 
         Service::create($validated);
 
@@ -74,24 +89,30 @@ class ServiceController extends Controller
     public function update(Request $request, Service $service)
     {
         $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'slug' => 'nullable|string|max:255|unique:services,slug,' . $service->id,
-            'tagline' => 'nullable|string|max:255',
-            'short_description' => 'nullable|string|max:500',
-            'description' => 'nullable|string',
+            'name_en' => 'required|string|max:255',
+            'name_bn' => 'nullable|string|max:255',
+            'slug' => 'nullable|string|max:255|unique:services,slug,'.$service->id,
+            'tagline_en' => 'nullable|string|max:255',
+            'tagline_bn' => 'nullable|string|max:255',
+            'short_description_en' => 'nullable|string|max:500',
+            'short_description_bn' => 'nullable|string|max:500',
+            'description_en' => 'nullable|string',
+            'description_bn' => 'nullable|string',
             'process_steps' => 'nullable|array',
             'starting_price' => 'nullable|numeric|min:0',
             'icon' => 'nullable|string|max:255',
             'image' => 'nullable|image|max:2048',
             'is_published' => 'boolean',
             'is_featured' => 'boolean',
-            'meta_title' => 'nullable|string|max:255',
-            'meta_description' => 'nullable|string|max:255',
+            'meta_title_en' => 'nullable|string|max:255',
+            'meta_title_bn' => 'nullable|string|max:255',
+            'meta_description_en' => 'nullable|string|max:255',
+            'meta_description_bn' => 'nullable|string|max:255',
             'sort_order' => 'nullable|integer',
         ]);
 
         if (empty($validated['slug'])) {
-            $validated['slug'] = Str::slug($validated['name']);
+            $validated['slug'] = Str::slug($validated['name_en']);
         }
 
         if ($request->hasFile('image')) {
@@ -101,6 +122,12 @@ class ServiceController extends Controller
         $validated['process_steps'] = $this->parseProcessSteps($request->input('process_steps_text'));
         $validated['is_published'] = $request->boolean('is_published');
         $validated['is_featured'] = $request->boolean('is_featured');
+        $validated['name'] = $validated['name_en'];
+        $validated['tagline'] = $validated['tagline_en'] ?? null;
+        $validated['short_description'] = $validated['short_description_en'] ?? null;
+        $validated['description'] = $validated['description_en'] ?? null;
+        $validated['meta_title'] = $validated['meta_title_en'] ?? null;
+        $validated['meta_description'] = $validated['meta_description_en'] ?? null;
 
         $service->update($validated);
 
@@ -118,7 +145,7 @@ class ServiceController extends Controller
 
     public function togglePublish(Service $service)
     {
-        $service->update(['is_published' => !$service->is_published]);
+        $service->update(['is_published' => ! $service->is_published]);
 
         return back()->with('success', 'Service status updated.');
     }
