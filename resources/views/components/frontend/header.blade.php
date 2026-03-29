@@ -80,6 +80,8 @@
 
             <!-- Desktop CTA Buttons -->
             <div class="hidden lg:flex items-center gap-4">
+                <x-language-switcher />
+
                 <!-- Theme Toggle -->
                 <div class="relative" x-data="{ open: false }">
                     <button @click="open = !open" class="p-2 rounded-lg text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors" aria-label="Toggle theme">
@@ -217,6 +219,10 @@
                     <span class="bg-primary-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">{{ $cartCount }}</span>
                 @endif
             </a>
+
+            <div class="px-4 py-3">
+                <x-language-switcher class="w-full justify-center" />
+            </div>
         </nav>
         <div class="p-4 border-t border-neutral-100 dark:border-neutral-800 space-y-3">
             @auth

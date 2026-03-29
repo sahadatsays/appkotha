@@ -182,6 +182,8 @@
                     </div>
 
                     <div class="flex items-center space-x-4">
+                        <x-language-switcher />
+
                         <!-- User Dropdown -->
                         <div x-data="{ open: false }" class="relative">
                             <button @click="open = !open" class="flex items-center space-x-2 text-gray-700 hover:text-gray-900">
