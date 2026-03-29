@@ -2,20 +2,28 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Models\Concerns\HasTranslations;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Str;
 
 class BlogPost extends Model
 {
     use HasFactory;
+    use HasTranslations;
 
     protected $fillable = [
         'title',
+        'title_en',
+        'title_bn',
         'slug',
         'excerpt',
+        'excerpt_en',
+        'excerpt_bn',
         'content',
+        'content_en',
+        'content_bn',
         'featured_image',
         'author_id',
         'category_id',
@@ -24,6 +32,18 @@ class BlogPost extends Model
         'published_at',
         'reading_time',
         'views',
+        'meta_title',
+        'meta_title_en',
+        'meta_title_bn',
+        'meta_description',
+        'meta_description_en',
+        'meta_description_bn',
+    ];
+
+    protected array $translatable = [
+        'title',
+        'excerpt',
+        'content',
         'meta_title',
         'meta_description',
     ];
@@ -42,7 +62,7 @@ class BlogPost extends Model
 
         static::creating(function ($post) {
             if (empty($post->slug)) {
-                $post->slug = Str::slug($post->title);
+                $post->slug = Str::slug($post->title_en ?? $post->title);
             }
 
             // Calculate reading time

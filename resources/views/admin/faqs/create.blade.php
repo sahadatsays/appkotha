@@ -29,19 +29,29 @@
 
                     <div class="space-y-4">
                         <div>
-                            <label for="question" class="block text-sm font-medium text-gray-700">Question *</label>
-                            <input type="text" name="question" id="question" value="{{ old('question') }}" required
+                            <label for="question_en" class="block text-sm font-medium text-gray-700">Question (English) *</label>
+                            <input type="text" name="question_en" id="question_en" value="{{ old('question_en') }}" required
                                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                                 placeholder="What is your question?">
-                            @error('question') <p class="mt-1 text-sm text-red-600">{{ $message }}</p> @enderror
+                            @error('question_en') <p class="mt-1 text-sm text-red-600">{{ $message }}</p> @enderror
+                        </div>
+                        <div>
+                            <label for="question_bn" class="block text-sm font-medium text-gray-700">Question (Bangla)</label>
+                            <input type="text" name="question_bn" id="question_bn" value="{{ old('question_bn') }}"
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
                         </div>
 
                         <div>
-                            <label for="answer" class="block text-sm font-medium text-gray-700">Answer *</label>
-                            <textarea name="answer" id="answer" rows="6" required
+                            <label for="answer_en" class="block text-sm font-medium text-gray-700">Answer (English) *</label>
+                            <textarea name="answer_en" id="answer_en" rows="6" required
                                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                                placeholder="Provide a detailed answer...">{{ old('answer') }}</textarea>
-                            @error('answer') <p class="mt-1 text-sm text-red-600">{{ $message }}</p> @enderror
+                                placeholder="Provide a detailed answer...">{{ old('answer_en') }}</textarea>
+                            @error('answer_en') <p class="mt-1 text-sm text-red-600">{{ $message }}</p> @enderror
+                        </div>
+                        <div>
+                            <label for="answer_bn" class="block text-sm font-medium text-gray-700">Answer (Bangla)</label>
+                            <textarea name="answer_bn" id="answer_bn" rows="6"
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">{{ old('answer_bn') }}</textarea>
                         </div>
                     </div>
                 </div>

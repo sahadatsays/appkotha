@@ -3,6 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\StoreBlogCategoryRequest;
+use App\Http\Requests\Admin\StoreBlogPostRequest;
+use App\Http\Requests\Admin\UpdateBlogCategoryRequest;
+use App\Http\Requests\Admin\UpdateBlogPostRequest;
 use App\Models\BlogCategory;
 use App\Models\BlogPost;
 use Illuminate\Http\Request;
@@ -15,7 +19,10 @@ class BlogController extends Controller
         $query = BlogPost::with(['category', 'author']);
 
         if ($request->filled('search')) {
-            $query->where('title', 'like', '%' . $request->search . '%');
+            $query->where(function ($builder) use ($request) {
+                $builder->where('title_en', 'like', '%'.$request->search.'%')
+                    ->orWhere('title_bn', 'like', '%'.$request->search.'%');
+            });
         }
 
         if ($request->filled('category')) {
@@ -27,36 +34,24 @@ class BlogController extends Controller
         }
 
         $posts = $query->orderBy('created_at', 'desc')->paginate(15);
-        $categories = BlogCategory::orderBy('name')->get();
+        $categories = BlogCategory::orderBy('name_en')->get();
 
         return view('admin.blog.index', compact('posts', 'categories'));
     }
 
     public function create()
     {
-        $categories = BlogCategory::orderBy('name')->get();
+        $categories = BlogCategory::orderBy('name_en')->get();
 
         return view('admin.blog.create', compact('categories'));
     }
 
-    public function store(Request $request)
+    public function store(StoreBlogPostRequest $request)
     {
-        $validated = $request->validate([
-            'title' => 'required|string|max:255',
-            'slug' => 'nullable|string|max:255|unique:blog_posts,slug',
-            'excerpt' => 'nullable|string|max:500',
-            'content' => 'required|string',
-            'featured_image' => 'nullable|image|max:2048',
-            'category_id' => 'nullable|exists:blog_categories,id',
-            'is_published' => 'boolean',
-            'is_featured' => 'boolean',
-            'published_at' => 'nullable|date',
-            'meta_title' => 'nullable|string|max:255',
-            'meta_description' => 'nullable|string|max:255',
-        ]);
+        $validated = $request->validated();
 
         if (empty($validated['slug'])) {
-            $validated['slug'] = Str::slug($validated['title']);
+            $validated['slug'] = Str::slug($validated['title_en']);
         }
 
         if ($request->hasFile('featured_image')) {
@@ -64,6 +59,13 @@ class BlogController extends Controller
         }
 
         $validated['author_id'] = auth()->id();
+        $validated['title'] = $validated['title_en'];
+        $validated['excerpt'] = $validated['excerpt_en'] ?? null;
+        $validated['content'] = $validated['content_en'];
+        $validated['meta_title'] = $validated['meta_title_en'] ?? null;
+        $validated['meta_description'] = $validated['meta_description_en'] ?? null;
+        $validated['is_published'] = $request->boolean('is_published');
+        $validated['is_featured'] = $request->boolean('is_featured');
 
         if ($request->boolean('is_published') && empty($validated['published_at'])) {
             $validated['published_at'] = now();
@@ -82,34 +84,27 @@ class BlogController extends Controller
         return view('admin.blog.edit', compact('post', 'categories'));
     }
 
-    public function update(Request $request, BlogPost $post)
+    public function update(UpdateBlogPostRequest $request, BlogPost $post)
     {
-        $validated = $request->validate([
-            'title' => 'required|string|max:255',
-            'slug' => 'nullable|string|max:255|unique:blog_posts,slug,' . $post->id,
-            'excerpt' => 'nullable|string|max:500',
-            'content' => 'required|string',
-            'featured_image' => 'nullable|image|max:2048',
-            'category_id' => 'nullable|exists:blog_categories,id',
-            'is_published' => 'boolean',
-            'is_featured' => 'boolean',
-            'published_at' => 'nullable|date',
-            'meta_title' => 'nullable|string|max:255',
-            'meta_description' => 'nullable|string|max:255',
-        ]);
+        $validated = $request->validated();
 
         if (empty($validated['slug'])) {
-            $validated['slug'] = Str::slug($validated['title']);
+            $validated['slug'] = Str::slug($validated['title_en']);
         }
 
         if ($request->hasFile('featured_image')) {
             $validated['featured_image'] = $request->file('featured_image')->store('blog', 'public');
         }
 
+        $validated['title'] = $validated['title_en'];
+        $validated['excerpt'] = $validated['excerpt_en'] ?? null;
+        $validated['content'] = $validated['content_en'];
+        $validated['meta_title'] = $validated['meta_title_en'] ?? null;
+        $validated['meta_description'] = $validated['meta_description_en'] ?? null;
         $validated['is_published'] = $request->boolean('is_published');
         $validated['is_featured'] = $request->boolean('is_featured');
 
-        if ($validated['is_published'] && !$post->is_published && empty($validated['published_at'])) {
+        if ($validated['is_published'] && ! $post->is_published && empty($validated['published_at'])) {
             $validated['published_at'] = now();
         }
 
@@ -130,8 +125,8 @@ class BlogController extends Controller
     public function togglePublish(BlogPost $post)
     {
         $post->update([
-            'is_published' => !$post->is_published,
-            'published_at' => !$post->is_published ? now() : $post->published_at,
+            'is_published' => ! $post->is_published,
+            'published_at' => ! $post->is_published ? now() : $post->published_at,
         ]);
 
         return back()->with('success', 'Post status updated.');
@@ -140,39 +135,37 @@ class BlogController extends Controller
     // Categories Management
     public function categories()
     {
-        $categories = BlogCategory::withCount('posts')->orderBy('name')->get();
+        $categories = BlogCategory::withCount('posts')->orderBy('name_en')->get();
 
         return view('admin.blog.categories', compact('categories'));
     }
 
-    public function storeCategory(Request $request)
+    public function storeCategory(StoreBlogCategoryRequest $request)
     {
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'slug' => 'nullable|string|max:255|unique:blog_categories,slug',
-            'description' => 'nullable|string|max:500',
-        ]);
+        $validated = $request->validated();
 
         if (empty($validated['slug'])) {
-            $validated['slug'] = Str::slug($validated['name']);
+            $validated['slug'] = Str::slug($validated['name_en']);
         }
+
+        $validated['name'] = $validated['name_en'];
+        $validated['description'] = $validated['description_en'] ?? null;
 
         BlogCategory::create($validated);
 
         return back()->with('success', 'Category created successfully.');
     }
 
-    public function updateCategory(Request $request, BlogCategory $category)
+    public function updateCategory(UpdateBlogCategoryRequest $request, BlogCategory $category)
     {
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'slug' => 'nullable|string|max:255|unique:blog_categories,slug,' . $category->id,
-            'description' => 'nullable|string|max:500',
-        ]);
+        $validated = $request->validated();
 
         if (empty($validated['slug'])) {
-            $validated['slug'] = Str::slug($validated['name']);
+            $validated['slug'] = Str::slug($validated['name_en']);
         }
+
+        $validated['name'] = $validated['name_en'];
+        $validated['description'] = $validated['description_en'] ?? null;
 
         $category->update($validated);
 
