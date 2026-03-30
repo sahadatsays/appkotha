@@ -177,16 +177,19 @@
     </nav>
 
     <!-- Mobile Menu -->
-    <div id="mobile-menu" class="fixed top-0 right-0 bottom-0 w-[90vw] max-w-sm bg-white dark:bg-neutral-900 shadow-2xl z-50 transform translate-x-full transition-transform duration-300 lg:hidden overflow-y-auto">
-        <div class="p-4 border-b border-neutral-100 dark:border-neutral-800 flex items-center justify-between">
-            <span class="text-lg font-bold text-neutral-900 dark:text-white">{{ __('frontend.nav.menu') }}</span>
-            <button type="button" id="mobile-menu-close" class="p-2 -mr-2 text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white" aria-label="Close menu">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-                </svg>
-            </button>
+    <div id="mobile-menu" class="absolute top-full right-0 w-[90vw] max-w-sm h-[calc(100dvh-4rem)] bg-white dark:bg-neutral-900 shadow-2xl z-50 transform translate-x-full transition-transform duration-300 lg:hidden flex flex-col">
+        <div class="p-4 border-b border-neutral-100 dark:border-neutral-800 space-y-3">
+            <div class="flex items-center justify-between">
+                <span class="text-lg font-bold text-neutral-900 dark:text-white">{{ __('frontend.nav.menu') }}</span>
+                <button type="button" id="mobile-menu-close" class="p-2 -mr-2 text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white" aria-label="Close menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+            <x-language-switcher class="w-full justify-center" />
         </div>
-        <nav class="p-4 space-y-2">
+        <nav class="flex-1 min-h-0 overflow-y-auto p-4 space-y-2">
             <a href="{{ route('home') }}" class="block px-4 py-3 rounded-xl {{ request()->routeIs('home') ? 'bg-primary-50 dark:bg-primary-900/20 text-primary-600' : 'text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-800' }}">
                 {{ __('frontend.nav.home') }}
             </a>
@@ -219,10 +222,6 @@
                     <span class="bg-primary-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">{{ $cartCount }}</span>
                 @endif
             </a>
-
-            <div class="px-4 py-3">
-                <x-language-switcher class="w-full justify-center" />
-            </div>
         </nav>
         <div class="p-4 border-t border-neutral-100 dark:border-neutral-800 space-y-3">
             @auth

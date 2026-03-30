@@ -320,11 +320,8 @@
 
     <!-- jQuery Interactions -->
     <script>
-    if (typeof window.jQuery === 'undefined') {
-        return;
-    }
-
-    (function($) {
+    if (typeof window.jQuery !== 'undefined') {
+        (function($) {
         'use strict';
 
         // Mobile Menu
@@ -343,6 +340,7 @@
                 this.$overlay.on('click', () => this.close());
                 $(document).on('keydown', (e) => { if (e.key === 'Escape') this.close(); });
                 this.$menu.find('a').on('click', () => this.close());
+                this.$menu.find('form').on('submit', () => this.close());
             },
             open() {
                 this.$menu.removeClass('translate-x-full');
@@ -482,7 +480,8 @@
             StickyHeader.init();
             window.AppUI = { Modal, LoadingState };
         });
-    })(window.jQuery);
+        })(window.jQuery);
+    }
     </script>
 </body>
 </html>
