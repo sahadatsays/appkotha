@@ -71,7 +71,7 @@
                 </div>
 
                 {{-- Contact Form --}}
-                <div class="bg-white dark:bg-neutral-800 rounded-2xl p-8 shadow-elevated hover-lift"
+                <div class="bg-white dark:bg-neutral-800 rounded-2xl p-6 lg:p-8 shadow-elevated hover-lift"
                     data-aos="fade-left" data-aos-delay="200">
                     @if (session('success'))
                         <div

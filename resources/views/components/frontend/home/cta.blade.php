@@ -1,15 +1,15 @@
 {{-- Final CTA Section --}}
-<section class="py-20 lg:py-28 bg-gradient-to-br from-primary-500 to-primary-700 relative overflow-hidden">
+<section class="py-14 sm:py-20 lg:py-28 bg-gradient-to-br from-primary-500 to-primary-700 relative overflow-hidden">
     {{-- Background Pattern --}}
     <div class="absolute inset-0 opacity-10">
         <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 40px 40px;"></div>
     </div>
 
     <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 data-aos="fade-up" class="text-3xl lg:text-5xl font-bold text-white mb-6">
+        <h2 data-aos="fade-up" class="text-2xl sm:text-3xl lg:text-5xl font-bold text-white mb-6">
             {{ __('frontend.home.cta_title') }}
         </h2>
-        <p data-aos="fade-up" data-aos-delay="100" class="text-xl text-primary-100 mb-10 max-w-2xl mx-auto">
+        <p data-aos="fade-up" data-aos-delay="100" class="text-base sm:text-xl text-primary-100 mb-8 sm:mb-10 max-w-2xl mx-auto">
             {{ __('frontend.home.cta_subtitle') }}
         </p>
 
@@ -29,7 +29,7 @@
         </div>
 
         {{-- Trust Note --}}
-        <div data-aos="fade-up" data-aos-delay="300" class="mt-12 flex flex-wrap items-center justify-center gap-6 text-sm text-primary-200">
+        <div data-aos="fade-up" data-aos-delay="300" class="mt-10 sm:mt-12 flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs sm:text-sm text-primary-200">
             <span class="flex items-center gap-2">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>

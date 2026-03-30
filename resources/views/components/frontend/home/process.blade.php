@@ -1,5 +1,5 @@
 {{-- Our Process Section --}}
-<section class="py-20 lg:py-28 bg-white dark:bg-neutral-900">
+<section class="py-14 sm:py-20 lg:py-28 bg-white dark:bg-neutral-900">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {{-- Section Header --}}
         <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
@@ -12,7 +12,7 @@
         </div>
 
         {{-- Process Steps --}}
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {{-- Step 1 --}}
             <div class="relative" data-aos="fade-up" data-aos-delay="100">
                 <div class="flex flex-col items-center text-center">

@@ -5,7 +5,7 @@
         <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, rgba(30, 130, 255, 0.1) 1px, transparent 0); background-size: 40px 40px;"></div>
     </div>
 
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20 lg:py-32">
         <div class="max-w-4xl mx-auto text-center">
             {{-- Trust Badge --}}
             @if($siteSettings['hero']['trust_badge_text'] ?? null)
@@ -19,7 +19,7 @@
             @endif
 
             {{-- Main Headline --}}
-            <h1 data-aos="fade-up" data-aos-delay="200" class="text-4xl sm:text-5xl lg:text-6xl font-bold text-neutral-900 dark:text-white leading-tight mb-6">
+            <h1 data-aos="fade-up" data-aos-delay="200" class="text-3xl sm:text-4xl lg:text-6xl font-bold text-neutral-900 dark:text-white leading-tight mb-6">
                 {!! $siteSettings['hero']['headline'] ?? __('frontend.home.headline_default') !!}
             </h1>
 
@@ -46,49 +46,49 @@
 
             {{-- Stats Row --}}
             @if(isset($siteSettings['stats']))
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto">
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 max-w-3xl mx-auto">
                 @if($siteSettings['stats']['clients_count'] ?? null)
                 <div data-aos="zoom-in" data-aos-delay="500" class="text-center">
-                    <div class="text-3xl lg:text-4xl font-bold text-neutral-900 dark:text-white" data-counter="{{ $siteSettings['stats']['clients_count'] }}" data-suffix="{{ $siteSettings['stats']['clients_suffix'] ?? '+' }}">0</div>
+                    <div class="text-2xl sm:text-3xl lg:text-4xl font-bold text-neutral-900 dark:text-white" data-counter="{{ $siteSettings['stats']['clients_count'] }}" data-suffix="{{ $siteSettings['stats']['clients_suffix'] ?? '+' }}">0</div>
                     <div class="text-sm text-neutral-500 dark:text-neutral-400 mt-1">{{ $siteSettings['stats']['clients_label'] ?? __('frontend.home.happy_clients') }}</div>
                 </div>
                 @endif
                 @if($siteSettings['stats']['countries_count'] ?? null)
                 <div data-aos="zoom-in" data-aos-delay="600" class="text-center">
-                    <div class="text-3xl lg:text-4xl font-bold text-neutral-900 dark:text-white" data-counter="{{ $siteSettings['stats']['countries_count'] }}" data-suffix="{{ $siteSettings['stats']['countries_suffix'] ?? '+' }}">0</div>
+                    <div class="text-2xl sm:text-3xl lg:text-4xl font-bold text-neutral-900 dark:text-white" data-counter="{{ $siteSettings['stats']['countries_count'] }}" data-suffix="{{ $siteSettings['stats']['countries_suffix'] ?? '+' }}">0</div>
                     <div class="text-sm text-neutral-500 dark:text-neutral-400 mt-1">{{ $siteSettings['stats']['countries_label'] ?? __('frontend.home.countries_served') }}</div>
                 </div>
                 @endif
                 @if($siteSettings['stats']['satisfaction_count'] ?? null)
                 <div data-aos="zoom-in" data-aos-delay="700" class="text-center">
-                    <div class="text-3xl lg:text-4xl font-bold text-neutral-900 dark:text-white" data-counter="{{ $siteSettings['stats']['satisfaction_count'] }}" data-suffix="{{ $siteSettings['stats']['satisfaction_suffix'] ?? '%' }}">0</div>
+                    <div class="text-2xl sm:text-3xl lg:text-4xl font-bold text-neutral-900 dark:text-white" data-counter="{{ $siteSettings['stats']['satisfaction_count'] }}" data-suffix="{{ $siteSettings['stats']['satisfaction_suffix'] ?? '%' }}">0</div>
                     <div class="text-sm text-neutral-500 dark:text-neutral-400 mt-1">{{ $siteSettings['stats']['satisfaction_label'] ?? __('frontend.home.client_satisfaction') }}</div>
                 </div>
                 @endif
                 @if($siteSettings['stats']['support_text'] ?? null)
                 <div data-aos="zoom-in" data-aos-delay="800" class="text-center">
-                    <div class="text-3xl lg:text-4xl font-bold text-neutral-900 dark:text-white">{{ $siteSettings['stats']['support_text'] }}</div>
+                    <div class="text-2xl sm:text-3xl lg:text-4xl font-bold text-neutral-900 dark:text-white">{{ $siteSettings['stats']['support_text'] }}</div>
                     <div class="text-sm text-neutral-500 dark:text-neutral-400 mt-1">{{ $siteSettings['stats']['support_label'] ?? __('frontend.home.support_available') }}</div>
                 </div>
                 @endif
             </div>
             @else
             {{-- Default stats if no settings --}}
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto">
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 max-w-3xl mx-auto">
                 <div data-aos="zoom-in" data-aos-delay="500" class="text-center">
-                    <div class="text-3xl lg:text-4xl font-bold text-neutral-900 dark:text-white" data-counter="500" data-suffix="+">0</div>
+                    <div class="text-2xl sm:text-3xl lg:text-4xl font-bold text-neutral-900 dark:text-white" data-counter="500" data-suffix="+">0</div>
                     <div class="text-sm text-neutral-500 dark:text-neutral-400 mt-1">{{ __('frontend.home.happy_clients') }}</div>
                 </div>
                 <div data-aos="zoom-in" data-aos-delay="600" class="text-center">
-                    <div class="text-3xl lg:text-4xl font-bold text-neutral-900 dark:text-white" data-counter="50" data-suffix="+">0</div>
+                    <div class="text-2xl sm:text-3xl lg:text-4xl font-bold text-neutral-900 dark:text-white" data-counter="50" data-suffix="+">0</div>
                     <div class="text-sm text-neutral-500 dark:text-neutral-400 mt-1">{{ __('frontend.home.countries_served') }}</div>
                 </div>
                 <div data-aos="zoom-in" data-aos-delay="700" class="text-center">
-                    <div class="text-3xl lg:text-4xl font-bold text-neutral-900 dark:text-white" data-counter="99" data-suffix="%">0</div>
+                    <div class="text-2xl sm:text-3xl lg:text-4xl font-bold text-neutral-900 dark:text-white" data-counter="99" data-suffix="%">0</div>
                     <div class="text-sm text-neutral-500 dark:text-neutral-400 mt-1">{{ __('frontend.home.client_satisfaction') }}</div>
                 </div>
                 <div data-aos="zoom-in" data-aos-delay="800" class="text-center">
-                    <div class="text-3xl lg:text-4xl font-bold text-neutral-900 dark:text-white">24/7</div>
+                    <div class="text-2xl sm:text-3xl lg:text-4xl font-bold text-neutral-900 dark:text-white">24/7</div>
                     <div class="text-sm text-neutral-500 dark:text-neutral-400 mt-1">{{ __('frontend.home.support_available') }}</div>
                 </div>
             </div>

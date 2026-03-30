@@ -19,7 +19,7 @@
             <h2 class="text-3xl font-bold text-neutral-900 dark:text-white mb-12 text-center" data-aos="fade-up">Digital Products</h2>
 
             @if($products->count() > 0)
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
                     @foreach($products as $product)
                         <div class="bg-white dark:bg-neutral-800 rounded-2xl p-8 border border-neutral-200 dark:border-neutral-700 hover:border-primary-500 dark:hover:border-primary-400 hover:shadow-elevated transition-all hover-lift" data-aos="fade-up" data-aos-delay="{{ ($loop->index + 1) * 100 }}">
                             <h3 class="text-xl font-bold text-neutral-900 dark:text-white mb-3">{{ $product->name }}</h3>
@@ -65,7 +65,7 @@
                 Every project is unique. We provide custom quotes based on your specific requirements and scope.
             </p>
 
-            <div class="grid md:grid-cols-3 gap-8 mb-12">
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-12">
                 <div class="bg-white dark:bg-neutral-800 rounded-2xl p-8 border border-neutral-200 dark:border-neutral-700 hover-lift" data-aos="fade-up" data-aos-delay="100">
                     <h3 class="text-xl font-bold text-neutral-900 dark:text-white mb-4">MVP Development</h3>
                     <p class="text-neutral-600 dark:text-neutral-400 mb-6">Perfect for startups looking to validate their idea quickly.</p>
@@ -93,12 +93,11 @@
                         <li>• Priority support included</li>
                     </ul>
                 </div>
-                <div class="bg-white dark:bg-neutral-800 rounded-2xl p-8 border border-neutral-200 dark:border-neutral-700 hover-lift" data-aos="fade-up" data-aos-delay="300">
+                <div class="bg-white dark:bg-neutral-800 rounded-2xl p-8 border border-neutral-200 dark:border-neutral-700 hover-lift sm:col-span-2 lg:col-span-1" data-aos="fade-up" data-aos-delay="300">
                     <h3 class="text-xl font-bold text-neutral-900 dark:text-white mb-4">Enterprise</h3>
                     <p class="text-neutral-600 dark:text-neutral-400 mb-6">Complex systems for large organizations with specific needs.</p>
                     <div class="mb-6">
                         <span class="text-2xl font-bold text-neutral-900 dark:text-white">Custom Quote</span>
-                    </div>
                     </div>
                     <ul class="space-y-3 text-sm text-neutral-600 dark:text-neutral-400">
                         <li>• Flexible timeline</li>

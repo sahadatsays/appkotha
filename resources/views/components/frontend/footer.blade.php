@@ -1,7 +1,7 @@
 <footer class="bg-neutral-900 text-white">
     <!-- Main Footer -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
             <!-- Brand Column -->
             <div class="lg:col-span-1" data-aos="fade-up" data-aos-delay="100">
                 <a href="{{ route('home') }}" class="flex items-center gap-2 mb-6 group">
@@ -117,8 +117,8 @@
     <!-- Bottom Bar -->
     <div class="border-t border-neutral-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-            <div class="flex flex-col md:flex-row items-center justify-between gap-4" data-aos="fade-up">
-                <p class="text-sm text-neutral-400">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6" data-aos="fade-up">
+                <p class="text-sm text-neutral-400 text-center md:text-left">
                     © {{ date('Y') }} appKotha. {{ __('frontend.footer.all_rights_reserved') }}
                 </p>
                 <div class="flex items-center gap-6">

@@ -19,7 +19,7 @@
                     <div class="lg:col-span-2 space-y-4" data-aos="fade-up" data-aos-delay="100">
                         @foreach($cart['items'] as $item)
                             <div class="bg-white dark:bg-neutral-800 rounded-2xl p-6 shadow-soft dark:shadow-none dark:border dark:border-neutral-700 hover-lift" id="cart-item-{{ $item['id'] }}">
-                                <div class="flex gap-6">
+                                <div class="flex gap-4 sm:gap-6">
                                     {{-- Product Image --}}
                                     <div class="w-24 h-24 bg-neutral-100 dark:bg-neutral-700 rounded-xl flex-shrink-0 overflow-hidden">
                                         @if($item['image'])
@@ -87,7 +87,7 @@
 
                     {{-- Order Summary --}}
                     <div class="lg:col-span-1" data-aos="fade-up" data-aos-delay="200">
-                        <div class="bg-white dark:bg-neutral-800 rounded-2xl p-6 shadow-soft dark:shadow-none dark:border dark:border-neutral-700 sticky top-24">
+                        <div class="bg-white dark:bg-neutral-800 rounded-2xl p-6 shadow-soft dark:shadow-none dark:border dark:border-neutral-700 lg:sticky lg:top-24">
                             <h2 class="text-xl font-bold text-neutral-900 dark:text-white mb-6">Order Summary</h2>
 
                             <div class="space-y-4 mb-6">

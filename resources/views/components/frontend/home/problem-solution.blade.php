@@ -1,5 +1,5 @@
 {{-- Problem / Solution Section --}}
-<section class="py-20 lg:py-28 bg-white dark:bg-neutral-900">
+<section class="py-14 sm:py-20 lg:py-28 bg-white dark:bg-neutral-900">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             {{-- Problem Side --}}
@@ -14,7 +14,7 @@
                     {{ __('frontend.home.challenge_title') }}
                 </h2>
                 <div class="space-y-4">
-                    <div class="flex items-start gap-4 hover:translate-x-2 transition-transform duration-300">
+                    <div class="flex items-start gap-4 md:hover:translate-x-2 transition-transform duration-300">
                         <div class="shrink-0 w-6 h-6 rounded-full bg-red-100 dark:bg-red-900/50 flex items-center justify-center mt-0.5">
                             <svg class="w-4 h-4 text-red-500 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
@@ -22,7 +22,7 @@
                         </div>
                         <p class="text-neutral-600 dark:text-neutral-400">Western agencies charge $150-300/hour for basic development work</p>
                     </div>
-                    <div class="flex items-start gap-4 hover:translate-x-2 transition-transform duration-300">
+                    <div class="flex items-start gap-4 md:hover:translate-x-2 transition-transform duration-300">
                         <div class="shrink-0 w-6 h-6 rounded-full bg-red-100 dark:bg-red-900/50 flex items-center justify-center mt-0.5">
                             <svg class="w-4 h-4 text-red-500 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
@@ -30,7 +30,7 @@
                         </div>
                         <p class="text-neutral-600 dark:text-neutral-400">Freelancers disappear mid-project or deliver subpar quality</p>
                     </div>
-                    <div class="flex items-start gap-4 hover:translate-x-2 transition-transform duration-300">
+                    <div class="flex items-start gap-4 md:hover:translate-x-2 transition-transform duration-300">
                         <div class="shrink-0 w-6 h-6 rounded-full bg-red-100 dark:bg-red-900/50 flex items-center justify-center mt-0.5">
                             <svg class="w-4 h-4 text-red-500 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
@@ -38,7 +38,7 @@
                         </div>
                         <p class="text-neutral-600 dark:text-neutral-400">Off-the-shelf solutions don't fit your unique business needs</p>
                     </div>
-                    <div class="flex items-start gap-4 hover:translate-x-2 transition-transform duration-300">
+                    <div class="flex items-start gap-4 md:hover:translate-x-2 transition-transform duration-300">
                         <div class="shrink-0 w-6 h-6 rounded-full bg-red-100 dark:bg-red-900/50 flex items-center justify-center mt-0.5">
                             <svg class="w-4 h-4 text-red-500 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
@@ -50,7 +50,7 @@
             </div>
 
             {{-- Solution Side --}}
-            <div class="bg-gradient-to-br from-primary-50 to-white dark:from-primary-900/20 dark:to-neutral-800 rounded-3xl p-8 lg:p-10 border border-primary-100 dark:border-primary-800/50 hover-lift" data-aos="fade-left" data-aos-delay="200">
+            <div class="bg-gradient-to-br from-primary-50 to-white dark:from-primary-900/20 dark:to-neutral-800 rounded-3xl p-6 sm:p-8 lg:p-10 border border-primary-100 dark:border-primary-800/50 hover-lift" data-aos="fade-left" data-aos-delay="200">
                 <div class="inline-flex items-center gap-2 px-3 py-1 bg-primary-100 dark:bg-primary-900/50 text-primary-600 dark:text-primary-400 rounded-full text-sm font-medium mb-6">
                     <svg class="w-4 h-4 animate-bounce-soft" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
@@ -61,7 +61,7 @@
                     {{ __('frontend.home.solution_title') }}
                 </h3>
                 <div class="space-y-4">
-                    <div class="flex items-start gap-4 hover:translate-x-2 transition-transform duration-300">
+                    <div class="flex items-start gap-4 md:hover:translate-x-2 transition-transform duration-300">
                         <div class="shrink-0 w-6 h-6 rounded-full bg-primary-500 flex items-center justify-center mt-0.5">
                             <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
@@ -69,7 +69,7 @@
                         </div>
                         <p class="text-neutral-700 dark:text-neutral-300"><strong>60-70% cost savings</strong> without compromising quality</p>
                     </div>
-                    <div class="flex items-start gap-4 hover:translate-x-2 transition-transform duration-300">
+                    <div class="flex items-start gap-4 md:hover:translate-x-2 transition-transform duration-300">
                         <div class="shrink-0 w-6 h-6 rounded-full bg-primary-500 flex items-center justify-center mt-0.5">
                             <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
@@ -77,7 +77,7 @@
                         </div>
                         <p class="text-neutral-700 dark:text-neutral-300"><strong>Senior developers only</strong> with 5+ years experience</p>
                     </div>
-                    <div class="flex items-start gap-4 hover:translate-x-2 transition-transform duration-300">
+                    <div class="flex items-start gap-4 md:hover:translate-x-2 transition-transform duration-300">
                         <div class="shrink-0 w-6 h-6 rounded-full bg-primary-500 flex items-center justify-center mt-0.5">
                             <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
@@ -85,7 +85,7 @@
                         </div>
                         <p class="text-neutral-700 dark:text-neutral-300"><strong>Ready-made products</strong> you can deploy today</p>
                     </div>
-                    <div class="flex items-start gap-4 hover:translate-x-2 transition-transform duration-300">
+                    <div class="flex items-start gap-4 md:hover:translate-x-2 transition-transform duration-300">
                         <div class="shrink-0 w-6 h-6 rounded-full bg-primary-500 flex items-center justify-center mt-0.5">
                             <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>

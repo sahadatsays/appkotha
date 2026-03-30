@@ -19,7 +19,7 @@
             @if($services->count() > 0)
                 <div class="grid md:grid-cols-2 gap-8">
                     @foreach($services as $service)
-                        <a href="{{ route('services.show', $service) }}" class="group bg-white dark:bg-neutral-800 rounded-2xl p-8 border border-neutral-200 dark:border-neutral-700 hover:border-primary-500 dark:hover:border-primary-400 hover:shadow-elevated transition-all hover-lift" data-aos="fade-up" data-aos-delay="{{ ($loop->index % 2 + 1) * 100 }}">
+                        <a href="{{ route('services.show', $service) }}" class="group bg-white dark:bg-neutral-800 rounded-2xl p-6 lg:p-8 border border-neutral-200 dark:border-neutral-700 hover:border-primary-500 dark:hover:border-primary-400 hover:shadow-elevated transition-all hover-lift" data-aos="fade-up" data-aos-delay="{{ ($loop->index % 2 + 1) * 100 }}">
                             <div class="w-14 h-14 bg-primary-100 dark:bg-primary-900/30 rounded-2xl flex items-center justify-center mb-6">
                                 <svg class="w-7 h-7 text-primary-600 dark:text-primary-400 animate-float" style="animation-delay: {{ $loop->index * 0.2 }}s" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>

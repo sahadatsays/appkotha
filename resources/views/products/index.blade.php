@@ -18,7 +18,7 @@
         <section class="py-12 bg-primary-50 dark:bg-primary-900/20">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="text-lg font-semibold text-primary-900 dark:text-primary-400 mb-6" data-aos="fade-up">Featured Products</h2>
-                <div class="grid md:grid-cols-3 gap-6">
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
                     @foreach($featuredProducts as $product)
                         <a href="{{ route('products.show', $product) }}" class="bg-white dark:bg-neutral-800 rounded-xl p-6 shadow-sm hover:shadow-lg transition-shadow hover-lift" data-aos="fade-up" data-aos-delay="{{ ($loop->index + 1) * 100 }}">
                             <h3 class="font-bold text-neutral-900 dark:text-white mb-2">{{ $product->name }}</h3>
@@ -58,7 +58,7 @@
                                 <p class="text-neutral-600 dark:text-neutral-400 text-sm mb-4">
                                     {{ $product->short_description }}
                                 </p>
-                                <div class="flex items-center justify-between">
+                                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
                                     @if($product->price)
                                         <span class="text-2xl font-bold text-neutral-900 dark:text-white">${{ number_format($product->price, 0) }}</span>
                                     @else
