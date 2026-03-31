@@ -12,6 +12,12 @@ class SettingsSeeder extends Seeder
      */
     public function run(): void
     {
+        if (app()->environment('production')) {
+            $this->seedProductionSettings();
+
+            return;
+        }
+
         // Company Information
         Setting::setValue('company', 'name', 'AppKotha', [
             'label' => 'Company Name',
@@ -257,5 +263,38 @@ class SettingsSeeder extends Seeder
         ]);
 
         $this->command->info('Default settings seeded successfully!');
+    }
+
+    private function seedProductionSettings(): void
+    {
+        Setting::setValue('company', 'name', env('APP_NAME', 'appKotha'), [
+            'label' => 'Company Name',
+            'description' => 'The name of your company',
+            'type' => 'text',
+            'sort_order' => 1,
+        ]);
+
+        Setting::setValue('contact', 'email', env('SEED_CONTACT_EMAIL', 'hello@appkotha.com'), [
+            'label' => 'Contact Email',
+            'description' => 'Primary contact email',
+            'type' => 'text',
+            'sort_order' => 1,
+        ]);
+
+        Setting::setValue('colors', 'primary_color', env('SEED_PRIMARY_COLOR', '#3B82F6'), [
+            'label' => 'Primary Color',
+            'description' => 'Main brand color',
+            'type' => 'color',
+            'sort_order' => 1,
+        ]);
+
+        Setting::setValue('colors', 'accent_color', env('SEED_ACCENT_COLOR', '#8B5CF6'), [
+            'label' => 'Accent Color',
+            'description' => 'Secondary accent color',
+            'type' => 'color',
+            'sort_order' => 2,
+        ]);
+
+        $this->command->info('Production settings seeded (required keys only).');
     }
 }

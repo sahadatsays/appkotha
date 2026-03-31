@@ -9,6 +9,12 @@ class ProductSeeder extends Seeder
 {
     public function run(): void
     {
+        if (app()->environment('production')) {
+            $this->command->info('Skipping ProductSeeder in production (demo data).');
+
+            return;
+        }
+
         $products = [
             [
                 'name' => 'Invoice Pro',
@@ -33,7 +39,6 @@ class ProductSeeder extends Seeder
                     'Small business invoicing',
                     'Agency project billing',
                     'Consultant fee management',
-                    'Service-based businesses'
                 ],
                 'price' => 4999.00,
                 'sale_price' => 2999.00,
@@ -85,23 +90,20 @@ class ProductSeeder extends Seeder
                 'short_description' => 'Complete e-commerce solution with local payment gateways, inventory management, and beautiful storefront.',
                 'description' => '<p>Start selling online with AppKotha E-Commerce Platform. A complete solution designed for Bangladeshi businesses to launch and grow their online stores.</p><h3>Everything You Need to Sell Online</h3><p>From product management to order fulfillment, our platform handles it all. Integrated with bKash, Nagad, SSLCommerz, and other local payment gateways.</p><h3>Built for Bangladesh</h3><p>Supports Pathao, RedX, and other local courier integrations. Calculate shipping costs automatically and track deliveries in real-time.</p>',
                 'features' => [
-                    'Beautiful, mobile-responsive storefront',
-                    'Product catalog with variants & images',
-                    'bKash, Nagad, SSLCommerz integration',
-                    'Pathao, RedX courier integration',
-                    'Inventory & stock management',
-                    'Order management & tracking',
-                    'Customer accounts & wishlists',
-                    'Discount codes & promotions',
-                    'SEO optimized for Google',
-                    'Sales analytics & reports'
+                    'Employee database management',
+                    'Attendance tracking system',
+                    'Leave management',
+                    'Payroll processing',
+                    'Performance reviews',
+                    'Document storage',
+                    'Employee self-service portal',
+                    'Custom reports',
                 ],
                 'use_cases' => [
-                    'Fashion & clothing stores',
-                    'Electronics retailers',
-                    'Grocery & food delivery',
-                    'Handicraft & artisan shops',
-                    'Any product-based business'
+                    'SME human resource management',
+                    'Factory workforce management',
+                    'Office attendance tracking',
+                    'Payroll automation',
                 ],
                 'price' => 14999.00,
                 'sale_price' => 9999.00,
@@ -126,16 +128,13 @@ class ProductSeeder extends Seeder
                     'Purchase order management',
                     'Supplier management',
                     'Stock transfer between locations',
-                    'Batch & expiry date tracking',
-                    'Stock valuation reports',
-                    'Import/export to Excel'
+                    'Comprehensive reports',
                 ],
                 'use_cases' => [
                     'Retail shop inventory',
                     'Wholesale distribution',
                     'E-commerce stock management',
-                    'Pharmacy inventory',
-                    'Manufacturing raw materials'
+                    'Manufacturing raw materials',
                 ],
                 'price' => 5999.00,
                 'sale_price' => 3999.00,
@@ -143,6 +142,37 @@ class ProductSeeder extends Seeder
                 'demo_url' => null,
                 'documentation_url' => null,
                 'icon' => 'package',
+                'is_published' => true,
+                'is_featured' => true,
+            ],
+            [
+                'name' => 'POS System',
+                'slug' => 'pos-system',
+                'tagline' => 'Point of sale for modern retail',
+                'short_description' => 'Fast, reliable point of sale system with integrated inventory and customer management.',
+                'description' => '<p>Our POS System is built for speed and reliability. Perfect for retail shops, restaurants, and service businesses.</p><h3>Fast & Reliable</h3><p>Process sales quickly with an intuitive interface. Works offline and syncs when connected.</p>',
+                'features' => [
+                    'Quick sale processing',
+                    'Multiple payment methods',
+                    'Customer loyalty program',
+                    'Receipt printing',
+                    'Daily sales reports',
+                    'Offline mode support',
+                    'Inventory integration',
+                    'Multi-terminal support',
+                ],
+                'use_cases' => [
+                    'Retail shops',
+                    'Restaurants & cafes',
+                    'Service centers',
+                    'Supermarkets',
+                ],
+                'price' => 5999.00,
+                'sale_price' => null,
+                'license_type' => 'lifetime',
+                'demo_url' => 'https://demo.appkotha.com/pos-system',
+                'documentation_url' => 'https://docs.appkotha.com/pos-system',
+                'icon' => 'credit-card',
                 'is_published' => true,
                 'is_featured' => false,
             ],
@@ -153,16 +183,14 @@ class ProductSeeder extends Seeder
                 'short_description' => 'Manage employees, attendance, leave, and payroll in one powerful system designed for Bangladesh.',
                 'description' => '<p>HR & Payroll is an all-in-one human resource management system that simplifies employee management for businesses of all sizes in Bangladesh.</p><h3>Streamline Your HR Operations</h3><p>From attendance tracking to payroll processing, HR & Payroll handles it all. Designed to comply with Bangladeshi labor laws and practices.</p><h3>Payroll Made Easy</h3><p>Calculate salaries, bonuses, deductions, and taxes automatically. Generate pay slips and maintain complete payroll records for compliance.</p>',
                 'features' => [
-                    'Employee database management',
-                    'Attendance tracking (biometric support)',
-                    'Leave management & approval',
-                    'Payroll processing with tax calculation',
-                    'Pay slip generation',
-                    'Performance reviews',
-                    'Document storage',
-                    'Employee self-service portal',
-                    'Loan & advance management',
-                    'Custom reports & analytics'
+                    'Double-entry bookkeeping',
+                    'Chart of accounts',
+                    'Bank reconciliation',
+                    'Financial statements',
+                    'Tax calculation & reports',
+                    'Multi-branch accounting',
+                    'Audit trail',
+                    'Budget management',
                 ],
                 'use_cases' => [
                     'SME human resource management',

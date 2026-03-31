@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,22 +16,26 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // Create admin user
-        User::factory()->create([
-            'name' => 'Admin User',
-            'email' => 'admin@appkotha.com',
-            'is_admin' => true,
-        ]);
+        User::query()->firstOrCreate(
+            ['email' => env('SEED_ADMIN_EMAIL', 'admin@appkotha.com')],
+            [
+                'name' => env('SEED_ADMIN_NAME', 'Admin User'),
+                'password' => Hash::make(env('SEED_ADMIN_PASSWORD', 'password')),
+                'is_admin' => true,
+            ]
+        );
 
-        // Run all seeders
-        $this->call([
-            SettingsSeeder::class,
-            FaqSeeder::class,
-            ProductSeeder::class,
-            ServiceSeeder::class,
-            BlogSeeder::class,
-            TestimonialSeeder::class,
-            CaseStudySeeder::class,
-        ]);
+        $this->call([SettingsSeeder::class]);
+
+        if (app()->environment(['local', 'testing'])) {
+            $this->call([
+                FaqSeeder::class,
+                ProductSeeder::class,
+                ServiceSeeder::class,
+                BlogSeeder::class,
+                TestimonialSeeder::class,
+                CaseStudySeeder::class,
+            ]);
+        }
     }
 }

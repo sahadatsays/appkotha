@@ -211,7 +211,7 @@
 
                     {{-- Order Summary --}}
                     <div class="lg:col-span-1" data-aos="fade-up" data-aos-delay="200">
-                        <div class="bg-white dark:bg-neutral-800 rounded-2xl p-6 shadow-soft dark:shadow-none dark:border dark:border-neutral-700 sticky top-24">
+                        <div class="bg-white dark:bg-neutral-800 rounded-2xl p-6 shadow-soft dark:shadow-none dark:border dark:border-neutral-700 lg:sticky lg:top-24">
                             <h2 class="text-xl font-bold text-neutral-900 dark:text-white mb-6">Order Summary</h2>
 
                             {{-- Cart Items --}}

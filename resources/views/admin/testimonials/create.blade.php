@@ -25,36 +25,55 @@
                     <div class="space-y-4">
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
-                                <label for="name" class="block text-sm font-medium text-gray-700">Name *</label>
-                                <input type="text" name="name" id="name" value="{{ old('name') }}" required
+                                <label for="name_en" class="block text-sm font-medium text-gray-700">Name (English) *</label>
+                                <input type="text" name="name_en" id="name_en" value="{{ old('name_en') }}" required
                                     class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
-                                @error('name') <p class="mt-1 text-sm text-red-600">{{ $message }}</p> @enderror
+                                @error('name_en') <p class="mt-1 text-sm text-red-600">{{ $message }}</p> @enderror
                             </div>
                             <div>
-                                <label for="position" class="block text-sm font-medium text-gray-700">Position</label>
-                                <input type="text" name="position" id="position" value="{{ old('position') }}" placeholder="e.g., CEO, Developer"
+                                <label for="name_bn" class="block text-sm font-medium text-gray-700">Name (Bangla)</label>
+                                <input type="text" name="name_bn" id="name_bn" value="{{ old('name_bn') }}"
                                     class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
                             </div>
                         </div>
 
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
-                                <label for="company" class="block text-sm font-medium text-gray-700">Company</label>
-                                <input type="text" name="company" id="company" value="{{ old('company') }}"
+                                <label for="position_en" class="block text-sm font-medium text-gray-700">Position (English)</label>
+                                <input type="text" name="position_en" id="position_en" value="{{ old('position_en') }}" placeholder="e.g., CEO, Developer"
                                     class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
                             </div>
                             <div>
-                                <label for="website" class="block text-sm font-medium text-gray-700">Website</label>
-                                <input type="url" name="website" id="website" value="{{ old('website') }}" placeholder="https://"
+                                <label for="position_bn" class="block text-sm font-medium text-gray-700">Position (Bangla)</label>
+                                <input type="text" name="position_bn" id="position_bn" value="{{ old('position_bn') }}"
+                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label for="company_en" class="block text-sm font-medium text-gray-700">Company (English)</label>
+                                <input type="text" name="company_en" id="company_en" value="{{ old('company_en') }}"
+                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                            </div>
+                            <div>
+                                <label for="company_bn" class="block text-sm font-medium text-gray-700">Company (Bangla)</label>
+                                <input type="text" name="company_bn" id="company_bn" value="{{ old('company_bn') }}"
                                     class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
                             </div>
                         </div>
 
                         <div>
-                            <label for="content" class="block text-sm font-medium text-gray-700">Testimonial *</label>
-                            <textarea name="content" id="content" rows="5" required
-                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">{{ old('content') }}</textarea>
-                            @error('content') <p class="mt-1 text-sm text-red-600">{{ $message }}</p> @enderror
+                            <label for="content_en" class="block text-sm font-medium text-gray-700">Testimonial (English) *</label>
+                            <textarea name="content_en" id="content_en" rows="5" required
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">{{ old('content_en') }}</textarea>
+                            @error('content_en') <p class="mt-1 text-sm text-red-600">{{ $message }}</p> @enderror
+                        </div>
+
+                        <div>
+                            <label for="content_bn" class="block text-sm font-medium text-gray-700">Testimonial (Bangla)</label>
+                            <textarea name="content_bn" id="content_bn" rows="5"
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">{{ old('content_bn') }}</textarea>
                         </div>
 
                         <div>
@@ -99,7 +118,7 @@
 
                 <div class="bg-white shadow-sm rounded-lg p-6">
                     <h2 class="text-lg font-medium text-gray-900 mb-4">Avatar</h2>
-                    <input type="file" name="avatar" id="avatar" accept="image/*"
+                    <input type="file" name="image" id="image" accept="image/*"
                         class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100">
                     <p class="mt-2 text-xs text-gray-500">Recommended: Square image, at least 100x100px</p>
                 </div>

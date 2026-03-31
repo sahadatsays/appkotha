@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\StoreServiceRequest;
+use App\Http\Requests\Admin\UpdateServiceRequest;
 use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -14,7 +16,10 @@ class ServiceController extends Controller
         $query = Service::query();
 
         if ($request->filled('search')) {
-            $query->where('name', 'like', '%' . $request->search . '%');
+            $query->where(function ($builder) use ($request) {
+                $builder->where('name_en', 'like', '%'.$request->search.'%')
+                    ->orWhere('name_bn', 'like', '%'.$request->search.'%');
+            });
         }
 
         if ($request->filled('status')) {
@@ -31,34 +36,27 @@ class ServiceController extends Controller
         return view('admin.services.create');
     }
 
-    public function store(Request $request)
+    public function store(StoreServiceRequest $request)
     {
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'slug' => 'nullable|string|max:255|unique:services,slug',
-            'tagline' => 'nullable|string|max:255',
-            'short_description' => 'nullable|string|max:500',
-            'description' => 'nullable|string',
-            'process_steps' => 'nullable|array',
-            'starting_price' => 'nullable|numeric|min:0',
-            'icon' => 'nullable|string|max:255',
-            'image' => 'nullable|image|max:2048',
-            'is_published' => 'boolean',
-            'is_featured' => 'boolean',
-            'meta_title' => 'nullable|string|max:255',
-            'meta_description' => 'nullable|string|max:255',
-            'sort_order' => 'nullable|integer',
-        ]);
+        $validated = $request->validated();
 
         if (empty($validated['slug'])) {
-            $validated['slug'] = Str::slug($validated['name']);
+            $validated['slug'] = Str::slug($validated['name_en']);
         }
 
         if ($request->hasFile('image')) {
             $validated['image'] = $request->file('image')->store('services', 'public');
         }
 
-        $validated['process_steps'] = $this->parseProcessSteps($request->input('process_steps_text'));
+        $validated['process_steps'] = $this->parseProcessSteps($request->string('process_steps_text')->toString());
+        $validated['name'] = $validated['name_en'];
+        $validated['tagline'] = $validated['tagline_en'] ?? null;
+        $validated['short_description'] = $validated['short_description_en'] ?? null;
+        $validated['description'] = $validated['description_en'] ?? null;
+        $validated['meta_title'] = $validated['meta_title_en'] ?? null;
+        $validated['meta_description'] = $validated['meta_description_en'] ?? null;
+        $validated['is_published'] = $request->boolean('is_published');
+        $validated['is_featured'] = $request->boolean('is_featured');
 
         Service::create($validated);
 
@@ -71,36 +69,27 @@ class ServiceController extends Controller
         return view('admin.services.edit', compact('service'));
     }
 
-    public function update(Request $request, Service $service)
+    public function update(UpdateServiceRequest $request, Service $service)
     {
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'slug' => 'nullable|string|max:255|unique:services,slug,' . $service->id,
-            'tagline' => 'nullable|string|max:255',
-            'short_description' => 'nullable|string|max:500',
-            'description' => 'nullable|string',
-            'process_steps' => 'nullable|array',
-            'starting_price' => 'nullable|numeric|min:0',
-            'icon' => 'nullable|string|max:255',
-            'image' => 'nullable|image|max:2048',
-            'is_published' => 'boolean',
-            'is_featured' => 'boolean',
-            'meta_title' => 'nullable|string|max:255',
-            'meta_description' => 'nullable|string|max:255',
-            'sort_order' => 'nullable|integer',
-        ]);
+        $validated = $request->validated();
 
         if (empty($validated['slug'])) {
-            $validated['slug'] = Str::slug($validated['name']);
+            $validated['slug'] = Str::slug($validated['name_en']);
         }
 
         if ($request->hasFile('image')) {
             $validated['image'] = $request->file('image')->store('services', 'public');
         }
 
-        $validated['process_steps'] = $this->parseProcessSteps($request->input('process_steps_text'));
+        $validated['process_steps'] = $this->parseProcessSteps($request->string('process_steps_text')->toString());
         $validated['is_published'] = $request->boolean('is_published');
         $validated['is_featured'] = $request->boolean('is_featured');
+        $validated['name'] = $validated['name_en'];
+        $validated['tagline'] = $validated['tagline_en'] ?? null;
+        $validated['short_description'] = $validated['short_description_en'] ?? null;
+        $validated['description'] = $validated['description_en'] ?? null;
+        $validated['meta_title'] = $validated['meta_title_en'] ?? null;
+        $validated['meta_description'] = $validated['meta_description_en'] ?? null;
 
         $service->update($validated);
 
@@ -118,7 +107,7 @@ class ServiceController extends Controller
 
     public function togglePublish(Service $service)
     {
-        $service->update(['is_published' => !$service->is_published]);
+        $service->update(['is_published' => ! $service->is_published]);
 
         return back()->with('success', 'Service status updated.');
     }

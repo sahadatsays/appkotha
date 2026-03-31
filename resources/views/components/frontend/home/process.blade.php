@@ -1,18 +1,18 @@
 {{-- Our Process Section --}}
-<section class="py-20 lg:py-28 bg-white dark:bg-neutral-900">
+<section class="py-14 sm:py-20 lg:py-28 bg-white dark:bg-neutral-900">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {{-- Section Header --}}
         <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
             <h2 class="text-3xl lg:text-4xl font-bold text-neutral-900 dark:text-white mb-4">
-                How We Work
+                {{ __('frontend.home.how_we_work') }}
             </h2>
             <p class="text-lg text-neutral-600 dark:text-neutral-400">
-                A proven process that delivers results. From initial consultation to ongoing support, we're with you every step of the way.
+                {{ __('frontend.home.how_we_work_subtitle') }}
             </p>
         </div>
 
         {{-- Process Steps --}}
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {{-- Step 1 --}}
             <div class="relative" data-aos="fade-up" data-aos-delay="100">
                 <div class="flex flex-col items-center text-center">
@@ -24,7 +24,7 @@
                             </svg>
                         </div>
                     </div>
-                    <h3 class="text-xl font-bold text-neutral-900 dark:text-white mb-2">Discovery</h3>
+                    <h3 class="text-xl font-bold text-neutral-900 dark:text-white mb-2">{{ __('frontend.home.discovery') }}</h3>
                     <p class="text-neutral-600 dark:text-neutral-400 text-sm">
                         We listen to understand your goals, challenges, and requirements in detail.
                     </p>
@@ -42,7 +42,7 @@
                             </svg>
                         </div>
                     </div>
-                    <h3 class="text-xl font-bold text-neutral-900 dark:text-white mb-2">Planning</h3>
+                    <h3 class="text-xl font-bold text-neutral-900 dark:text-white mb-2">{{ __('frontend.home.planning') }}</h3>
                     <p class="text-neutral-600 dark:text-neutral-400 text-sm">
                         Detailed proposal with timeline, milestones, and transparent pricing.
                     </p>
@@ -60,7 +60,7 @@
                             </svg>
                         </div>
                     </div>
-                    <h3 class="text-xl font-bold text-neutral-900 dark:text-white mb-2">Development</h3>
+                    <h3 class="text-xl font-bold text-neutral-900 dark:text-white mb-2">{{ __('frontend.home.development') }}</h3>
                     <p class="text-neutral-600 dark:text-neutral-400 text-sm">
                         Agile development with weekly updates and continuous feedback loops.
                     </p>
@@ -73,7 +73,7 @@
                     <div class="w-16 h-16 bg-primary-500 rounded-2xl flex items-center justify-center mb-6 hover:scale-110 transition-transform duration-300">
                         <span class="text-white text-2xl font-bold">4</span>
                     </div>
-                    <h3 class="text-xl font-bold text-neutral-900 dark:text-white mb-2">Launch & Support</h3>
+                    <h3 class="text-xl font-bold text-neutral-900 dark:text-white mb-2">{{ __('frontend.home.launch_support') }}</h3>
                     <p class="text-neutral-600 dark:text-neutral-400 text-sm">
                         Smooth deployment and ongoing maintenance to ensure long-term success.
                     </p>
@@ -84,7 +84,7 @@
         {{-- CTA --}}
         <div class="text-center mt-12">
             <a href="{{ route('contact.index') }}" class="inline-flex items-center gap-2 px-6 py-3 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 font-semibold rounded-xl hover:bg-neutral-800 dark:hover:bg-neutral-100 transition-colors">
-                Start Your Project
+                {{ __('frontend.home.start_project') }}
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
                 </svg>

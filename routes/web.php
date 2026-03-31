@@ -1,25 +1,26 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\Frontend\HomeController;
-use App\Http\Controllers\Frontend\ProductController;
-use App\Http\Controllers\Frontend\ServiceController;
-use App\Http\Controllers\Frontend\BlogController;
-use App\Http\Controllers\Frontend\ContactController;
-use App\Http\Controllers\Frontend\PageController;
-use App\Http\Controllers\Frontend\CartController;
-use App\Http\Controllers\Frontend\CheckoutController;
-use App\Http\Controllers\Frontend\DownloadController;
-use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
-use App\Http\Controllers\Admin\ProductController as AdminProductController;
-use App\Http\Controllers\Admin\ServiceController as AdminServiceController;
-use App\Http\Controllers\Admin\OrderController as AdminOrderController;
-use App\Http\Controllers\Admin\MessageController as AdminMessageController;
 use App\Http\Controllers\Admin\BlogController as AdminBlogController;
 use App\Http\Controllers\Admin\CaseStudyController as AdminCaseStudyController;
-use App\Http\Controllers\Admin\TestimonialController as AdminTestimonialController;
+use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\FaqController as AdminFaqController;
+use App\Http\Controllers\Admin\MessageController as AdminMessageController;
+use App\Http\Controllers\Admin\OrderController as AdminOrderController;
+use App\Http\Controllers\Admin\ProductController as AdminProductController;
+use App\Http\Controllers\Admin\ServiceController as AdminServiceController;
 use App\Http\Controllers\Admin\SettingController as AdminSettingController;
+use App\Http\Controllers\Admin\TestimonialController as AdminTestimonialController;
+use App\Http\Controllers\Frontend\BlogController;
+use App\Http\Controllers\Frontend\CartController;
+use App\Http\Controllers\Frontend\CheckoutController;
+use App\Http\Controllers\Frontend\ContactController;
+use App\Http\Controllers\Frontend\DownloadController;
+use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\PageController;
+use App\Http\Controllers\Frontend\ProductController;
+use App\Http\Controllers\Frontend\ServiceController;
+use App\Http\Controllers\LocaleController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,6 +31,7 @@ use Illuminate\Support\Facades\Route;
 
 // Homepage
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::post('/locale/{locale}', [LocaleController::class, 'update'])->name('locale.update');
 
 // Static Pages
 Route::get('/about', [PageController::class, 'about'])->name('about');

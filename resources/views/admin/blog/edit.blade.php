@@ -9,7 +9,7 @@
                     <svg class="w-4 h-4 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
                     </svg>
-                    <span class="ml-1 text-gray-700 font-medium">{{ Str::limit($post->title, 30) }}</span>
+                    <span class="ml-1 text-gray-700 font-medium">{{ Str::limit($post->title_en ?? $post->title, 30) }}</span>
                 </li>
             </ol>
         </nav>
@@ -25,10 +25,16 @@
                 <div class="bg-white shadow-sm rounded-lg p-6">
                     <div class="space-y-4">
                         <div>
-                            <label for="title" class="block text-sm font-medium text-gray-700">Title *</label>
-                            <input type="text" name="title" id="title" value="{{ old('title', $post->title) }}" required
+                            <label for="title_en" class="block text-sm font-medium text-gray-700">Title (English) *</label>
+                            <input type="text" name="title_en" id="title_en" value="{{ old('title_en', $post->title_en) }}" required
                                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
-                            @error('title') <p class="mt-1 text-sm text-red-600">{{ $message }}</p> @enderror
+                            @error('title_en') <p class="mt-1 text-sm text-red-600">{{ $message }}</p> @enderror
+                        </div>
+
+                        <div>
+                            <label for="title_bn" class="block text-sm font-medium text-gray-700">Title (Bangla)</label>
+                            <input type="text" name="title_bn" id="title_bn" value="{{ old('title_bn', $post->title_bn) }}"
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
                         </div>
 
                         <div>
@@ -38,16 +44,28 @@
                         </div>
 
                         <div>
-                            <label for="excerpt" class="block text-sm font-medium text-gray-700">Excerpt</label>
-                            <textarea name="excerpt" id="excerpt" rows="3"
-                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">{{ old('excerpt', $post->excerpt) }}</textarea>
+                            <label for="excerpt_en" class="block text-sm font-medium text-gray-700">Excerpt (English)</label>
+                            <textarea name="excerpt_en" id="excerpt_en" rows="3"
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">{{ old('excerpt_en', $post->excerpt_en) }}</textarea>
                         </div>
 
                         <div>
-                            <label for="content" class="block text-sm font-medium text-gray-700">Content *</label>
-                            <textarea name="content" id="content" rows="15" required
-                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">{{ old('content', $post->content) }}</textarea>
-                            @error('content') <p class="mt-1 text-sm text-red-600">{{ $message }}</p> @enderror
+                            <label for="excerpt_bn" class="block text-sm font-medium text-gray-700">Excerpt (Bangla)</label>
+                            <textarea name="excerpt_bn" id="excerpt_bn" rows="3"
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">{{ old('excerpt_bn', $post->excerpt_bn) }}</textarea>
+                        </div>
+
+                        <div>
+                            <label for="content_en" class="block text-sm font-medium text-gray-700">Content (English) *</label>
+                            <textarea name="content_en" id="content_en" rows="15" required
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">{{ old('content_en', $post->content_en) }}</textarea>
+                            @error('content_en') <p class="mt-1 text-sm text-red-600">{{ $message }}</p> @enderror
+                        </div>
+
+                        <div>
+                            <label for="content_bn" class="block text-sm font-medium text-gray-700">Content (Bangla)</label>
+                            <textarea name="content_bn" id="content_bn" rows="15"
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">{{ old('content_bn', $post->content_bn) }}</textarea>
                         </div>
                     </div>
                 </div>
@@ -56,14 +74,24 @@
                     <h2 class="text-lg font-medium text-gray-900 mb-4">SEO</h2>
                     <div class="space-y-4">
                         <div>
-                            <label for="meta_title" class="block text-sm font-medium text-gray-700">Meta Title</label>
-                            <input type="text" name="meta_title" id="meta_title" value="{{ old('meta_title', $post->meta_title) }}"
+                            <label for="meta_title_en" class="block text-sm font-medium text-gray-700">Meta Title (English)</label>
+                            <input type="text" name="meta_title_en" id="meta_title_en" value="{{ old('meta_title_en', $post->meta_title_en) }}"
                                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
                         </div>
                         <div>
-                            <label for="meta_description" class="block text-sm font-medium text-gray-700">Meta Description</label>
-                            <textarea name="meta_description" id="meta_description" rows="2"
-                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">{{ old('meta_description', $post->meta_description) }}</textarea>
+                            <label for="meta_title_bn" class="block text-sm font-medium text-gray-700">Meta Title (Bangla)</label>
+                            <input type="text" name="meta_title_bn" id="meta_title_bn" value="{{ old('meta_title_bn', $post->meta_title_bn) }}"
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                        </div>
+                        <div>
+                            <label for="meta_description_en" class="block text-sm font-medium text-gray-700">Meta Description (English)</label>
+                            <textarea name="meta_description_en" id="meta_description_en" rows="2"
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">{{ old('meta_description_en', $post->meta_description_en) }}</textarea>
+                        </div>
+                        <div>
+                            <label for="meta_description_bn" class="block text-sm font-medium text-gray-700">Meta Description (Bangla)</label>
+                            <textarea name="meta_description_bn" id="meta_description_bn" rows="2"
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">{{ old('meta_description_bn', $post->meta_description_bn) }}</textarea>
                         </div>
                     </div>
                 </div>

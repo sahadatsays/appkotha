@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\StoreFaqRequest;
+use App\Http\Requests\Admin\UpdateFaqRequest;
 use App\Models\Faq;
 use Illuminate\Http\Request;
 
@@ -13,8 +15,12 @@ class FaqController extends Controller
         $query = Faq::query();
 
         if ($request->filled('search')) {
-            $query->where('question', 'like', '%' . $request->search . '%')
-                  ->orWhere('answer', 'like', '%' . $request->search . '%');
+            $query->where(function ($builder) use ($request) {
+                $builder->where('question_en', 'like', '%'.$request->search.'%')
+                    ->orWhere('question_bn', 'like', '%'.$request->search.'%')
+                    ->orWhere('answer_en', 'like', '%'.$request->search.'%')
+                    ->orWhere('answer_bn', 'like', '%'.$request->search.'%');
+            });
         }
 
         if ($request->filled('category')) {
@@ -34,20 +40,16 @@ class FaqController extends Controller
     public function create()
     {
         $categories = Faq::getCategories();
+
         return view('admin.faqs.create', compact('categories'));
     }
 
-    public function store(Request $request)
+    public function store(StoreFaqRequest $request)
     {
-        $validated = $request->validate([
-            'question' => 'required|string|max:500',
-            'answer' => 'required|string|max:5000',
-            'category' => 'nullable|string|max:100',
-            'is_published' => 'boolean',
-            'is_featured' => 'boolean',
-            'sort_order' => 'nullable|integer',
-        ]);
+        $validated = $request->validated();
 
+        $validated['question'] = $validated['question_en'];
+        $validated['answer'] = $validated['answer_en'];
         $validated['is_published'] = $request->boolean('is_published');
         $validated['is_featured'] = $request->boolean('is_featured');
 
@@ -60,20 +62,16 @@ class FaqController extends Controller
     public function edit(Faq $faq)
     {
         $categories = Faq::getCategories();
+
         return view('admin.faqs.edit', compact('faq', 'categories'));
     }
 
-    public function update(Request $request, Faq $faq)
+    public function update(UpdateFaqRequest $request, Faq $faq)
     {
-        $validated = $request->validate([
-            'question' => 'required|string|max:500',
-            'answer' => 'required|string|max:5000',
-            'category' => 'nullable|string|max:100',
-            'is_published' => 'boolean',
-            'is_featured' => 'boolean',
-            'sort_order' => 'nullable|integer',
-        ]);
+        $validated = $request->validated();
 
+        $validated['question'] = $validated['question_en'];
+        $validated['answer'] = $validated['answer_en'];
         $validated['is_published'] = $request->boolean('is_published');
         $validated['is_featured'] = $request->boolean('is_featured');
 
@@ -93,7 +91,7 @@ class FaqController extends Controller
 
     public function togglePublish(Faq $faq)
     {
-        $faq->update(['is_published' => !$faq->is_published]);
+        $faq->update(['is_published' => ! $faq->is_published]);
 
         return back()->with('success', 'FAQ status updated.');
     }

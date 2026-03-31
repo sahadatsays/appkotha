@@ -200,7 +200,7 @@
 
     @stack('styles')
 </head>
-<body class="font-sans antialiased bg-white dark:bg-neutral-900 text-neutral-800 dark:text-neutral-100 transition-colors duration-200">
+<body class="font-sans antialiased overflow-x-hidden bg-white dark:bg-neutral-900 text-neutral-800 dark:text-neutral-100 transition-colors duration-200">
     <!-- Skip to main content for accessibility -->
     <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-primary-500 text-white px-4 py-2 rounded-lg z-50">
         Skip to main content
@@ -253,28 +253,36 @@
         });
     </script>
     <script>
-        // Mobile menu toggle
         document.addEventListener('DOMContentLoaded', function() {
-            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-            const mobileMenu = document.getElementById('mobile-menu');
-            const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
-            const mobileMenuClose = document.getElementById('mobile-menu-close');
+            if (typeof window.jQuery === 'undefined') {
+                const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+                const mobileMenu = document.getElementById('mobile-menu');
+                const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+                const mobileMenuClose = document.getElementById('mobile-menu-close');
 
-            function openMobileMenu() {
-                mobileMenu?.classList.remove('translate-x-full');
-                mobileMenuOverlay?.classList.remove('hidden');
-                document.body.style.overflow = 'hidden';
+                const openMobileMenu = () => {
+                    mobileMenu?.classList.remove('translate-x-full');
+                    mobileMenuOverlay?.classList.remove('hidden');
+                    mobileMenuBtn?.setAttribute('aria-expanded', 'true');
+                    document.body.classList.add('overflow-hidden');
+                };
+
+                const closeMobileMenu = () => {
+                    mobileMenu?.classList.add('translate-x-full');
+                    mobileMenuOverlay?.classList.add('hidden');
+                    mobileMenuBtn?.setAttribute('aria-expanded', 'false');
+                    document.body.classList.remove('overflow-hidden');
+                };
+
+                mobileMenuBtn?.addEventListener('click', openMobileMenu);
+                mobileMenuClose?.addEventListener('click', closeMobileMenu);
+                mobileMenuOverlay?.addEventListener('click', closeMobileMenu);
+                document.addEventListener('keydown', (event) => {
+                    if (event.key === 'Escape') {
+                        closeMobileMenu();
+                    }
+                });
             }
-
-            function closeMobileMenu() {
-                mobileMenu?.classList.add('translate-x-full');
-                mobileMenuOverlay?.classList.add('hidden');
-                document.body.style.overflow = '';
-            }
-
-            mobileMenuBtn?.addEventListener('click', openMobileMenu);
-            mobileMenuClose?.addEventListener('click', closeMobileMenu);
-            mobileMenuOverlay?.addEventListener('click', closeMobileMenu);
 
             // Counter animation for stats
             const counters = document.querySelectorAll('[data-counter]');
@@ -312,7 +320,8 @@
 
     <!-- jQuery Interactions -->
     <script>
-    (function($) {
+    if (typeof window.jQuery !== 'undefined') {
+        (function($) {
         'use strict';
 
         // Mobile Menu
@@ -331,15 +340,18 @@
                 this.$overlay.on('click', () => this.close());
                 $(document).on('keydown', (e) => { if (e.key === 'Escape') this.close(); });
                 this.$menu.find('a').on('click', () => this.close());
+                this.$menu.find('form').on('submit', () => this.close());
             },
             open() {
                 this.$menu.removeClass('translate-x-full');
                 this.$overlay.removeClass('hidden');
+                this.$btn.attr('aria-expanded', 'true');
                 $('body').addClass('overflow-hidden');
             },
             close() {
                 this.$menu.addClass('translate-x-full');
                 this.$overlay.addClass('hidden');
+                this.$btn.attr('aria-expanded', 'false');
                 $('body').removeClass('overflow-hidden');
             }
         };
@@ -468,7 +480,8 @@
             StickyHeader.init();
             window.AppUI = { Modal, LoadingState };
         });
-    })(jQuery);
+        })(window.jQuery);
+    }
     </script>
 </body>
 </html>

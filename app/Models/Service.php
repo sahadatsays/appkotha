@@ -2,20 +2,30 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Models\Concerns\HasTranslations;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
 class Service extends Model
 {
     use HasFactory;
+    use HasTranslations;
 
     protected $fillable = [
         'name',
+        'name_en',
+        'name_bn',
         'slug',
         'tagline',
+        'tagline_en',
+        'tagline_bn',
         'short_description',
+        'short_description_en',
+        'short_description_bn',
         'description',
+        'description_en',
+        'description_bn',
         'process_steps',
         'starting_price',
         'icon',
@@ -24,8 +34,21 @@ class Service extends Model
         'is_featured',
         'published_at',
         'meta_title',
+        'meta_title_en',
+        'meta_title_bn',
         'meta_description',
+        'meta_description_en',
+        'meta_description_bn',
         'sort_order',
+    ];
+
+    protected array $translatable = [
+        'name',
+        'tagline',
+        'short_description',
+        'description',
+        'meta_title',
+        'meta_description',
     ];
 
     protected $casts = [
@@ -42,7 +65,7 @@ class Service extends Model
 
         static::creating(function ($service) {
             if (empty($service->slug)) {
-                $service->slug = Str::slug($service->name);
+                $service->slug = Str::slug($service->name_en ?? $service->name);
             }
         });
     }
@@ -68,6 +91,6 @@ class Service extends Model
 
     public function getFormattedPriceAttribute(): string
     {
-        return '৳' . number_format((float) $this->starting_price, 0);
+        return '৳'.number_format((float) $this->starting_price, 0);
     }
 }

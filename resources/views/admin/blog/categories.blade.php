@@ -20,8 +20,13 @@
             <form action="{{ route('admin.blog.categories.store') }}" method="POST" class="space-y-4">
                 @csrf
                 <div>
-                    <label for="name" class="block text-sm font-medium text-gray-700">Name *</label>
-                    <input type="text" name="name" id="name" required
+                    <label for="name_en" class="block text-sm font-medium text-gray-700">Name (English) *</label>
+                    <input type="text" name="name_en" id="name_en" required
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                </div>
+                <div>
+                    <label for="name_bn" class="block text-sm font-medium text-gray-700">Name (Bangla)</label>
+                    <input type="text" name="name_bn" id="name_bn"
                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
                 </div>
                 <div>
@@ -30,8 +35,13 @@
                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
                 </div>
                 <div>
-                    <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
-                    <textarea name="description" id="description" rows="3"
+                    <label for="description_en" class="block text-sm font-medium text-gray-700">Description (English)</label>
+                    <textarea name="description_en" id="description_en" rows="3"
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"></textarea>
+                </div>
+                <div>
+                    <label for="description_bn" class="block text-sm font-medium text-gray-700">Description (Bangla)</label>
+                    <textarea name="description_bn" id="description_bn" rows="3"
                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"></textarea>
                 </div>
                 <button type="submit" class="w-full px-4 py-2 bg-indigo-600 border border-transparent rounded-md text-sm font-medium text-white hover:bg-indigo-700">
@@ -70,7 +80,11 @@
                             @csrf
                             @method('PATCH')
                             <div>
-                                <input type="text" name="name" value="{{ $category->name }}" required
+                                <input type="text" name="name_en" value="{{ $category->name_en }}" required
+                                    class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm">
+                            </div>
+                            <div>
+                                <input type="text" name="name_bn" value="{{ $category->name_bn }}"
                                     class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm">
                             </div>
                             <div>
@@ -78,8 +92,12 @@
                                     class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm">
                             </div>
                             <div>
-                                <textarea name="description" rows="2"
-                                    class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm">{{ $category->description }}</textarea>
+                                <textarea name="description_en" rows="2"
+                                    class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm">{{ $category->description_en }}</textarea>
+                            </div>
+                            <div>
+                                <textarea name="description_bn" rows="2"
+                                    class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm">{{ $category->description_bn }}</textarea>
                             </div>
                             <div class="flex space-x-2">
                                 <button type="submit" class="px-3 py-1 bg-indigo-600 text-white text-sm rounded-md hover:bg-indigo-700">Save</button>

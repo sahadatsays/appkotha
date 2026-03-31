@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\StoreCaseStudyRequest;
+use App\Http\Requests\Admin\UpdateCaseStudyRequest;
 use App\Models\CaseStudy;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -14,8 +16,12 @@ class CaseStudyController extends Controller
         $query = CaseStudy::query();
 
         if ($request->filled('search')) {
-            $query->where('title', 'like', '%' . $request->search . '%')
-                ->orWhere('client', 'like', '%' . $request->search . '%');
+            $query->where(function ($builder) use ($request) {
+                $builder->where('title_en', 'like', '%'.$request->search.'%')
+                    ->orWhere('title_bn', 'like', '%'.$request->search.'%')
+                    ->orWhere('client_en', 'like', '%'.$request->search.'%')
+                    ->orWhere('client_bn', 'like', '%'.$request->search.'%');
+            });
         }
 
         if ($request->filled('status')) {
@@ -32,30 +38,12 @@ class CaseStudyController extends Controller
         return view('admin.case-studies.create');
     }
 
-    public function store(Request $request)
+    public function store(StoreCaseStudyRequest $request)
     {
-        $validated = $request->validate([
-            'title' => 'required|string|max:255',
-            'slug' => 'nullable|string|max:255|unique:case_studies,slug',
-            'client' => 'required|string|max:255',
-            'industry' => 'nullable|string|max:255',
-            'excerpt' => 'nullable|string|max:500',
-            'challenge' => 'nullable|string',
-            'solution' => 'nullable|string',
-            'results' => 'nullable|string',
-            'metrics' => 'nullable|string',
-            'tech_stack' => 'nullable|string',
-            'featured_image' => 'nullable|image|max:2048',
-            'testimonial_quote' => 'nullable|string',
-            'testimonial_author' => 'nullable|string|max:255',
-            'testimonial_position' => 'nullable|string|max:255',
-            'is_published' => 'boolean',
-            'is_featured' => 'boolean',
-            'sort_order' => 'nullable|integer',
-        ]);
+        $validated = $request->validated();
 
         if (empty($validated['slug'])) {
-            $validated['slug'] = Str::slug($validated['title']);
+            $validated['slug'] = Str::slug($validated['title_en']);
         }
 
         if ($request->hasFile('featured_image')) {
@@ -64,6 +52,18 @@ class CaseStudyController extends Controller
 
         $validated['tech_stack'] = $this->parseArrayInput($request->input('tech_stack_text'));
         $validated['metrics'] = $this->parseMetrics($request->input('metrics_text'));
+        $validated['title'] = $validated['title_en'];
+        $validated['client'] = $validated['client_en'];
+        $validated['industry'] = $validated['industry_en'] ?? null;
+        $validated['excerpt'] = $validated['excerpt_en'] ?? null;
+        $validated['challenge'] = $validated['challenge_en'] ?? null;
+        $validated['solution'] = $validated['solution_en'] ?? null;
+        $validated['results'] = $validated['results_en'] ?? null;
+        $validated['testimonial_quote'] = $validated['testimonial_quote_en'] ?? null;
+        $validated['testimonial_author'] = $validated['testimonial_author_en'] ?? null;
+        $validated['testimonial_position'] = $validated['testimonial_position_en'] ?? null;
+        $validated['is_published'] = $request->boolean('is_published');
+        $validated['is_featured'] = $request->boolean('is_featured');
 
         CaseStudy::create($validated);
 
@@ -76,30 +76,12 @@ class CaseStudyController extends Controller
         return view('admin.case-studies.edit', compact('caseStudy'));
     }
 
-    public function update(Request $request, CaseStudy $caseStudy)
+    public function update(UpdateCaseStudyRequest $request, CaseStudy $caseStudy)
     {
-        $validated = $request->validate([
-            'title' => 'required|string|max:255',
-            'slug' => 'nullable|string|max:255|unique:case_studies,slug,' . $caseStudy->id,
-            'client' => 'required|string|max:255',
-            'industry' => 'nullable|string|max:255',
-            'excerpt' => 'nullable|string|max:500',
-            'challenge' => 'nullable|string',
-            'solution' => 'nullable|string',
-            'results' => 'nullable|string',
-            'metrics' => 'nullable|string',
-            'tech_stack' => 'nullable|string',
-            'featured_image' => 'nullable|image|max:2048',
-            'testimonial_quote' => 'nullable|string',
-            'testimonial_author' => 'nullable|string|max:255',
-            'testimonial_position' => 'nullable|string|max:255',
-            'is_published' => 'boolean',
-            'is_featured' => 'boolean',
-            'sort_order' => 'nullable|integer',
-        ]);
+        $validated = $request->validated();
 
         if (empty($validated['slug'])) {
-            $validated['slug'] = Str::slug($validated['title']);
+            $validated['slug'] = Str::slug($validated['title_en']);
         }
 
         if ($request->hasFile('featured_image')) {
@@ -108,6 +90,16 @@ class CaseStudyController extends Controller
 
         $validated['tech_stack'] = $this->parseArrayInput($request->input('tech_stack_text'));
         $validated['metrics'] = $this->parseMetrics($request->input('metrics_text'));
+        $validated['title'] = $validated['title_en'];
+        $validated['client'] = $validated['client_en'];
+        $validated['industry'] = $validated['industry_en'] ?? null;
+        $validated['excerpt'] = $validated['excerpt_en'] ?? null;
+        $validated['challenge'] = $validated['challenge_en'] ?? null;
+        $validated['solution'] = $validated['solution_en'] ?? null;
+        $validated['results'] = $validated['results_en'] ?? null;
+        $validated['testimonial_quote'] = $validated['testimonial_quote_en'] ?? null;
+        $validated['testimonial_author'] = $validated['testimonial_author_en'] ?? null;
+        $validated['testimonial_position'] = $validated['testimonial_position_en'] ?? null;
         $validated['is_published'] = $request->boolean('is_published');
         $validated['is_featured'] = $request->boolean('is_featured');
 

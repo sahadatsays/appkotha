@@ -2,20 +2,31 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Models\Concerns\HasTranslations;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 class Faq extends Model
 {
     use HasFactory;
+    use HasTranslations;
 
     protected $fillable = [
         'question',
+        'question_en',
+        'question_bn',
         'answer',
+        'answer_en',
+        'answer_bn',
         'category',
         'is_published',
         'is_featured',
         'sort_order',
+    ];
+
+    protected array $translatable = [
+        'question',
+        'answer',
     ];
 
     protected $casts = [

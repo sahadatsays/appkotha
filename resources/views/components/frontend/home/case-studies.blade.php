@@ -7,14 +7,14 @@
         <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12" data-aos="fade-up">
             <div>
                 <h2 class="text-3xl lg:text-4xl font-bold text-neutral-900 dark:text-white mb-4">
-                    Featured Case Studies
+                    {{ __('frontend.home.featured_case_studies') }}
                 </h2>
                 <p class="text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl">
-                    Real projects, real results. See how we've helped businesses like yours achieve their goals.
+                    {{ __('frontend.home.featured_case_studies_subtitle') }}
                 </p>
             </div>
             <a href="{{ route('portfolio') }}" class="group inline-flex items-center gap-2 text-primary-600 dark:text-primary-400 font-medium hover:text-primary-700 dark:hover:text-primary-300 shrink-0">
-                View All Projects
+                {{ __('frontend.home.view_all_projects') }}
                 <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
                 </svg>
@@ -30,7 +30,7 @@
                         @if($study->featured_image)
                             <img src="{{ asset('storage/' . $study->featured_image) }}" alt="{{ $study->title }}" class="w-full h-full object-cover">
                         @else
-                            <span class="text-neutral-400 dark:text-neutral-500">Project Image</span>
+                            <span class="text-neutral-400 dark:text-neutral-500">{{ __('frontend.home.project_image') }}</span>
                         @endif
                     </div>
 
@@ -69,7 +69,7 @@
                 @for($i = 0; $i < 2; $i++)
                     <div class="group bg-white dark:bg-neutral-800 rounded-2xl overflow-hidden shadow-soft">
                         <div class="aspect-video bg-neutral-200 dark:bg-neutral-700 flex items-center justify-center">
-                            <span class="text-neutral-400 dark:text-neutral-500">Project Image</span>
+                            <span class="text-neutral-400 dark:text-neutral-500">{{ __('frontend.home.project_image') }}</span>
                         </div>
                         <div class="p-6 lg:p-8">
                             <div class="flex items-center gap-2 mb-4">

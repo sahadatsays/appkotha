@@ -2,33 +2,68 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Models\Concerns\HasTranslations;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
 class CaseStudy extends Model
 {
     use HasFactory;
+    use HasTranslations;
 
     protected $fillable = [
         'title',
+        'title_en',
+        'title_bn',
         'slug',
+        'client',
+        'client_en',
+        'client_bn',
+        'industry',
+        'industry_en',
+        'industry_bn',
+        'excerpt',
+        'excerpt_en',
+        'excerpt_bn',
+        'challenge',
+        'challenge_en',
+        'challenge_bn',
+        'solution',
+        'solution_en',
+        'solution_bn',
+        'results',
+        'results_en',
+        'results_bn',
+        'metrics',
+        'tech_stack',
+        'featured_image',
+        'testimonial_quote',
+        'testimonial_quote_en',
+        'testimonial_quote_bn',
+        'testimonial_author',
+        'testimonial_author_en',
+        'testimonial_author_bn',
+        'testimonial_position',
+        'testimonial_position_en',
+        'testimonial_position_bn',
+        'is_published',
+        'is_featured',
+        'published_at',
+        'sort_order',
+    ];
+
+    protected array $translatable = [
+        'title',
         'client',
         'industry',
         'excerpt',
         'challenge',
         'solution',
         'results',
-        'metrics',
-        'tech_stack',
-        'featured_image',
         'testimonial_quote',
         'testimonial_author',
         'testimonial_position',
-        'is_published',
-        'is_featured',
-        'published_at',
-        'sort_order',
     ];
 
     protected $casts = [
@@ -45,7 +80,7 @@ class CaseStudy extends Model
 
         static::creating(function ($caseStudy) {
             if (empty($caseStudy->slug)) {
-                $caseStudy->slug = Str::slug($caseStudy->title);
+                $caseStudy->slug = Str::slug($caseStudy->title_en ?? $caseStudy->title);
             }
         });
     }

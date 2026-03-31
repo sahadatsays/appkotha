@@ -16,11 +16,11 @@
     {{-- Blog Grid --}}
     <section class="py-20 bg-white dark:bg-neutral-900">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid lg:grid-cols-4 gap-12">
+            <div class="grid lg:grid-cols-[minmax(0,1fr)_280px] gap-8 xl:gap-12">
                 {{-- Main Content --}}
                 <div class="lg:col-span-3">
                     @if($posts->count() > 0)
-                        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div class="grid sm:grid-cols-2 gap-6 lg:gap-8">
                             @foreach($posts as $post)
                                 <a href="{{ route('blog.show', $post) }}" class="group hover-lift" data-aos="fade-up" data-aos-delay="{{ ($loop->index % 3 + 1) * 100 }}">
                                     <div class="aspect-video bg-neutral-100 dark:bg-neutral-800 rounded-xl mb-4 overflow-hidden img-zoom">

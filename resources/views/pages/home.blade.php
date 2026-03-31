@@ -1,4 +1,4 @@
-<x-layouts.frontend title="Premium Software Solutions">
+<x-layouts.frontend :title="__('frontend.home.page_title')">
     {{-- Hero Section --}}
     @include('components.frontend.home.hero')
 

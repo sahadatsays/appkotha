@@ -13,10 +13,10 @@
         {{-- Section Header --}}
         <div class="text-center mb-12" data-aos="fade-up">
             <h2 class="text-3xl lg:text-4xl font-bold text-neutral-900 dark:text-white mb-4">
-                Frequently Asked Questions
+                {{ __('frontend.home.faq_title') }}
             </h2>
             <p class="text-lg text-neutral-600 dark:text-neutral-400">
-                Got questions? We've got answers. If you can't find what you're looking for, feel free to contact us.
+                {{ __('frontend.home.faq_subtitle') }}
             </p>
         </div>
 
@@ -39,9 +39,9 @@
 
         {{-- Contact CTA --}}
         <div class="text-center mt-12" data-aos="fade-up" data-aos-delay="400">
-            <p class="text-neutral-600 dark:text-neutral-400 mb-4">Still have questions?</p>
+            <p class="text-neutral-600 dark:text-neutral-400 mb-4">{{ __('frontend.home.still_have_questions') }}</p>
             <a href="{{ route('contact.index') }}" class="group inline-flex items-center gap-2 text-primary-600 dark:text-primary-400 font-medium hover:text-primary-700 dark:hover:text-primary-300 transition-colors">
-                Contact our team
+                {{ __('frontend.home.contact_team') }}
                 <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
                 </svg>

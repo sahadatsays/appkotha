@@ -2,22 +2,36 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Models\Concerns\HasTranslations;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
 class Product extends Model
 {
     use HasFactory;
+    use HasTranslations;
 
     protected $fillable = [
         'name',
+        'name_en',
+        'name_bn',
         'slug',
         'tagline',
+        'tagline_en',
+        'tagline_bn',
         'short_description',
+        'short_description_en',
+        'short_description_bn',
         'description',
+        'description_en',
+        'description_bn',
         'features',
+        'features_en',
+        'features_bn',
         'use_cases',
+        'use_cases_en',
+        'use_cases_bn',
         'price',
         'sale_price',
         'license_type',
@@ -29,13 +43,32 @@ class Product extends Model
         'is_featured',
         'published_at',
         'meta_title',
+        'meta_title_en',
+        'meta_title_bn',
         'meta_description',
+        'meta_description_en',
+        'meta_description_bn',
         'sort_order',
+    ];
+
+    protected array $translatable = [
+        'name',
+        'tagline',
+        'short_description',
+        'description',
+        'features',
+        'use_cases',
+        'meta_title',
+        'meta_description',
     ];
 
     protected $casts = [
         'features' => 'array',
+        'features_en' => 'array',
+        'features_bn' => 'array',
         'use_cases' => 'array',
+        'use_cases_en' => 'array',
+        'use_cases_bn' => 'array',
         'is_featured' => 'boolean',
         'is_published' => 'boolean',
         'published_at' => 'datetime',
@@ -49,7 +82,7 @@ class Product extends Model
 
         static::creating(function ($product) {
             if (empty($product->slug)) {
-                $product->slug = Str::slug($product->name);
+                $product->slug = Str::slug($product->name_en ?? $product->name);
             }
         });
     }
@@ -76,20 +109,22 @@ class Product extends Model
     public function getFormattedPriceAttribute(): string
     {
         $price = $this->sale_price ?? $this->price;
-        return '৳' . number_format((float) $price, 0);
+
+        return '৳'.number_format((float) $price, 0);
     }
 
     public function getOriginalPriceAttribute(): ?string
     {
         if ($this->sale_price && $this->price) {
-            return '৳' . number_format((float) $this->price, 0);
+            return '৳'.number_format((float) $this->price, 0);
         }
+
         return null;
     }
 
     public function getLicenseLabelAttribute(): string
     {
-        return match($this->license_type) {
+        return match ($this->license_type) {
             'monthly' => '/month',
             'yearly' => '/year',
             'lifetime' => 'lifetime',
