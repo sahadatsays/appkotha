@@ -89,6 +89,7 @@
                 <h3 class="text-sm font-semibold uppercase tracking-wider text-neutral-400 mb-6">{{ __('frontend.footer.company') }}</h3>
                 <ul class="space-y-4">
                     <li><a href="{{ route('about') }}" class="text-neutral-300 hover:text-white transition-colors hover:translate-x-1 inline-block">{{ __('frontend.footer.about_us') }}</a></li>
+                    <li><a href="{{ route('team.index') }}" class="text-neutral-300 hover:text-white transition-colors hover:translate-x-1 inline-block">{{ __('frontend.footer.team') }}</a></li>
                     <li><a href="{{ route('portfolio') }}" class="text-neutral-300 hover:text-white transition-colors hover:translate-x-1 inline-block">{{ __('frontend.nav.portfolio') }}</a></li>
                     <li><a href="{{ route('blog.index') }}" class="text-neutral-300 hover:text-white transition-colors hover:translate-x-1 inline-block">{{ __('frontend.nav.blog') }}</a></li>
                     <li><a href="{{ route('contact.index') }}" class="text-neutral-300 hover:text-white transition-colors hover:translate-x-1 inline-block">{{ __('frontend.footer.contact') }}</a></li>

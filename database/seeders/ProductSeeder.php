@@ -32,7 +32,7 @@ class ProductSeeder extends Seeder
                     'Mobile-friendly dashboard',
                     'Email invoices directly to clients',
                     'Recurring invoices for subscriptions',
-                    'Payment history & reports'
+                    'Payment history & reports',
                 ],
                 'use_cases' => [
                     'Freelancers billing clients',
@@ -65,20 +65,20 @@ class ProductSeeder extends Seeder
                     'Built-in inventory management',
                     'Multi-terminal & multi-branch support',
                     'Employee access control',
-                    'Daily, weekly, monthly reports'
+                    'Daily, weekly, monthly reports',
                 ],
                 'use_cases' => [
                     'Retail shops & showrooms',
                     'Restaurants & cafes',
                     'Pharmacies & medicine shops',
                     'Grocery stores & supermarkets',
-                    'Mobile phone shops'
+                    'Mobile phone shops',
                 ],
                 'price' => 9999.00,
                 'sale_price' => 6999.00,
                 'license_type' => 'lifetime',
-                'demo_url' => null,
-                'documentation_url' => null,
+                'demo_url' => 'https://demo.appkotha.com/pos-system',
+                'documentation_url' => 'https://docs.appkotha.com/pos-system',
                 'icon' => 'credit-card',
                 'is_published' => true,
                 'is_featured' => true,
@@ -146,37 +146,6 @@ class ProductSeeder extends Seeder
                 'is_featured' => true,
             ],
             [
-                'name' => 'POS System',
-                'slug' => 'pos-system',
-                'tagline' => 'Point of sale for modern retail',
-                'short_description' => 'Fast, reliable point of sale system with integrated inventory and customer management.',
-                'description' => '<p>Our POS System is built for speed and reliability. Perfect for retail shops, restaurants, and service businesses.</p><h3>Fast & Reliable</h3><p>Process sales quickly with an intuitive interface. Works offline and syncs when connected.</p>',
-                'features' => [
-                    'Quick sale processing',
-                    'Multiple payment methods',
-                    'Customer loyalty program',
-                    'Receipt printing',
-                    'Daily sales reports',
-                    'Offline mode support',
-                    'Inventory integration',
-                    'Multi-terminal support',
-                ],
-                'use_cases' => [
-                    'Retail shops',
-                    'Restaurants & cafes',
-                    'Service centers',
-                    'Supermarkets',
-                ],
-                'price' => 5999.00,
-                'sale_price' => null,
-                'license_type' => 'lifetime',
-                'demo_url' => 'https://demo.appkotha.com/pos-system',
-                'documentation_url' => 'https://docs.appkotha.com/pos-system',
-                'icon' => 'credit-card',
-                'is_published' => true,
-                'is_featured' => false,
-            ],
-            [
                 'name' => 'HR & Payroll',
                 'slug' => 'hr-payroll',
                 'tagline' => 'Complete HR & payroll solution',
@@ -197,7 +166,7 @@ class ProductSeeder extends Seeder
                     'Factory workforce management',
                     'Office attendance tracking',
                     'Payroll automation',
-                    'HR compliance'
+                    'HR compliance',
                 ],
                 'price' => 7999.00,
                 'sale_price' => null,
@@ -211,7 +180,10 @@ class ProductSeeder extends Seeder
         ];
 
         foreach ($products as $product) {
-            Product::create($product);
+            Product::updateOrCreate(
+                ['slug' => $product['slug']],
+                $product
+            );
         }
     }
 }

@@ -35,6 +35,7 @@ class DatabaseSeeder extends Seeder
                 BlogSeeder::class,
                 TestimonialSeeder::class,
                 CaseStudySeeder::class,
+                TeamMemberSeeder::class,
             ]);
         }
     }

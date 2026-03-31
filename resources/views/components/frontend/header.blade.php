@@ -69,6 +69,10 @@
                     {{ __('frontend.nav.portfolio') }}
                 </a>
 
+                <a href="{{ route('team.index') }}" class="text-sm font-medium {{ request()->routeIs('team.*') ? 'text-primary-500' : 'text-neutral-600 dark:text-neutral-300 hover:text-primary-500' }} transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary-500 hover:after:w-full after:transition-all after:duration-300">
+                    {{ __('frontend.nav.team') }}
+                </a>
+
                 <a href="{{ route('about') }}" class="text-sm font-medium {{ request()->routeIs('about') ? 'text-primary-500' : 'text-neutral-600 dark:text-neutral-300 hover:text-primary-500' }} transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary-500 hover:after:w-full after:transition-all after:duration-300">
                     {{ __('frontend.nav.about') }}
                 </a>
@@ -201,6 +205,9 @@
             </a>
             <a href="{{ route('portfolio') }}" class="block px-4 py-3 rounded-xl {{ request()->routeIs('portfolio*') ? 'bg-primary-50 dark:bg-primary-900/20 text-primary-600' : 'text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-800' }}">
                 {{ __('frontend.nav.portfolio') }}
+            </a>
+            <a href="{{ route('team.index') }}" class="block px-4 py-3 rounded-xl {{ request()->routeIs('team.*') ? 'bg-primary-50 dark:bg-primary-900/20 text-primary-600' : 'text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-800' }}">
+                {{ __('frontend.nav.team') }}
             </a>
             <a href="{{ route('about') }}" class="block px-4 py-3 rounded-xl {{ request()->routeIs('about') ? 'bg-primary-50 dark:bg-primary-900/20 text-primary-600' : 'text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-800' }}">
                 {{ __('frontend.nav.about') }}

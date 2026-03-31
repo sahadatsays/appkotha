@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\OrderController as AdminOrderController;
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\Admin\ServiceController as AdminServiceController;
 use App\Http\Controllers\Admin\SettingController as AdminSettingController;
+use App\Http\Controllers\Admin\TeamMemberController as AdminTeamMemberController;
 use App\Http\Controllers\Admin\TestimonialController as AdminTestimonialController;
 use App\Http\Controllers\Frontend\BlogController;
 use App\Http\Controllers\Frontend\CartController;
@@ -19,6 +20,7 @@ use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\PageController;
 use App\Http\Controllers\Frontend\ProductController;
 use App\Http\Controllers\Frontend\ServiceController;
+use App\Http\Controllers\Frontend\TeamController;
 use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -38,6 +40,8 @@ Route::get('/about', [PageController::class, 'about'])->name('about');
 Route::get('/pricing', [PageController::class, 'pricing'])->name('pricing');
 Route::get('/portfolio', [PageController::class, 'portfolio'])->name('portfolio');
 Route::get('/portfolio/{caseStudy:slug}', [PageController::class, 'portfolioShow'])->name('portfolio.show');
+Route::get('/team', [TeamController::class, 'index'])->name('team.index');
+Route::get('/team/{slug}', [TeamController::class, 'show'])->name('team.show');
 
 // Products
 Route::prefix('products')->name('products.')->group(function () {
@@ -184,6 +188,10 @@ Route::middleware(['auth', 'verified', 'admin'])->prefix('admin')->name('admin.'
     // Testimonials Management
     Route::resource('testimonials', AdminTestimonialController::class);
     Route::post('testimonials/{testimonial}/toggle-publish', [AdminTestimonialController::class, 'togglePublish'])->name('testimonials.toggle-publish');
+
+    // Team Members Management
+    Route::resource('team-members', AdminTeamMemberController::class)->except(['show']);
+    Route::post('team-members/{team_member}/toggle-status', [AdminTeamMemberController::class, 'toggleStatus'])->name('team-members.toggle-status');
 
     // FAQs Management
     Route::resource('faqs', AdminFaqController::class);
