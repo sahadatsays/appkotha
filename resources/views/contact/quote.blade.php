@@ -52,14 +52,18 @@
                         <div class="grid md:grid-cols-2 gap-6">
                             <div>
                                 <label for="name" class="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2">Name *</label>
-                                <input type="text" name="name" id="name" value="{{ old('name') }}" data-rules="required" class="w-full px-4 py-3 rounded-xl border border-neutral-200 dark:border-neutral-600 bg-white dark:bg-neutral-700 text-neutral-900 dark:text-white focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all duration-300 hover:border-primary-300 dark:hover:border-primary-600 @error('name') border-red-500 @enderror">
+                                <input type="text" name="name" id="name" value="{{ old('name') }}" data-rules="required"
+                                    placeholder="Enter your full name"
+                                    class="w-full px-4 py-3 rounded-xl border border-neutral-200 dark:border-neutral-600 bg-white dark:bg-neutral-700 text-neutral-900 dark:text-white focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all duration-300 hover:border-primary-300 dark:hover:border-primary-600 @error('name') border-red-500 @enderror">
                                 @error('name')
                                     <p class="mt-1 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
                                 @enderror
                             </div>
                             <div>
                                 <label for="email" class="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2">Email *</label>
-                                <input type="email" name="email" id="email" value="{{ old('email') }}" data-rules="required|email" class="w-full px-4 py-3 rounded-xl border border-neutral-200 dark:border-neutral-600 bg-white dark:bg-neutral-700 text-neutral-900 dark:text-white focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all duration-300 hover:border-primary-300 dark:hover:border-primary-600 @error('email') border-red-500 @enderror">
+                                <input type="email" name="email" id="email" value="{{ old('email') }}" data-rules="required|email"
+                                    placeholder="you@example.com"
+                                    class="w-full px-4 py-3 rounded-xl border border-neutral-200 dark:border-neutral-600 bg-white dark:bg-neutral-700 text-neutral-900 dark:text-white focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all duration-300 hover:border-primary-300 dark:hover-border-primary-600 @error('email') border-red-500 @enderror">
                                 @error('email')
                                     <p class="mt-1 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
                                 @enderror
@@ -69,12 +73,15 @@
                         <div class="grid md:grid-cols-2 gap-6">
                             <div>
                                 <label for="phone" class="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2">Phone</label>
-                                <input type="tel" name="phone" id="phone" value="{{ old('phone') }}" data-rules="phone" class="w-full px-4 py-3 rounded-xl border border-neutral-200 dark:border-neutral-600 bg-white dark:bg-neutral-700 text-neutral-900 dark:text-white focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all duration-300 hover:border-primary-300 dark:hover:border-primary-600">
+                                <input type="tel" name="phone" id="phone" value="{{ old('phone') }}" data-rules="phone"
+                                    placeholder="+8801XXXXXXX"
+                                    class="w-full px-4 py-3 rounded-xl border border-neutral-200 dark:border-neutral-600 bg-white dark:bg-neutral-700 text-neutral-900 dark:text-white focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all duration-300 hover:border-primary-300 dark:hover:border-primary-600">
                             </div>
                             <div>
                                 <label for="company" class="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2">Company</label>
-                                <input type="text" name="company" id="company" value="{{ old('company') }}" class="w-full px-4 py-3 rounded-xl border border-neutral-200 dark:border-neutral-600 bg-white dark:bg-neutral-700 text-neutral-900 dark:text-white focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all duration-300 hover:border-primary-300 dark:hover:border-primary-600">
-                            </div>
+                                <input type="text" name="company" id="company" value="{{ old('company') }}"
+                                    placeholder="Your company or organization (optional)"
+                                    class="w-full px-4 py-3 rounded-xl border border-neutral-200 dark:border-neutral-600 bg-white dark:bg-neutral-700 text-neutral-900 dark:text-white focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all duration-300 hover:border-primary-300 dark:hover:border-primary-600">
                         </div>
 
                         <div>

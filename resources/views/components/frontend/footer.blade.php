@@ -8,7 +8,7 @@
                     <div class="w-10 h-10 bg-primary-500 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                         <span class="text-white font-bold text-lg">a</span>
                     </div>
-                    <span class="text-xl font-bold">app<span class="text-primary-400">Kotha</span></span>
+                    <span class="text-xl font-bold">App<span class="text-primary-400">Kotha</span></span>
                 </a>
                 <p class="text-neutral-400 text-sm leading-relaxed mb-6">
                     {{ $siteSettings['company']['description'] ?? 'Premium digital products and custom software development services from Bangladesh. Trusted by 500+ clients globally.' }}
@@ -117,9 +117,9 @@
     <!-- Bottom Bar -->
     <div class="border-t border-neutral-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-            <div class="flex flex-col md:flex-row items-center justify-between gap-6" data-aos="fade-up">
-                <p class="text-sm text-neutral-400 text-center md:text-left">
-                    © {{ date('Y') }} appKotha. {{ __('frontend.footer.all_rights_reserved') }}
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4" data-aos="fade-up">
+                <p class="text-sm text-neutral-400">
+                    © {{ date('Y') }} AppKotha. All rights reserved.
                 </p>
                 <div class="flex items-center gap-6">
                     @if($siteSettings['company']['privacy_policy_url'] ?? null)

@@ -52,22 +52,30 @@
                         <div class="grid md:grid-cols-2 gap-6">
                             <div>
                                 <label for="name" class="block text-sm font-medium text-neutral-700 mb-2">Name *</label>
-                                <input type="text" name="name" id="name" value="{{ old('name') }}" required class="w-full px-4 py-3 rounded-xl border border-neutral-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-colors">
+                                <input type="text" name="name" id="name" value="{{ old('name') }}" required
+                                    placeholder="Enter your full name"
+                                    class="w-full px-4 py-3 rounded-xl border border-neutral-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-colors">
                             </div>
                             <div>
                                 <label for="email" class="block text-sm font-medium text-neutral-700 mb-2">Email *</label>
-                                <input type="email" name="email" id="email" value="{{ old('email') }}" required class="w-full px-4 py-3 rounded-xl border border-neutral-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-colors">
+                                <input type="email" name="email" id="email" value="{{ old('email') }}" required
+                                    placeholder="you@example.com"
+                                    class="w-full px-4 py-3 rounded-xl border border-neutral-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-colors">
                             </div>
                         </div>
 
                         <div class="grid md:grid-cols-2 gap-6">
                             <div>
                                 <label for="phone" class="block text-sm font-medium text-neutral-700 mb-2">Phone</label>
-                                <input type="tel" name="phone" id="phone" value="{{ old('phone') }}" class="w-full px-4 py-3 rounded-xl border border-neutral-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-colors">
+                                <input type="tel" name="phone" id="phone" value="{{ old('phone') }}"
+                                    placeholder="+8801XXXXXXX"
+                                    class="w-full px-4 py-3 rounded-xl border border-neutral-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-colors">
                             </div>
                             <div>
                                 <label for="company" class="block text-sm font-medium text-neutral-700 mb-2">Company</label>
-                                <input type="text" name="company" id="company" value="{{ old('company') }}" class="w-full px-4 py-3 rounded-xl border border-neutral-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-colors">
+                                <input type="text" name="company" id="company" value="{{ old('company') }}"
+                                    placeholder="Your company or organization (optional)"
+                                    class="w-full px-4 py-3 rounded-xl border border-neutral-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-colors">
                             </div>
                         </div>
 
@@ -81,7 +89,9 @@
 
                         <div>
                             <label for="message" class="block text-sm font-medium text-neutral-700 mb-2">Additional Notes</label>
-                            <textarea name="message" id="message" rows="4" class="w-full px-4 py-3 rounded-xl border border-neutral-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-colors resize-none">{{ old('message') }}</textarea>
+                            <textarea name="message" id="message" rows="4"
+                                placeholder="Share any specific requirements, use cases, or questions"
+                                class="w-full px-4 py-3 rounded-xl border border-neutral-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-colors resize-none">{{ old('message') }}</textarea>
                         </div>
 
                         <input type="hidden" name="message_type" value="demo">

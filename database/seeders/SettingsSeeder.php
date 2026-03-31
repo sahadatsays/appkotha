@@ -19,14 +19,14 @@ class SettingsSeeder extends Seeder
         }
 
         // Company Information
-        Setting::setValue('company', 'name', 'appKotha', [
+        Setting::setValue('company', 'name', 'AppKotha', [
             'label' => 'Company Name',
             'description' => 'The name of your company',
             'type' => 'text',
             'sort_order' => 1,
         ]);
 
-        Setting::setValue('company', 'description', 'Premium digital products and custom software development services from Bangladesh. Trusted by 500+ clients globally.', [
+        Setting::setValue('company', 'description', 'Your Software Story Starts Here. Premium business software solutions and custom development services from Bangladesh.', [
             'label' => 'Company Description',
             'description' => 'Brief description of your company',
             'type' => 'textarea',
@@ -55,21 +55,21 @@ class SettingsSeeder extends Seeder
         ]);
 
         // Hero Section
-        Setting::setValue('hero', 'trust_badge_text', 'Trusted by 500+ companies worldwide', [
+        Setting::setValue('hero', 'trust_badge_text', 'Your Software Story Starts Here', [
             'label' => 'Trust Badge Text',
             'description' => 'Text shown in the trust badge above the hero headline',
             'type' => 'text',
             'sort_order' => 1,
         ]);
 
-        Setting::setValue('hero', 'headline', 'Premium Software Solutions<br><span class="text-primary-500 animate-gradient bg-gradient-to-r from-primary-500 via-accent-500 to-primary-500 bg-clip-text text-transparent">Built in Bangladesh</span>', [
+        Setting::setValue('hero', 'headline', 'Business Software<br><span class="text-primary-500 animate-gradient bg-gradient-to-r from-primary-500 via-accent-500 to-primary-500 bg-clip-text text-transparent">That Powers Your Growth</span>', [
             'label' => 'Hero Headline',
             'description' => 'Main headline text (HTML allowed)',
             'type' => 'richtext',
             'sort_order' => 2,
         ]);
 
-        Setting::setValue('hero', 'subheadline', 'Ready-to-use digital products and custom development services. International quality at competitive rates, delivered by experts who care.', [
+        Setting::setValue('hero', 'subheadline', 'From Invoice Management to E-Commerce solutions, we build software that helps Bangladeshi businesses thrive. Affordable pricing, local support, and solutions that understand your needs.', [
             'label' => 'Hero Subheadline',
             'description' => 'Subheadline text below the main headline',
             'type' => 'textarea',
@@ -105,7 +105,7 @@ class SettingsSeeder extends Seeder
         ]);
 
         // Statistics
-        Setting::setValue('stats', 'clients_count', '500', [
+        Setting::setValue('stats', 'clients_count', '100', [
             'label' => 'Happy Clients Count',
             'description' => 'Number of happy clients',
             'type' => 'number',
@@ -126,23 +126,23 @@ class SettingsSeeder extends Seeder
             'sort_order' => 3,
         ]);
 
-        Setting::setValue('stats', 'countries_count', '50', [
-            'label' => 'Countries Served Count',
-            'description' => 'Number of countries served',
+        Setting::setValue('stats', 'countries_count', '5', [
+            'label' => 'Products Count',
+            'description' => 'Number of products',
             'type' => 'number',
             'sort_order' => 4,
         ]);
 
         Setting::setValue('stats', 'countries_suffix', '+', [
-            'label' => 'Countries Count Suffix',
-            'description' => 'Suffix to show after countries count (e.g., +)',
+            'label' => 'Products Count Suffix',
+            'description' => 'Suffix to show after products count (e.g., +)',
             'type' => 'text',
             'sort_order' => 5,
         ]);
 
-        Setting::setValue('stats', 'countries_label', 'Countries Served', [
-            'label' => 'Countries Label',
-            'description' => 'Label for the countries statistic',
+        Setting::setValue('stats', 'countries_label', 'Software Products', [
+            'label' => 'Products Label',
+            'description' => 'Label for the products statistic',
             'type' => 'text',
             'sort_order' => 6,
         ]);
@@ -190,43 +190,43 @@ class SettingsSeeder extends Seeder
             'sort_order' => 1,
         ]);
 
-        Setting::setValue('contact', 'email', 'hello@appkotha.com', [
+        Setting::setValue('contact', 'email', 'contact@appkotha.com', [
             'label' => 'Contact Email',
             'description' => 'Primary contact email',
             'type' => 'text',
             'sort_order' => 2,
         ]);
 
-        Setting::setValue('contact', 'phone', '+880 1234-567890', [
+        Setting::setValue('contact', 'phone', '', [
             'label' => 'Contact Phone',
             'description' => 'Primary contact phone number',
             'type' => 'text',
             'sort_order' => 3,
         ]);
 
-        // Social Media
-        Setting::setValue('social', 'facebook_url', 'https://facebook.com/appkotha', [
+        // Social Media (empty for now - can be added later via admin)
+        Setting::setValue('social', 'facebook_url', '', [
             'label' => 'Facebook URL',
             'description' => 'Your Facebook page URL',
             'type' => 'url',
             'sort_order' => 1,
         ]);
 
-        Setting::setValue('social', 'twitter_url', 'https://twitter.com/appkotha', [
+        Setting::setValue('social', 'twitter_url', '', [
             'label' => 'Twitter URL',
             'description' => 'Your Twitter profile URL',
             'type' => 'url',
             'sort_order' => 2,
         ]);
 
-        Setting::setValue('social', 'linkedin_url', 'https://linkedin.com/company/appkotha', [
+        Setting::setValue('social', 'linkedin_url', '', [
             'label' => 'LinkedIn URL',
             'description' => 'Your LinkedIn company page URL',
             'type' => 'url',
             'sort_order' => 3,
         ]);
 
-        Setting::setValue('social', 'github_url', 'https://github.com/appkotha', [
+        Setting::setValue('social', 'github_url', '', [
             'label' => 'GitHub URL',
             'description' => 'Your GitHub organization URL',
             'type' => 'url',
