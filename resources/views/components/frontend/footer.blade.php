@@ -47,7 +47,12 @@
 
             <!-- Products Column -->
             <div data-aos="fade-up" data-aos-delay="200">
-                <h3 class="text-sm font-semibold uppercase tracking-wider text-neutral-400 mb-6">{{ __('frontend.footer.products') }}</h3>
+                <h3 class="text-sm font-semibold uppercase tracking-wider text-neutral-400 mb-6 flex items-center gap-2">
+                    <svg class="w-4 h-4 icon-default" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
+                    </svg>
+                    {{ __('frontend.footer.products') }}
+                </h3>
                 <ul class="space-y-4">
                     @php
                         $footerProducts = \App\Models\Product::published()->take(5)->get();
@@ -66,7 +71,12 @@
 
             <!-- Services Column -->
             <div data-aos="fade-up" data-aos-delay="300">
-                <h3 class="text-sm font-semibold uppercase tracking-wider text-neutral-400 mb-6">{{ __('frontend.footer.services') }}</h3>
+                <h3 class="text-sm font-semibold uppercase tracking-wider text-neutral-400 mb-6 flex items-center gap-2">
+                    <svg class="w-4 h-4 icon-default" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+                    </svg>
+                    {{ __('frontend.footer.services') }}
+                </h3>
                 <ul class="space-y-4">
                     @php
                         $footerServices = \App\Models\Service::published()->take(5)->get();
@@ -85,7 +95,12 @@
 
             <!-- Company Column -->
             <div data-aos="fade-up" data-aos-delay="400">
-                <h3 class="text-sm font-semibold uppercase tracking-wider text-neutral-400 mb-6">{{ __('frontend.footer.company') }}</h3>
+                <h3 class="text-sm font-semibold uppercase tracking-wider text-neutral-400 mb-6 flex items-center gap-2">
+                    <svg class="w-4 h-4 icon-default" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 21h18M5 21V7l8-4 8 4v14M9 21v-6h8v6"/>
+                    </svg>
+                    {{ __('frontend.footer.company') }}
+                </h3>
                 <ul class="space-y-4">
                     <li><a href="{{ route('about') }}" class="text-neutral-300 hover:text-white transition-colors hover:translate-x-1 inline-block">{{ __('frontend.footer.about_us') }}</a></li>
                     <li><a href="{{ route('team.index') }}" class="text-neutral-300 hover:text-white transition-colors hover:translate-x-1 inline-block">{{ __('frontend.footer.team') }}</a></li>
@@ -97,16 +112,38 @@
 
                 <!-- Contact Info -->
                 <div class="mt-8 pt-6 border-t border-neutral-800">
-                    <h3 class="text-sm font-semibold uppercase tracking-wider text-neutral-400 mb-4">Contact</h3>
+                    <h3 class="text-sm font-semibold uppercase tracking-wider text-neutral-400 mb-4 flex items-center gap-2">
+                        <svg class="w-4 h-4 icon-default" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                        Contact
+                    </h3>
                     <address class="not-italic space-y-2 text-sm text-neutral-400">
                         @if($siteSettings['contact']['address'] ?? null)
-                        <p>{{ $siteSettings['contact']['address'] }}</p>
+                        <p class="flex items-start gap-2">
+                            <svg class="w-4 h-4 mt-0.5 icon-default shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                            </svg>
+                            <span>{{ $siteSettings['contact']['address'] }}</span>
+                        </p>
                         @endif
                         @if($siteSettings['contact']['email'] ?? null)
-                        <a href="mailto:{{ $siteSettings['contact']['email'] }}" class="block hover:text-white transition-colors">{{ $siteSettings['contact']['email'] }}</a>
+                        <a href="mailto:{{ $siteSettings['contact']['email'] }}" class="flex items-center gap-2 hover:text-white transition-colors">
+                            <svg class="w-4 h-4 icon-default" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                            </svg>
+                            <span>{{ $siteSettings['contact']['email'] }}</span>
+                        </a>
                         @endif
                         @if($siteSettings['contact']['phone'] ?? null)
-                        <a href="tel:{{ $siteSettings['contact']['phone'] }}" class="block hover:text-white transition-colors">{{ $siteSettings['contact']['phone'] }}</a>
+                        <a href="tel:{{ $siteSettings['contact']['phone'] }}" class="flex items-center gap-2 hover:text-white transition-colors">
+                            <svg class="w-4 h-4 icon-default" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a2 2 0 011.94 1.515l.73 2.92a2 2 0 01-.53 1.955l-1.32 1.32a16.04 16.04 0 006.88 6.88l1.32-1.32a2 2 0 011.955-.53l2.92.73A2 2 0 0121 15.72V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                            </svg>
+                            <span>{{ $siteSettings['contact']['phone'] }}</span>
+                        </a>
                         @endif
                     </address>
                 </div>
@@ -123,13 +160,28 @@
                 </p>
                 <div class="flex items-center gap-6">
                     @if($siteSettings['company']['privacy_policy_url'] ?? null)
-                    <a href="{{ $siteSettings['company']['privacy_policy_url'] }}" class="text-sm text-neutral-400 hover:text-white transition-colors">{{ __('frontend.footer.privacy_policy') }}</a>
+                    <a href="{{ $siteSettings['company']['privacy_policy_url'] }}" class="text-sm text-neutral-400 hover:text-white transition-colors inline-flex items-center gap-2">
+                        <svg class="w-4 h-4 icon-default" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0-1.657 1.343-3 3-3m0 0a3 3 0 100 6m0-6v-2m0 8v2m-6-5H3m0 0a2 2 0 100 4h6m-6-4V9m0 6v2"/>
+                        </svg>
+                        {{ __('frontend.footer.privacy_policy') }}
+                    </a>
                     @endif
                     @if($siteSettings['company']['terms_url'] ?? null)
-                    <a href="{{ $siteSettings['company']['terms_url'] }}" class="text-sm text-neutral-400 hover:text-white transition-colors">{{ __('frontend.footer.terms') }}</a>
+                    <a href="{{ $siteSettings['company']['terms_url'] }}" class="text-sm text-neutral-400 hover:text-white transition-colors inline-flex items-center gap-2">
+                        <svg class="w-4 h-4 icon-default" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h7l5 5v11a2 2 0 01-2 2z"/>
+                        </svg>
+                        {{ __('frontend.footer.terms') }}
+                    </a>
                     @endif
                     @if($siteSettings['company']['refund_policy_url'] ?? null)
-                    <a href="{{ $siteSettings['company']['refund_policy_url'] }}" class="text-sm text-neutral-400 hover:text-white transition-colors">{{ __('frontend.footer.refund') }}</a>
+                    <a href="{{ $siteSettings['company']['refund_policy_url'] }}" class="text-sm text-neutral-400 hover:text-white transition-colors inline-flex items-center gap-2">
+                        <svg class="w-4 h-4 icon-default" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h.01M11 15h2m-8 4h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                        {{ __('frontend.footer.refund') }}
+                    </a>
                     @endif
                 </div>
             </div>

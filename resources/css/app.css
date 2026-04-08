@@ -236,9 +236,9 @@
         color: var(--text-secondary);
     }
 
-    .text-primary-500,
-    .text-primary-600,
-    .text-primary-400 {
+    .text-primary-500:not(svg),
+    .text-primary-600:not(svg),
+    .text-primary-400:not(svg) {
         background-image: var(--primary-gradient);
         -webkit-background-clip: text;
         background-clip: text;
