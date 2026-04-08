@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="scroll-smooth" x-data="{ theme: localStorage.getItem('theme') || 'system' }" x-init="
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="scroll-smooth" x-data="{ theme: localStorage.getItem('theme') || 'system', isDark: false }" x-init="
     $watch('theme', val => {
         localStorage.setItem('theme', val);
         updateTheme();
@@ -7,9 +7,18 @@
     function updateTheme() {
         if (theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.classList.add('dark');
+            isDark = true;
         } else {
             document.documentElement.classList.remove('dark');
+            isDark = false;
         }
+    }
+    function toggleTheme() {
+        if (theme === 'system') {
+            theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'light' : 'dark';
+            return;
+        }
+        theme = theme === 'dark' ? 'light' : 'dark';
     }
     updateTheme();
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateTheme);
@@ -45,8 +54,10 @@
     @endif
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
-    <link rel="apple-touch-icon" href="{{ asset('favicon.ico') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('assets/favicon/favicon.ico') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/favicon/favicon-16x16.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/favicon/favicon-32x32.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/favicon/apple-touch-icon.png') }}">
 
     <!-- DNS Prefetch & Preconnect for Performance -->
     <link rel="dns-prefetch" href="https://fonts.bunny.net">
@@ -54,8 +65,8 @@
     <link rel="preconnect" href="https://fonts.bunny.net" crossorigin>
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 
-    <!-- Fonts - Inter (with display=swap for performance) -->
-    <link href="https://fonts.bunny.net/css?family=inter:300,400,500,600,700,800&display=swap" rel="stylesheet">
+    <!-- Fonts - Montserrat (with display=swap for performance) -->
+    <link href="https://fonts.bunny.net/css?family=montserrat:300,400,500,600,700,800&display=swap" rel="stylesheet">
 
     <!-- AOS Animation Library (defer loading) -->
     <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -200,7 +211,7 @@
 
     @stack('styles')
 </head>
-<body class="font-sans antialiased overflow-x-hidden bg-white dark:bg-neutral-900 text-neutral-800 dark:text-neutral-100 transition-colors duration-200">
+<body class="font-sans antialiased overflow-x-hidden theme-bg theme-text-primary transition-colors duration-200">
     <!-- Skip to main content for accessibility -->
     <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-primary-500 text-white px-4 py-2 rounded-lg z-50">
         Skip to main content
@@ -221,7 +232,7 @@
     <div id="mobile-menu-overlay" class="fixed inset-0 bg-black/50 z-40 hidden lg:hidden transition-opacity duration-300"></div>
 
     <!-- Scroll to Top Button -->
-    <button id="scroll-top-btn" class="fixed bottom-6 right-6 w-12 h-12 bg-primary-500 hover:bg-primary-600 text-white rounded-full shadow-lg flex items-center justify-center z-40 opacity-0 invisible transition-all duration-300 hover:scale-110" aria-label="Scroll to top">
+    <button id="scroll-top-btn" class="fixed bottom-6 right-6 w-12 h-12 saas-btn-primary text-white rounded-full shadow-lg flex items-center justify-center z-40 opacity-0 invisible transition-all duration-300 hover:scale-110" aria-label="Scroll to top">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
         </svg>

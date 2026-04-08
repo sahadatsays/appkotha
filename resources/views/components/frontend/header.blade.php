@@ -2,11 +2,11 @@
     <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16 lg:h-20">
             <!-- Logo -->
-            <a href="{{ route('home') }}" class="flex items-center gap-2 shrink-0 group">
-                <div class="w-10 h-10 bg-primary-500 rounded-xl flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
-                    <span class="text-white font-bold text-lg">a</span>
+            <a href="{{ route('home') }}" class="shrink-0 group">
+                <div class="h-12 lg:h-14 w-36 lg:w-40 flex items-center">
+                    <img x-show="!isDark" x-cloak src="{{ asset('assets/logos/logo-light.png') }}" alt="AppKotha logo" class="max-h-full w-full object-contain object-left transition-transform duration-300 group-hover:scale-105">
+                    <img x-show="isDark" x-cloak src="{{ asset('assets/logos/log-dark.jpg') }}" alt="AppKotha logo dark" class="max-h-full w-full object-contain object-left transition-transform duration-300 group-hover:scale-105">
                 </div>
-                <span class="text-xl font-bold text-neutral-900 dark:text-white transition-colors">App<span class="text-primary-500">Kotha</span></span>
             </a>
 
             <!-- Desktop Navigation -->
