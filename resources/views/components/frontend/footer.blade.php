@@ -4,11 +4,10 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
             <!-- Brand Column -->
             <div class="lg:col-span-1" data-aos="fade-up" data-aos-delay="100">
-                <a href="{{ route('home') }}" class="flex items-center gap-2 mb-6 group">
-                    <div class="w-10 h-10 bg-primary-500 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                        <span class="text-white font-bold text-lg">a</span>
+                <a href="{{ route('home') }}" class="inline-block mb-6 group">
+                    <div class="h-12 w-36 flex items-center">
+                        <img src="{{ asset('assets/logos/logo-light.png') }}" alt="AppKotha logo" class="max-h-full w-full object-contain object-left transition-transform duration-300 group-hover:scale-105">
                     </div>
-                    <span class="text-xl font-bold">App<span class="text-primary-400">Kotha</span></span>
                 </a>
                 <p class="text-neutral-400 text-sm leading-relaxed mb-6">
                     {{ $siteSettings['company']['description'] ?? 'Premium digital products and custom software development services from Bangladesh. Trusted by 500+ clients globally.' }}
