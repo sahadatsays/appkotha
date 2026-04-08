@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="scroll-smooth">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>{{ config('app.name', 'Appkotha') }}</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+        <link href="https://fonts.bunny.net/css?family=montserrat:300,400,500,600,700,800&display=swap" rel="stylesheet" />
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -25,16 +25,26 @@
             })();
         </script>
     </head>
-    <body class="font-sans text-gray-900 dark:text-gray-100 antialiased">
-        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-neutral-900">
-            <div>
-                <a href="/">
-                    <x-application-logo class="w-20 h-20 fill-current text-gray-500 dark:text-gray-400" />
-                </a>
+    <body class="font-sans antialiased theme-bg theme-text-primary">
+        <div class="min-h-screen grid lg:grid-cols-2">
+            <div class="hidden lg:flex items-center justify-center px-10 bg-neutral-900 text-white relative overflow-hidden">
+                <div class="absolute inset-0 opacity-20" style="background: linear-gradient(135deg, #00ff8f, #00a1ff);"></div>
+                <div class="relative max-w-md">
+                    <a href="{{ route('home') }}" class="inline-block mb-8">
+                        <img src="{{ asset('assets/logos/log-dark.jpg') }}" alt="Appkotha" class="h-14 w-auto object-contain">
+                    </a>
+                    <h1 class="text-3xl font-bold">Your Appkotha customer workspace</h1>
+                    <p class="mt-4 text-neutral-300">Track support, save insights, and access your upcoming customer tools in one premium portal.</p>
+                </div>
             </div>
 
-            <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-neutral-800 shadow-md dark:shadow-none dark:border dark:border-neutral-700 overflow-hidden sm:rounded-lg">
-                {{ $slot }}
+            <div class="flex items-center justify-center p-4 sm:p-8">
+                <div class="w-full max-w-md saas-card p-6 sm:p-8 rounded-2xl">
+                    <a href="{{ route('home') }}" class="inline-block lg:hidden mb-6">
+                        <img src="{{ asset('assets/logos/logo-light.png') }}" alt="Appkotha" class="h-10 w-auto object-contain">
+                    </a>
+                    {{ $slot }}
+                </div>
             </div>
         </div>
     </body>

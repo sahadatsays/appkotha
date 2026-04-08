@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\SettingController as AdminSettingController;
 use App\Http\Controllers\Admin\TeamMemberController as AdminTeamMemberController;
 use App\Http\Controllers\Admin\TestimonialController as AdminTestimonialController;
 use App\Http\Controllers\Frontend\BlogController;
+use App\Http\Controllers\Frontend\BlogLikeController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\ContactController;
@@ -20,7 +21,9 @@ use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\PageController;
 use App\Http\Controllers\Frontend\ProductController;
 use App\Http\Controllers\Frontend\ServiceController;
+use App\Http\Controllers\Frontend\SupportTicketController;
 use App\Http\Controllers\Frontend\TeamController;
+use App\Http\Controllers\Frontend\UserDashboardController;
 use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -128,6 +131,16 @@ Route::get('/order/{order}/download/{license}', [DownloadController::class, 'gue
 */
 
 Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('dashboard');
+    Route::get('/liked-blogs', [UserDashboardController::class, 'likedBlogs'])->name('user.likes.index');
+    Route::get('/features', [UserDashboardController::class, 'features'])->name('user.features');
+
+    Route::post('/blog/{post}/like', [BlogLikeController::class, 'store'])->name('blog.like');
+    Route::delete('/blog/{post}/like', [BlogLikeController::class, 'destroy'])->name('blog.unlike');
+
+    Route::resource('tickets', SupportTicketController::class)
+        ->only(['index', 'create', 'store', 'show']);
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
