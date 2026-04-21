@@ -5,14 +5,30 @@
             {{ __('frontend.home.trusted_by') }}
         </p>
 
-        {{-- Client Logos - Replace with actual logos --}}
-        <div class="flex flex-wrap items-center justify-center gap-4 sm:gap-8 lg:gap-16" data-aos="fade-up" data-aos-delay="100">
-            <div class="h-8 w-20 sm:w-24 bg-neutral-300 dark:bg-neutral-700 rounded flex items-center justify-center text-xs text-neutral-500 dark:text-neutral-400 opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300 hover:scale-110">{{ __('frontend.home.logo') }} 1</div>
-            <div class="h-8 w-20 sm:w-24 bg-neutral-300 dark:bg-neutral-700 rounded flex items-center justify-center text-xs text-neutral-500 dark:text-neutral-400 opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300 hover:scale-110">{{ __('frontend.home.logo') }} 2</div>
-            <div class="h-8 w-20 sm:w-24 bg-neutral-300 dark:bg-neutral-700 rounded flex items-center justify-center text-xs text-neutral-500 dark:text-neutral-400 opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300 hover:scale-110">{{ __('frontend.home.logo') }} 3</div>
-            <div class="h-8 w-20 sm:w-24 bg-neutral-300 dark:bg-neutral-700 rounded flex items-center justify-center text-xs text-neutral-500 dark:text-neutral-400 opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300 hover:scale-110">{{ __('frontend.home.logo') }} 4</div>
-            <div class="h-8 w-20 sm:w-24 bg-neutral-300 dark:bg-neutral-700 rounded flex items-center justify-center text-xs text-neutral-500 dark:text-neutral-400 opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300 hover:scale-110">{{ __('frontend.home.logo') }} 5</div>
-            <div class="h-8 w-20 sm:w-24 bg-neutral-300 dark:bg-neutral-700 rounded flex items-center justify-center text-xs text-neutral-500 dark:text-neutral-400 opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300 hover:scale-110">{{ __('frontend.home.logo') }} 6</div>
+        @php
+            $bangladeshiCompanies = collect([
+                ['name' => 'bKash', 'mark' => 'BK'],
+                ['name' => 'Pathao', 'mark' => 'PT'],
+                ['name' => 'Daraz BD', 'mark' => 'DZ'],
+                ['name' => 'Grameenphone', 'mark' => 'GP'],
+                ['name' => 'Robi', 'mark' => 'RB'],
+                ['name' => 'BRAC Bank', 'mark' => 'BB'],
+                ['name' => 'Aarong', 'mark' => 'AR'],
+                ['name' => 'Shwapno', 'mark' => 'SW'],
+            ])->shuffle()->take(6);
+        @endphp
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4" data-aos="fade-up" data-aos-delay="100">
+            @foreach($bangladeshiCompanies as $company)
+                <div class="h-14 sm:h-16 px-3 sm:px-4 rounded-xl border border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 flex items-center gap-3 hover:border-primary-300 dark:hover:border-primary-600 hover:shadow-md transition-all duration-300">
+                    <div class="w-8 h-8 rounded-lg bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-300 text-xs font-bold flex items-center justify-center shrink-0">
+                        {{ $company['mark'] }}
+                    </div>
+                    <span class="text-xs sm:text-sm font-semibold text-neutral-700 dark:text-neutral-300 leading-tight">
+                        {{ $company['name'] }}
+                    </span>
+                </div>
+            @endforeach
         </div>
     </div>
 </section>
