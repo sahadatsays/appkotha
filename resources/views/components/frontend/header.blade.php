@@ -137,21 +137,52 @@
                     </span>
                 </a>
 
-                @auth
-                    <a href="{{ route('admin.dashboard') }}" class="text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:text-primary-500 transition-all duration-300">
-                        {{ __('frontend.nav.dashboard') }}
-                    </a>
-                @else
-                    <a href="{{ route('login') }}" class="text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:text-primary-500 transition-all duration-300">
-                        {{ __('frontend.nav.sign_in') }}
-                    </a>
-                @endauth
-                <a href="{{ route('contact.index') }}" class="inline-flex items-center gap-2 px-5 py-2.5 bg-primary-500 text-white text-sm font-semibold rounded-xl hover:bg-primary-600 transition-all duration-300 shadow-sm hover:shadow-md hover:scale-105 btn-shine">
+                <div class="relative" x-data="{ accountOpen: false }">
+                    <button @click="accountOpen = !accountOpen" class="inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-neutral-200 dark:border-neutral-700 text-sm font-medium text-neutral-700 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors" aria-label="Account menu">
+                        <span>@auth {{ auth()->user()->name }} @else Account @endauth</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </button>
+
+                    <div x-show="accountOpen" @click.away="accountOpen = false" x-transition class="absolute right-0 mt-2 w-48 bg-white dark:bg-neutral-800 rounded-xl shadow-elevated border border-neutral-100 dark:border-neutral-700 py-1 z-50">
+                        @auth
+                            <a href="{{ auth()->user()->isAdmin() ? route('admin.dashboard') : route('dashboard') }}" class="block px-4 py-2 text-sm text-neutral-700 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-colors">
+                                Dashboard
+                            </a>
+                            @unless(auth()->user()->isAdmin())
+                                <a href="{{ route('tickets.index') }}" class="block px-4 py-2 text-sm text-neutral-700 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-colors">
+                                    Support Tickets
+                                </a>
+                                <a href="{{ route('user.likes.index') }}" class="block px-4 py-2 text-sm text-neutral-700 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-colors">
+                                    Liked Blogs
+                                </a>
+                                <a href="{{ route('profile.edit') }}" class="block px-4 py-2 text-sm text-neutral-700 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-colors">
+                                    Profile & Settings
+                                </a>
+                            @endunless
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <button type="submit" class="w-full text-left px-4 py-2 text-sm text-neutral-700 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-colors">
+                                    Log Out
+                                </button>
+                            </form>
+                        @else
+                            <a href="{{ route('login') }}" class="block px-4 py-2 text-sm text-neutral-700 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-colors">
+                                {{ __('frontend.nav.sign_in') }}
+                            </a>
+                            <a href="{{ route('register') }}" class="block px-4 py-2 text-sm text-neutral-700 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-colors">
+                                Register
+                            </a>
+                        @endauth
+                    </div>
+                </div>
+                {{-- <a href="{{ route('contact.index') }}" class="inline-flex items-center gap-2 px-5 py-2.5 bg-primary-500 text-white text-sm font-semibold rounded-xl hover:bg-primary-600 transition-all duration-300 shadow-sm hover:shadow-md hover:scale-105 btn-shine">
                     {{ __('frontend.nav.get_started') }}
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
                     </svg>
-                </a>
+                </a> --}}
             </div>
 
             <!-- Mobile Menu Button -->
@@ -218,6 +249,20 @@
             <a href="{{ route('contact.index') }}" class="block px-4 py-3 rounded-xl {{ request()->routeIs('contact.*') ? 'bg-primary-50 dark:bg-primary-900/20 text-primary-600' : 'text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-800' }}">
                 {{ __('frontend.nav.contact') }}
             </a>
+            @auth
+                <a href="{{ route('dashboard') }}" class="block px-4 py-3 rounded-xl {{ request()->routeIs('dashboard') ? 'bg-primary-50 dark:bg-primary-900/20 text-primary-600' : 'text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-800' }}">
+                    Dashboard
+                </a>
+                <a href="{{ route('tickets.index') }}" class="block px-4 py-3 rounded-xl {{ request()->routeIs('tickets.*') ? 'bg-primary-50 dark:bg-primary-900/20 text-primary-600' : 'text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-800' }}">
+                    Support Tickets
+                </a>
+                <a href="{{ route('user.likes.index') }}" class="block px-4 py-3 rounded-xl {{ request()->routeIs('user.likes.*') ? 'bg-primary-50 dark:bg-primary-900/20 text-primary-600' : 'text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-800' }}">
+                    Liked Blogs
+                </a>
+                <a href="{{ route('profile.edit') }}" class="block px-4 py-3 rounded-xl {{ request()->routeIs('profile.*') ? 'bg-primary-50 dark:bg-primary-900/20 text-primary-600' : 'text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-800' }}">
+                    Profile
+                </a>
+            @endauth
             <a href="{{ route('cart.index') }}" class="flex items-center justify-between px-4 py-3 rounded-xl {{ request()->routeIs('cart.*') ? 'bg-primary-50 dark:bg-primary-900/20 text-primary-600' : 'text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-800' }}">
                 <span class="flex items-center gap-2">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -232,12 +277,21 @@
         </nav>
         <div class="p-4 border-t border-neutral-100 dark:border-neutral-800 space-y-3">
             @auth
-                <a href="{{ route('admin.dashboard') }}" class="block w-full text-center px-4 py-3 bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 font-medium rounded-xl hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors">
-                    {{ __('frontend.nav.dashboard') }}
+                <a href="{{ auth()->user()->isAdmin() ? route('admin.dashboard') : route('dashboard') }}" class="block w-full text-center px-4 py-3 bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 font-medium rounded-xl hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors">
+                    Dashboard
                 </a>
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit" class="block w-full text-center px-4 py-3 bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 font-medium rounded-xl hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors">
+                        Log Out
+                    </button>
+                </form>
             @else
                 <a href="{{ route('login') }}" class="block w-full text-center px-4 py-3 bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 font-medium rounded-xl hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors">
                     {{ __('frontend.nav.sign_in') }}
+                </a>
+                <a href="{{ route('register') }}" class="block w-full text-center px-4 py-3 bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 font-medium rounded-xl hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors">
+                    Register
                 </a>
             @endauth
             <a href="{{ route('contact.index') }}" class="block w-full text-center px-4 py-3 bg-primary-500 text-white font-semibold rounded-xl hover:bg-primary-600 transition-colors">

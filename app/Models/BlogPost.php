@@ -6,6 +6,8 @@ use App\Models\Concerns\HasTranslations;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Str;
 
 class BlogPost extends Model
@@ -94,6 +96,17 @@ class BlogPost extends Model
     public function category(): BelongsTo
     {
         return $this->belongsTo(BlogCategory::class, 'category_id');
+    }
+
+    public function likes(): HasMany
+    {
+        return $this->hasMany(BlogLike::class, 'blog_post_id');
+    }
+
+    public function likedByUsers(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'blog_likes', 'blog_post_id', 'user_id')
+            ->withTimestamps();
     }
 
     public function scopePublished($query)

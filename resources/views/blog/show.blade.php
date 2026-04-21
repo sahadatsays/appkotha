@@ -31,6 +31,23 @@
                     @endif
                     <span>{{ $post->formatted_date }}</span>
                     <span>{{ $post->reading_time }} min read</span>
+                    @auth
+                        @php
+                            $hasLiked = auth()->user()->blogLikes()->where('blog_post_id', $post->id)->exists();
+                        @endphp
+                        @if($hasLiked)
+                            <form method="POST" action="{{ route('blog.unlike', $post) }}">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="text-sm text-primary-600 dark:text-primary-400 hover:underline">Unlike</button>
+                            </form>
+                        @else
+                            <form method="POST" action="{{ route('blog.like', $post) }}">
+                                @csrf
+                                <button type="submit" class="text-sm text-primary-600 dark:text-primary-400 hover:underline">Like</button>
+                            </form>
+                        @endif
+                    @endauth
                 </div>
             </div>
         </header>
